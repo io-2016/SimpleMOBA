@@ -38,7 +38,7 @@ class DynamicLight : public Light {
     DynamicNode();
     ~DynamicNode();
 
-    void synchronize(DynamicLight*, ViewWorld* display);
+    void synchronize(DynamicLight*, QWorld* world);
     void makeShadowNode(DynamicLight* light, QPointF p1, QPointF p2);
   };
 

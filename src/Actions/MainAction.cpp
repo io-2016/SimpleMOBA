@@ -1,16 +1,14 @@
 #include "MainAction.hpp"
-#include "Entities/World.hpp"
-#include "Entities/ViewWorld.hpp"
-#include "Entities/Player.hpp"
+#include "QBox2D/QWorld.hpp"
 
-MainAction::MainAction(World* w)
+MainAction::MainAction(QWorld* w)
     : Action(w, w), m_mapEditor(this), m_fileAction(this) {}
 
 MainAction::~MainAction() {}
 
 void MainAction::subActionEnabledChanged(SubAction* action) {
   Action::subActionEnabledChanged(action);
-  ViewWorld* view = world()->view();
+  /*ViewWorld* view = world()->view();
 
   if (action->enabled()) {
     view->setFocusedObject(nullptr);
@@ -23,5 +21,5 @@ void MainAction::subActionEnabledChanged(SubAction* action) {
 
     view->setFocusedObject(world()->player());
     view->setFlickable(false);
-  }
+  }*/
 }

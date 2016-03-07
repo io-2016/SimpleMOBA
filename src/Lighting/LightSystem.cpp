@@ -1,15 +1,14 @@
 #include "LightSystem.hpp"
 #include "StaticLight.hpp"
-#include "Entities/Game.hpp"
-#include "Entities/World.hpp"
+#include "QBox2D/QWorld.hpp"
 #include "Utility/Utility.hpp"
 #include <QJsonArray>
 #include <QJsonObject>
 #include <cassert>
 
-LightSystem::LightSystem(Game* game)
-    : SceneGraph::Item(game),
-      m_game(game),
+LightSystem::LightSystem(QWorld* world)
+    : SceneGraph::Item(world),
+      m_world(world),
       m_resolution(),
       m_normalMap(this),
       m_lightTexture(this),
@@ -92,9 +91,10 @@ void LightSystem::setResolution(QSize s) {
   lightTexture()->setTextureSize(m_resolution);
 }
 
-World* LightSystem::world() const {
-  assert(m_game->view());
-  return m_game->view()->world();
+QWorld* LightSystem::world() const {
+  //assert(m_game->view());
+  //return m_game->view()->world();
+  return m_world;
 }
 
 void LightSystem::addLight(StaticLight* light) {

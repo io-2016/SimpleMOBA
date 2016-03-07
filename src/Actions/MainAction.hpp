@@ -4,7 +4,7 @@
 #include "MapEditor.hpp"
 #include "FileAction.hpp"
 
-class World;
+class QWorld;
 
 class MainAction : public Action {
  private:
@@ -15,7 +15,7 @@ class MainAction : public Action {
   void subActionEnabledChanged(SubAction*);
 
  public:
-  MainAction(World*);
+  MainAction(QWorld*);
   ~MainAction();
 
   inline MapEditor* mapEditor() { return &m_mapEditor; }

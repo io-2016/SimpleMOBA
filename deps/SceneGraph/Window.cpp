@@ -227,7 +227,8 @@ void Window::mousePressEvent(QMouseEvent* event) {
 
   if (!item) event->ignore();
 
-  rootObject()->forceActiveFocus();
+  if (rootObject())
+    rootObject()->forceActiveFocus();
 }
 
 void Window::mouseReleaseEvent(QMouseEvent* event) {
@@ -285,6 +286,7 @@ void Window::timerEvent(QTimerEvent* event) {
 void Window::resizeEvent(QResizeEvent* event) {
   QQuickView::resizeEvent(event);
   m_rootItem.setSize(event->size());
+  scheduleSynchronize();
 }
 
 Window::RootItem::RootItem(Window* w, QQuickItem* parent)

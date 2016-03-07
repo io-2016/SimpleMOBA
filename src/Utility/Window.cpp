@@ -4,22 +4,12 @@
 #include <QQmlContext>
 #include <QDebug>
 
-#include "Entities/Player.hpp"
-#include "Entities/Pony.hpp"
-#include "Entities/Gun.hpp"
-#include "Entities/Deagle.hpp"
-#include "Entities/Enemy.hpp"
-#include "Entities/Chain.hpp"
-
 #include "QBox2D/QBody.hpp"
 #include "QBox2D/Fixture/Box2DBox.hpp"
 #include "QBox2D/Fixture/Box2DChain.hpp"
 #include "QBox2D/Fixture/Box2DCircle.hpp"
 #include "QBox2D/Fixture/Box2DEdge.hpp"
 #include "QBox2D/Fixture/Box2DPolygon.hpp"
-
-#include "Network/Server.hpp"
-#include "Network/Client.hpp"
 
 #include "Utility/Factory.hpp"
 
@@ -54,11 +44,10 @@ void Environment::setFullscreen(bool enable) {
 
 Window::Window(QWindow* parent)
     : SceneGraph::Window(parent),
-      m_game(rootItem()),
       m_environment(this) {
   rootContext()->setContextProperty("app", &m_environment);
 
-  World* world = m_game.view()->world();
+  /*World* world = m_game.view()->world();
   MainAction* mainAction = world->mainAction();
   MapEditor* mapEditor = mainAction->mapEditor();
   FileAction* fileAction = mainAction->fileAction();
@@ -91,7 +80,7 @@ Window::Window(QWindow* parent)
   rootContext()->setContextProperty("addChain",
                                     mapEditor->addChain()->object());
 
-  setSource(QUrl("qrc:/qml/main.qml"));
+  setSource(QUrl("qrc:/qml/main.qml"));*/
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
@@ -105,7 +94,7 @@ void Window::resizeEvent(QResizeEvent* event) {
 
   setProjection(matrix);
 
-  m_game.setSize(size());
+  //m_game.setSize(size());
   //m_game.resetTransform();
   //m_game.rotate(45, 0, 0, 1);
   //m_game.translate(-300, -300);
@@ -121,9 +110,4 @@ void Window::registerTypes() {
   Utility::registerType<Box2DPolygon>("Box2DPolygon");
 
   Utility::registerType<QBody>("QBody");
-  Utility::registerType<Gun>("Gun");
-  Utility::registerType<Deagle>("Deagle");
-  Utility::registerType<Enemy>("Enemy");
-  Utility::registerType<Chain>("Chain");
-  Utility::registerType<Player>("Player");
 }

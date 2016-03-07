@@ -1,6 +1,5 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
-#include "Entities/Game.hpp"
 #include "SceneGraph/Window.hpp"
 
 class Environment : public QObject {
@@ -32,7 +31,6 @@ class Environment : public QObject {
 
 class Window : public SceneGraph::Window {
  private:
-  Game m_game;
   Environment m_environment;
 
  protected:

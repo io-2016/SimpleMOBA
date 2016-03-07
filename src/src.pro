@@ -35,27 +35,15 @@ SOURCES += \
     QBox2D/QBody.cpp \
     QBox2D/QWorld.cpp \
     Actions/BodyEdit.cpp \
-    Entities/Chain.cpp \
-    Entities/Player.cpp \
-    Entities/Weapon.cpp \
-    Entities/Creature.cpp \
-    Entities/Hand.cpp \
-    Entities/Enemy.cpp \
-    Entities/Deagle.cpp \
-    Entities/Gun.cpp \
-    Entities/World.cpp \
     Lighting/DynamicLight.cpp \
     Lighting/LightSystem.cpp \
     Lighting/Light.cpp \
     Utility/Window.cpp \
-    Network/Server.cpp \
-    Network/Client.cpp \
     Lighting/EnlightedItems.cpp \
     Lighting/LightMaterial.cpp \
     Utility/Utility.cpp \
     Lighting/StaticLight.cpp \
     Lighting/LightBlender.cpp \
-    Entities/ItemSet.cpp \
     Graphics/TexturedRectangle.cpp \
     Graphics/TexturedConvexPolygon.cpp \
     Graphics/TexturedPolygon.cpp \
@@ -68,18 +56,15 @@ SOURCES += \
     QBox2D/Fixture/Box2DEdge.cpp \
     QBox2D/Fixture/Box2DChain.cpp \
     Graphics/SpriteSequence.cpp \
-    Entities/PonyAnimation.cpp \
     QBox2D/QJoint.cpp \
     Utility/BaseItem.cpp \
-    Entities/ViewWorld.cpp \
-    Entities/Pony.cpp \
-    Entities/Game.cpp \
     Graphics/Primitives.cpp \
     Actions/SubAction.cpp \
     Actions/AddFixture.cpp \
     Graphics/ParticleSystem.cpp \
     Actions/FileAction.cpp \
-    Actions/MainAction.cpp
+    Actions/MainAction.cpp \
+    QBox2D/QChain.cpp
 
 HEADERS += \
     Actions/Action.hpp \
@@ -101,27 +86,15 @@ HEADERS += \
     QBox2D/QWorld.hpp \
     QBox2D/QBody.hpp \
     Actions/BodyEdit.hpp \
-    Entities/Chain.hpp \
-    Entities/Player.hpp \
-    Entities/Weapon.hpp \
-    Entities/Creature.hpp \
-    Entities/Hand.hpp \
-    Entities/Enemy.hpp \
-    Entities/Deagle.hpp \
-    Entities/Gun.hpp \
-    Entities/World.hpp \
     Lighting/DynamicLight.hpp \
     Lighting/LightSystem.hpp \
     Lighting/Light.hpp \
     Utility/Window.hpp \
-    Network/Server.hpp \
-    Network/Client.hpp \
     Lighting/EnlightedItems.hpp \
     Lighting/LightMaterial.hpp \
     Utility/Utility.hpp \
     Lighting/StaticLight.hpp \
     Lighting/LightBlender.hpp \
-    Entities/ItemSet.hpp \
     Graphics/TexturedRectangle.hpp \
     Graphics/TexturedConvexPolygon.hpp \
     Graphics/TexturedPolygon.hpp \
@@ -134,19 +107,16 @@ HEADERS += \
     QBox2D/Fixture/Box2DEdge.hpp \
     QBox2D/Fixture/Box2DChain.hpp \
     Graphics/SpriteSequence.hpp \
-    Entities/PonyAnimation.hpp \
     QBox2D/QJoint.hpp \
     Utility/Factory.hpp \
     Utility/Pool.hpp \
     Utility/List.hpp \
     Utility/BaseItem.hpp \
-    Entities/ViewWorld.hpp \
-    Entities/Pony.hpp \
-    Entities/Game.hpp \
     Graphics/Primitives.hpp \
     Actions/SubAction.hpp \
     Actions/AddFixture.hpp \
     Graphics/ParticleSystem.hpp \
     Actions/FileAction.hpp \
-    Actions/MainAction.hpp
+    Actions/MainAction.hpp \
+    QBox2D/QChain.hpp
 

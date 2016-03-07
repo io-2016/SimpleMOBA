@@ -1,8 +1,7 @@
 #include "DynamicLight.hpp"
-#include "StaticLight.hpp"
 #include "LightSystem.hpp"
-#include "Entities/Game.hpp"
-#include "Entities/World.hpp"
+#include "StaticLight.hpp"
+#include "QBox2D/QWorld.hpp"
 #include <QQuickWindow>
 #define GLSL(shader) #shader
 
@@ -18,7 +17,7 @@ ShadowNode::ShadowNode(QPointF p1, QPointF p2)
 }
 
 void ShadowNode::setVertices(QPointF p1, QPointF p2) {
-  Vertex* array = m_geometry.vertexData<Vertex>();
+  Vertex *array = m_geometry.vertexData<Vertex>();
 
   array[0] = Vertex(p1.x(), p1.y(), 0.0, 1.0);
   array[1] = Vertex(p2.x(), p2.y(), 0.0, 1.0);
@@ -30,7 +29,7 @@ void ShadowNode::setVertices(QPointF p1, QPointF p2) {
 
 void ShadowNode::setColor(QColor color) { m_material.setColor(color); }
 
-DynamicLight::DynamicLight(Item* item) : Light(item), m_boundLight() {}
+DynamicLight::DynamicLight(Item *item) : Light(item), m_boundLight() {}
 
 DynamicLight::~DynamicLight() {
   if (m_boundLight) {
@@ -39,8 +38,9 @@ DynamicLight::~DynamicLight() {
   }
 }
 
-void DynamicLight::bindLight(StaticLight* light) {
-  if (m_boundLight) m_boundLight->m_dynamicLight = nullptr;
+void DynamicLight::bindLight(StaticLight *light) {
+  if (m_boundLight)
+    m_boundLight->m_dynamicLight = nullptr;
 
   m_boundLight = light;
 
@@ -63,14 +63,12 @@ bool DynamicLight::castingShadow(QPointF p1, QPointF p2) const {
   return p1.x() * p2.y() - p1.y() * p2.x() > 0;
 }
 
-SceneGraph::Node* DynamicLight::synchronize(SceneGraph::Node* old) {
-  DynamicNode* rootNode = static_cast<DynamicNode*>(old);
-  if (!rootNode) rootNode = new DynamicNode;
+SceneGraph::Node *DynamicLight::synchronize(SceneGraph::Node *old) {
+  DynamicNode *rootNode = static_cast<DynamicNode *>(old);
+  if (!rootNode)
+    rootNode = new DynamicNode;
 
-  rootNode->synchronize(this, lightSystem()->world()->view());
-
-  // if (visible())
-  //    update();
+  //rootNode->synchronize(this, lightSystem()->world()->view());
 
   return rootNode;
 }
@@ -78,26 +76,29 @@ SceneGraph::Node* DynamicLight::synchronize(SceneGraph::Node* old) {
 DynamicLight::DynamicNode::DynamicNode() { appendChild(&m_shadows); }
 
 DynamicLight::DynamicNode::~DynamicNode() {
-  for (ShadowNode* node : m_unused) delete node;
+  for (ShadowNode *node : m_unused)
+    delete node;
   m_unused.clear();
 
-  while (m_shadows.firstChild()) delete m_shadows.firstChild();
+  while (m_shadows.firstChild())
+    delete m_shadows.firstChild();
 }
 
-void DynamicLight::DynamicNode::synchronize(DynamicLight* light,
-                                            ViewWorld* display) {
+void DynamicLight::DynamicNode::synchronize(DynamicLight *light,
+                                            QWorld* world) {
   LightNode::synchronize(light);
 
   while (m_shadows.firstChild()) {
-    m_unused.push_back(static_cast<ShadowNode*>(m_shadows.firstChild()));
+    m_unused.push_back(static_cast<ShadowNode *>(m_shadows.firstChild()));
     m_shadows.removeChild(m_shadows.firstChild());
   }
 
   QRectF lightRect = light->matrix().mapRect(light->boundingRect());
-  QRectF rect = display->visibleArea().intersected(lightRect);
+  QRectF rect = world->visibleRect().intersected(lightRect);
 
-  for (QFixture* fixture : light->world()->fixtures(rect)) {
-    if (!fixture->shadowCaster() || !fixture->body()->visible()) continue;
+  for (QFixture *fixture : world->fixtures(rect)) {
+    if (!fixture->shadowCaster() || !fixture->body()->visible())
+      continue;
 
     std::vector<QPointF> vertices;
     for (QPointF vert : fixture->vertices()) {
@@ -111,11 +112,12 @@ void DynamicLight::DynamicNode::synchronize(DynamicLight* light,
   }
 }
 
-void DynamicLight::DynamicNode::makeShadowNode(DynamicLight* light, QPointF p1,
+void DynamicLight::DynamicNode::makeShadowNode(DynamicLight *light, QPointF p1,
                                                QPointF p2) {
-  if (!light->castingShadow(p1, p2)) return;
+  if (!light->castingShadow(p1, p2))
+    return;
   if (!m_unused.empty()) {
-    ShadowNode* node = m_unused.back();
+    ShadowNode *node = m_unused.back();
     m_unused.pop_back();
 
     node->setVertices(p1, p2);
@@ -123,7 +125,7 @@ void DynamicLight::DynamicNode::makeShadowNode(DynamicLight* light, QPointF p1,
     m_shadows.appendChild(node);
 
   } else {
-    ShadowNode* node = new ShadowNode(p1, p2);
+    ShadowNode *node = new ShadowNode(p1, p2);
     m_shadows.appendChild(node);
   }
 }

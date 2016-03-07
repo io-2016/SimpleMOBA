@@ -1,5 +1,5 @@
 #include "Fixture.hpp"
-#include "Entities/World.hpp"
+#include "Graphics/TexturedItem.hpp"
 #include "Lighting/LightSystem.hpp"
 #include <QJsonObject>
 

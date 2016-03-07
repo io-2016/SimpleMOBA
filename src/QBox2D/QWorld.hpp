@@ -47,7 +47,6 @@ class QWorld : public SceneGraph::Item, public QOpenGLFunctions {
   std::vector<QBody*> m_visibleBodies;
   std::vector<QBody*> m_destroyed;
   std::vector<QBody*> m_enqueued;
-  bool m_glinitialized;
 
   void updateVisibleBodies();
   void destroyBodies();

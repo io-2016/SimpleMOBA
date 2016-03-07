@@ -2,7 +2,7 @@
 #include "Utility/Utility.hpp"
 #include "SubAction.hpp"
 
-Action::Action(SceneGraph::Item* parent, World* w)
+Action::Action(SceneGraph::Item* parent, QWorld* w)
     : SceneGraph::Item(parent),
       m_currentSubAction(),
       m_enabled(),

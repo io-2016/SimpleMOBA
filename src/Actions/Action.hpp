@@ -2,7 +2,7 @@
 #define ACTION_HPP
 #include "SceneGraph/Item.hpp"
 
-class World;
+class QWorld;
 class Action;
 class SubAction;
 
@@ -42,7 +42,7 @@ class Action : public SceneGraph::Item {
   bool m_enabled;
 
   ActionObject* m_object;
-  World* m_world;
+  QWorld* m_world;
 
  protected:
   inline virtual void onInit() {}
@@ -52,7 +52,7 @@ class Action : public SceneGraph::Item {
   virtual void subActionEnabledChanged(SubAction*);
 
  public:
-  Action(SceneGraph::Item* = nullptr, World* = nullptr);
+  Action(SceneGraph::Item* = nullptr, QWorld* = nullptr);
 
   virtual void reset();
 
@@ -61,8 +61,8 @@ class Action : public SceneGraph::Item {
 
   inline ActionObject* object() const { return m_object; }
 
-  inline World* world() const { return m_world; }
-  inline void setWorld(World* w) { m_world = w; }
+  inline QWorld* world() const { return m_world; }
+  inline void setWorld(QWorld* w) { m_world = w; }
 
   inline virtual void finished() {}
 };

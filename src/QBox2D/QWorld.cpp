@@ -82,8 +82,7 @@ QWorld::QWorld(SceneGraph::Item* parent)
       m_frameTime(1000 / 60),
       m_world(b2Vec2(0, 10)),
       m_groundBody(this),
-      m_timer(-1),
-      m_glinitialized() {
+      m_timer(-1) {
   world()->SetContactListener(&m_contactListener);
   world()->SetDestructionListener(&m_destructionListener);
 

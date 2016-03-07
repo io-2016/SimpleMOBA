@@ -1,7 +1,6 @@
 #include "AddChain.hpp"
 #include "QBox2D/QWorld.hpp"
-#include "Entities/World.hpp"
-#include "Entities/Chain.hpp"
+#include "QBox2D/QChain.hpp"
 #include "Utility/Utility.hpp"
 #include "MapEditor.hpp"
 
@@ -30,14 +29,14 @@ void AddChain::mouseMoveEvent(QMouseEvent* event) {
 
 void AddChain::keyPressEvent(QKeyEvent* event) {
   if (event->key() == Qt::Key_Return) {
-    Chain* chain = new Chain(world());
+    QChain* chain = new QChain(world());
     chain->setVertices(m_pts);
     chain->initialize(world());
 
     m_state |= DirtyState::Finished;
     update();
 
-    world()->itemSet()->addBody(chain);
+    //world()->itemSet()->addBody(chain);
 
     finished();
   }

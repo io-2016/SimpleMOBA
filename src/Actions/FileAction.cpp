@@ -1,8 +1,5 @@
 #include "FileAction.hpp"
 #include "MainAction.hpp"
-#include "Entities/World.hpp"
-#include "Entities/ViewWorld.hpp"
-#include "Entities/Game.hpp"
 
 FileAction::FileAction(MainAction *action)
     : SubAction(action, action->world()),
@@ -20,7 +17,7 @@ SaveMapAction *SaveMapActionObject::action() const {
 }
 
 void SaveMapActionObject::dump(QString path) {
-  action()->world()->view()->game()->dump(path);
+  //action()->world()->view()->game()->dump(path);
 }
 
 SaveMapAction::SaveMapAction(FileAction *action)
@@ -34,7 +31,7 @@ LoadMapAction *LoadMapActionObject::action() const {
 }
 
 void LoadMapActionObject::load(QString path) {
-  action()->world()->view()->game()->load(path);
+ // action()->world()->view()->game()->load(path);
   action()->setFocus(true);
 }
 

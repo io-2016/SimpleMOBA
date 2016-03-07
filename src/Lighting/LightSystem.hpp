@@ -9,17 +9,17 @@
 
 class StaticLight;
 class DisplayItem;
-class World;
+class QWorld;
 class Game;
 
 class LightSystem : public SceneGraph::Item {
  private:
   friend class StaticLight;
   friend class DynamicLight;
-  friend class World;
+  friend class QWorld;
   friend class ViewWorld;
 
-  Game* m_game;
+  QWorld* m_world;
   QSizeF m_size;
   QSize m_resolution;
 
@@ -50,7 +50,7 @@ class LightSystem : public SceneGraph::Item {
   void onFixtureDestroyed(QFixture*);
 
  public:
-  explicit LightSystem(Game* game);
+  explicit LightSystem(QWorld*);
   ~LightSystem();
 
   void initialize();
@@ -65,7 +65,7 @@ class LightSystem : public SceneGraph::Item {
   inline SceneGraph::ShaderSource* normalMap() { return &m_normalMap; }
   inline SceneGraph::ShaderSource* lightTexture() { return &m_lightTexture; }
 
-  World* world() const;
+  QWorld* world() const;
 
   const std::unordered_set<StaticLight*>& visibleLights() const;
 

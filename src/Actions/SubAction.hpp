@@ -12,7 +12,7 @@ class SubAction : public Action {
   void enabledChanged();
 
  public:
-  SubAction(Action* parent, World* w = nullptr);
+  SubAction(Action* parent, QWorld* w = nullptr);
 
   void finished();
 

@@ -3,9 +3,7 @@
 #include "Light.hpp"
 #include "QBox2D/QWorld.hpp"
 #include "QBox2D/QFixture.hpp"
-#include "Entities/Player.hpp"
 #include "StaticLight.hpp"
-#include "Entities/Game.hpp"
 #include <cassert>
 
 EnlightedItems::EnlightedItems(LightSystem* system, SceneGraph::Item* parent)
@@ -15,7 +13,7 @@ EnlightedItems::EnlightedItems(LightSystem* system, SceneGraph::Item* parent)
 
 void EnlightedItems::clear() { m_state |= Reset; }
 
-World* EnlightedItems::world() const { return lightSystem()->world(); }
+QWorld* EnlightedItems::world() const { return lightSystem()->world(); }
 
 SceneGraph::Node* EnlightedItems::synchronize(SceneGraph::Node* old) {
   Node* node = static_cast<Node*>(old);
@@ -33,7 +31,7 @@ SceneGraph::Node* EnlightedItems::synchronize(SceneGraph::Node* old) {
   }
 
   uint it = 0;
-  QRectF visibleArea = world()->view()->visibleArea();
+  QRectF visibleArea = world()->visibleRect();
   for (StaticLight* light : lightSystem()->visibleLights()) {
     if (!light->dynamicLight()) continue;
 
