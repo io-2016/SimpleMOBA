@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/">
+        <file>json/map00.json</file>
+    </qresource>
+</RCC>

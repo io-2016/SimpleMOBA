@@ -1,0 +1,1127 @@
+{
+    "lightSystem": {
+        "lights": [
+            {
+                "attenuation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0.0024999999441206455
+                },
+                "color": {
+                    "b": 255,
+                    "g": 0,
+                    "r": 255
+                },
+                "dynamicShadows": true,
+                "radius": 40,
+                "renderFraction": 5,
+                "x": 530,
+                "y": 620,
+                "z": 15
+            },
+            {
+                "attenuation": {
+                    "x": 0,
+                    "y": 0,
+                    "z": 0.0024999999441206455
+                },
+                "color": {
+                    "b": 0,
+                    "g": 255,
+                    "r": 0
+                },
+                "dynamicShadows": true,
+                "radius": 40,
+                "renderFraction": 5,
+                "x": 730,
+                "y": 620,
+                "z": 15
+            }
+        ]
+    },
+    "viewWorld": {
+        "height": 1000,
+        "scale": 10,
+        "width": 1000,
+        "world": {
+            "bodies": [
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 350,
+                            "normalMapSource": ":/resources/sand_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 8.75,
+                                "w": 25,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/sand.png",
+                            "width": 1000,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 0,
+                    "y": 650
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 2,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0.10000000149011612,
+                            "friction": 1,
+                            "height": 5,
+                            "normalMapSource": ":/resources/sand_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 0.125,
+                                "w": 0.125,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/sand.png",
+                            "width": 5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 10,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": -116.89591458796521,
+                    "width": 0,
+                    "x": 477.7955322265625,
+                    "y": 649.9849853515625
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": ":/resources/rock_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/rock.png",
+                            "width": 5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 470,
+                    "y": 600
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 20,
+                            "normalMapSource": ":/resources/rock_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/rock.png",
+                            "width": 20,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 500,
+                    "y": 630
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 20,
+                            "normalMapSource": ":/resources/rock_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/rock.png",
+                            "width": 20,
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 40,
+                            "normalMapSource": ":/resources/rock_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 2,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/rock.png",
+                            "width": 20,
+                            "x": 20,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 550,
+                    "y": 610
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 40,
+                            "normalMapSource": ":/resources/rock_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 2,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/rock.png",
+                            "width": 20,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 400,
+                    "y": 610
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 20,
+                            "normalMapSource": ":/resources/bricks_n.jpg",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/bricks.jpg",
+                            "width": 20,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 600,
+                    "y": 630
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 40,
+                            "normalMapSource": ":/resources/bricks_n.jpg",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 2,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/bricks.jpg",
+                            "width": 20,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 650,
+                    "y": 610
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 0.5,
+                                "w": 3,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 60,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 700,
+                    "y": 630
+                },
+                {
+                    "angularDamping": 0,
+                    "bodySource": ":/resources/pinkamenapie.png",
+                    "bodyType": 2,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "gravityScale": 20,
+                    "health": 30,
+                    "height": 5,
+                    "linearDamping": 3,
+                    "rotation": 0,
+                    "width": 5,
+                    "wingsSource": "",
+                    "x": 554.703857421875,
+                    "y": 644.98504638671875
+                },
+                {
+                    "angularDamping": 0,
+                    "bodySource": ":/resources/pinkamenapie.png",
+                    "bodyType": 2,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "gravityScale": 20,
+                    "health": 30,
+                    "height": 5,
+                    "linearDamping": 3,
+                    "rotation": 0,
+                    "width": 5,
+                    "wingsSource": "",
+                    "x": 700,
+                    "y": 610
+                },
+                {
+                    "angularDamping": 0,
+                    "bodySource": ":/resources/pinkamenapie.png",
+                    "bodyType": 2,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "gravityScale": 20,
+                    "health": 30,
+                    "height": 5,
+                    "linearDamping": 3,
+                    "rotation": 0,
+                    "width": 5,
+                    "wingsSource": "",
+                    "x": 750,
+                    "y": 610
+                },
+                {
+                    "angularDamping": 0,
+                    "bodySource": ":/resources/pinkamenapie.png",
+                    "bodyType": 2,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "gravityScale": 20,
+                    "health": 30,
+                    "height": 5,
+                    "linearDamping": 3,
+                    "rotation": 0,
+                    "width": 5,
+                    "wingsSource": "",
+                    "x": 780,
+                    "y": 630
+                },
+                {
+                    "angularDamping": 0,
+                    "bodySource": ":/resources/pinkamenapie.png",
+                    "bodyType": 2,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "gravityScale": 20,
+                    "health": 30,
+                    "height": 5,
+                    "linearDamping": 3,
+                    "rotation": 0,
+                    "width": 5,
+                    "wingsSource": "",
+                    "x": 820,
+                    "y": 630
+                },
+                {
+                    "angularDamping": 0,
+                    "bodySource": ":/resources/pinkamenapie.png",
+                    "bodyType": 2,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "gravityScale": 20,
+                    "health": 30,
+                    "height": 5,
+                    "linearDamping": 3,
+                    "rotation": 0,
+                    "width": 5,
+                    "wingsSource": "",
+                    "x": 750,
+                    "y": 400
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 0.25,
+                                "w": 0.25,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 830,
+                    "y": 645
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 5,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 0.25,
+                                "w": 0.25,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 790,
+                    "y": 645
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 100,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 5,
+                                "w": 0.5,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 10,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 950,
+                    "y": 550
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/rock_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 0.5,
+                                "w": 45,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/rock.png",
+                            "width": 900,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 0,
+                    "y": 580
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 20,
+                            "normalMapSource": ":/resources/sand_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 0.5,
+                                "w": 0.5,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/sand.png",
+                            "width": 20,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 800,
+                    "y": 560
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DPolygon",
+                            "density": 1,
+                            "friction": 0.20000000298023224,
+                            "normalMapSource": ":/resources/sand_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureScale": {
+                                "x": 0.02500000037252903,
+                                "y": 0.02500000037252903
+                            },
+                            "textureSource": ":/resources/sand.png",
+                            "vertices": [
+                                {
+                                    "x": 20,
+                                    "y": 0
+                                },
+                                {
+                                    "x": 20,
+                                    "y": 20
+                                },
+                                {
+                                    "x": 0,
+                                    "y": 20
+                                }
+                            ],
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 480,
+                    "y": 630
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 0,
+                    "class": "QBody",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 6,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 60,
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 5,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 50,
+                            "x": 10,
+                            "y": -10
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 4,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 40,
+                            "x": 20,
+                            "y": -20
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 3,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 30,
+                            "x": 30,
+                            "y": -30
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 2,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 20,
+                            "x": 40,
+                            "y": -40
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 10,
+                            "normalMapSource": ":/resources/chipped_n.png",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/chipped.png",
+                            "width": 10,
+                            "x": 50,
+                            "y": -50
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 0,
+                    "linearDamping": 0,
+                    "rotation": 0,
+                    "width": 0,
+                    "x": 880,
+                    "y": 640
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 2,
+                    "bulletCount": 0,
+                    "class": "Deagle",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 1,
+                            "friction": 0,
+                            "height": 0.5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 0,
+                                "w": 0,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 1.75,
+                            "x": 0,
+                            "y": 0
+                        },
+                        {
+                            "class": "Box2DBox",
+                            "density": 1,
+                            "friction": 0,
+                            "height": 1.375,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 0,
+                                "w": 0,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 0.5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 1,
+                    "height": 1.375,
+                    "linearDamping": 0,
+                    "rotation": 34.991434778379677,
+                    "shootPoint": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "textureRect": {
+                        "h": 0.056338027999999998,
+                        "w": 0.051679586999999999,
+                        "x": 0.056847544999999999,
+                        "y": 0.24507042300000001
+                    },
+                    "textureSource": ":/resources/guns.png",
+                    "width": 1.75,
+                    "x": 501.42337036132812,
+                    "y": 628.57208251953125
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 2,
+                    "bulletCount": 15,
+                    "class": "Gun",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 2,
+                            "friction": 0.20000000298023224,
+                            "height": 2.5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 0,
+                                "w": 0,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 5,
+                    "height": 2.5,
+                    "linearDamping": 0,
+                    "rotation": 360.00074767834303,
+                    "shootPoint": {
+                        "x": 1,
+                        "y": 0.4
+                    },
+                    "textureRect": {
+                        "h": 0.070422534999999994,
+                        "w": 0.14211886300000001,
+                        "x": 0.34883720899999998,
+                        "y": 0.36619718299999998
+                    },
+                    "textureSource": ":/resources/guns.png",
+                    "width": 5,
+                    "x": 520.8800048828125,
+                    "y": 647.48529052734375
+                },
+                {
+                    "angularDamping": 0,
+                    "bodyType": 2,
+                    "bulletCount": 15,
+                    "class": "Gun",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 2,
+                            "friction": 0.20000000298023224,
+                            "height": 2.5,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": false,
+                            "textureRect": {
+                                "h": 0,
+                                "w": 0,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": "",
+                            "width": 5,
+                            "x": 0,
+                            "y": 0
+                        }
+                    ],
+                    "gravityScale": 5,
+                    "height": 2.5,
+                    "linearDamping": 0,
+                    "rotation": 0.0008715289489489035,
+                    "shootPoint": {
+                        "x": 1,
+                        "y": 0.4
+                    },
+                    "textureRect": {
+                        "h": 0.070422534999999994,
+                        "w": 0.14211886300000001,
+                        "x": 0.34883720899999998,
+                        "y": 0.36619718299999998
+                    },
+                    "textureSource": ":/resources/guns.png",
+                    "width": 5,
+                    "x": 469.66531372070312,
+                    "y": 647.4852294921875
+                }
+            ],
+            "player": {
+                "angularDamping": 0,
+                "bodySource": ":/resources/fluttershy.png",
+                "bodyType": 2,
+                "class": "Player",
+                "fixtures": [
+                    {
+                        "class": "Box2DBox",
+                        "density": 0,
+                        "friction": 1,
+                        "height": 5,
+                        "normalMapSource": "",
+                        "restitution": 0,
+                        "shadowCaster": false,
+                        "textureRect": {
+                            "h": 0,
+                            "w": 0,
+                            "x": 0,
+                            "y": 0
+                        },
+                        "textureSource": "",
+                        "width": 5,
+                        "x": -2.5,
+                        "y": -2.5
+                    }
+                ],
+                "gravityScale": 20,
+                "health": 50,
+                "height": 5,
+                "light": {
+                    "attenuation": {
+                        "x": 0.5,
+                        "y": 0.0099999997764825821,
+                        "z": 0.0024999999441206455
+                    },
+                    "color": {
+                        "b": 255,
+                        "g": 255,
+                        "r": 255
+                    },
+                    "dynamicShadows": true,
+                    "radius": 40,
+                    "renderFraction": 5,
+                    "x": 463.15948486328125,
+                    "y": 647.48504638671875,
+                    "z": 10
+                },
+                "linearDamping": 1,
+                "rotation": 0,
+                "width": 5,
+                "wingsSource": ":/resources/frontwingfluttershy.png",
+                "x": 450,
+                "y": 630
+            }
+        }
+    }
+}
