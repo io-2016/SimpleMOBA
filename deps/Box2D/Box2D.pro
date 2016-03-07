@@ -96,5 +96,14 @@ HEADERS += \
     Dynamics/Joints/b2FrictionJoint.h \
     Dynamics/Joints/b2DistanceJoint.h \
     Rope/b2Rope.h \
-    Box2D.h
+    Box2D.h \
+    Dynamics/Contacts/b2ChainAndCircleContact.h \
+    Dynamics/Contacts/b2ChainAndPolygonContact.h \
+    Dynamics/Contacts/b2CircleContact.h \
+    Dynamics/Contacts/b2Contact.h \
+    Dynamics/Contacts/b2ContactSolver.h \
+    Dynamics/Contacts/b2EdgeAndCircleContact.h \
+    Dynamics/Contacts/b2EdgeAndPolygonContact.h \
+    Dynamics/Contacts/b2PolygonAndCircleContact.h \
+    Dynamics/Contacts/b2PolygonContact.h
 
