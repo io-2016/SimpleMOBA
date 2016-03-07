@@ -9,14 +9,13 @@ int main(int argc, char **argv) {
 
   Window::registerTypes();
 
-  //Window window;
-  //window.show();
-
-  SceneGraph::Window window;
+  Window window;
   window.show();
 
-  TexturedRectangle rectangle(window.rootItem());
-  rectangle.setSource(":/resources/bricks.jpg");
+  window.game()->view()->setLookAt(QPointF(800, 600));
+  window.game()->view()->setFactor(5);
+  window.game()->view()->setFlickable(true);
+  window.game()->lightSystem()->setVisible(false);
 
   return app.exec();
 }

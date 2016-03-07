@@ -51,6 +51,7 @@ class DisplayItem : public SceneGraph::Item {
   void returnLookAtToBounds();
   void returnScaleToBounds();
   void updateVisibleArea();
+  void setVisibleArea(QRectF);
 
  protected:
   void wheelEvent(QWheelEvent *event);
@@ -72,7 +73,6 @@ class DisplayItem : public SceneGraph::Item {
   void setFactor(qreal);
 
   inline QRectF visibleArea() const { return m_visibleArea; }
-  void setVisibleArea(QRectF);
 
   inline QPointF lookAt() const { return m_lookAt; }
   void setLookAt(QPointF);

@@ -64,7 +64,10 @@ SOURCES += \
     Graphics/ParticleSystem.cpp \
     Actions/FileAction.cpp \
     Actions/MainAction.cpp \
-    QBox2D/QChain.cpp
+    QBox2D/QChain.cpp \
+    Entities/Game.cpp \
+    Entities/ViewWorld.cpp \
+    Entities/World.cpp
 
 HEADERS += \
     Actions/Action.hpp \
@@ -118,5 +121,8 @@ HEADERS += \
     Graphics/ParticleSystem.hpp \
     Actions/FileAction.hpp \
     Actions/MainAction.hpp \
-    QBox2D/QChain.hpp
+    QBox2D/QChain.hpp \
+    Entities/Game.hpp \
+    Entities/ViewWorld.hpp \
+    Entities/World.hpp
 

@@ -15,7 +15,7 @@ class MainAction : public Action {
   void subActionEnabledChanged(SubAction*);
 
  public:
-  MainAction(QWorld*);
+  MainAction(QWorld*, std::unique_ptr<FileActionResolver>);
   ~MainAction();
 
   inline MapEditor* mapEditor() { return &m_mapEditor; }

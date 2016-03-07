@@ -2,10 +2,6 @@
     <qresource prefix="/">
         <file>resources/crate.jpg</file>
         <file>resources/fireball.png</file>
-        <file>resources/fluttershy.png</file>
-        <file>resources/frontwingfluttershy.png</file>
-        <file>resources/guns.png</file>
-        <file>resources/pinkamenapie.png</file>
         <file>resources/rock.png</file>
         <file>resources/rock_n.png</file>
         <file>resources/bricks_n.jpg</file>

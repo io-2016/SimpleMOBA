@@ -141,6 +141,9 @@ public:
   inline QItemSet* itemSet() { return &m_itemSet; }
   inline const QItemSet* itemSet() const { return  &m_itemSet; }
 
+  void read(const QJsonObject&);
+  void write(QJsonObject&) const;
+
   QBody *bodyUnderPoint(const QPointF &p,
                         std::function<bool(QBody *)> ok = nullptr) const;
   QFixture *fixtureUnderPoint(const QPointF &p) const;

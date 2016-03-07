@@ -1,6 +1,7 @@
 #ifndef WINDOW_HPP
 #define WINDOW_HPP
 #include "SceneGraph/Window.hpp"
+#include "Entities/Game.hpp"
 
 class Environment : public QObject {
  private:
@@ -32,12 +33,16 @@ class Environment : public QObject {
 class Window : public SceneGraph::Window {
  private:
   Environment m_environment;
+  Game m_game;
 
  protected:
   void resizeEvent(QResizeEvent*);
 
  public:
   Window(QWindow* = nullptr);
+
+  inline const Game* game() const { return &m_game; }
+  inline Game* game() { return &m_game; }
 
   static void registerTypes();
 };

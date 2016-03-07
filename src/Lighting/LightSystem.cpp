@@ -6,8 +6,8 @@
 #include <QJsonObject>
 #include <cassert>
 
-LightSystem::LightSystem(QWorld* world)
-    : SceneGraph::Item(world),
+LightSystem::LightSystem(SceneGraph::Item* parent, QWorld* world)
+    : SceneGraph::Item(parent),
       m_world(world),
       m_resolution(),
       m_normalMap(this),

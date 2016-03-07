@@ -13,21 +13,8 @@ Item {
     GameOver { }
     MenuDisplay { id: mainMenu }
     Data { id: debug }
-    HUD { id: hud }
-    AndroidUI {
-        visible: app.system === Environment.Android
-        opacity: 0.5
-    }
 
     BodyEditControl { }
-
-    /*Text {
-        anchors.centerIn: parent
-        text: "PAUSED"
-        visible: world.paused
-        scale: 5
-        color: "blue"
-    }*/
 
     Keys.onPressed: {
         if (event.key === Qt.Key_Escape)

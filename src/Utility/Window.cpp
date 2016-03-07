@@ -44,10 +44,11 @@ void Environment::setFullscreen(bool enable) {
 
 Window::Window(QWindow* parent)
     : SceneGraph::Window(parent),
-      m_environment(this) {
+      m_environment(this),
+      m_game(rootItem()) {
   rootContext()->setContextProperty("app", &m_environment);
 
-  /*World* world = m_game.view()->world();
+  World* world = m_game.view()->world();
   MainAction* mainAction = world->mainAction();
   MapEditor* mapEditor = mainAction->mapEditor();
   FileAction* fileAction = mainAction->fileAction();
@@ -80,7 +81,7 @@ Window::Window(QWindow* parent)
   rootContext()->setContextProperty("addChain",
                                     mapEditor->addChain()->object());
 
-  setSource(QUrl("qrc:/qml/main.qml"));*/
+  setSource(QUrl("qrc:/qml/main.qml"));
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
@@ -94,10 +95,8 @@ void Window::resizeEvent(QResizeEvent* event) {
 
   setProjection(matrix);
 
-  //m_game.setSize(size());
-  //m_game.resetTransform();
-  //m_game.rotate(45, 0, 0, 1);
-  //m_game.translate(-300, -300);
+  m_game.setSize(size());
+  m_game.resetTransform();
 }
 
 void Window::registerTypes() {

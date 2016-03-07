@@ -16,7 +16,7 @@ class LightSystem : public SceneGraph::Item {
  private:
   friend class StaticLight;
   friend class DynamicLight;
-  friend class QWorld;
+  friend class World;
   friend class ViewWorld;
 
   QWorld* m_world;
@@ -50,7 +50,7 @@ class LightSystem : public SceneGraph::Item {
   void onFixtureDestroyed(QFixture*);
 
  public:
-  explicit LightSystem(QWorld*);
+  explicit LightSystem(SceneGraph::Item* parent, QWorld*);
   ~LightSystem();
 
   void initialize();
