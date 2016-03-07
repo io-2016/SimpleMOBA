@@ -17,15 +17,13 @@ AddBody::AddBody(MapEditor* p)
       m_object(this) {}
 
 void AddBody::finished() {
-//@TODO
-  /*QBody* body = new QBody(world());
+  QBody* body = new QBody(world());
 
   for (QFixture* f : m_fixtures) body->addFixture(f);
   body->initialize(world());
 
   world()->itemSet()->addBody(body);
-
-  m_fixtures.clear();*/
+  m_fixtures.clear();
 }
 
 void AddBody::subActionFinished(SubAction* action) {

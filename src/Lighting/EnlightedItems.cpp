@@ -8,7 +8,6 @@
 
 EnlightedItems::EnlightedItems(LightSystem* system, SceneGraph::Item* parent)
     : SceneGraph::Item(parent), m_lightSystem(system), m_state() {
-   //setVisible(false);
 }
 
 void EnlightedItems::clear() { m_state |= Reset; }

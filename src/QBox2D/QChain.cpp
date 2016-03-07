@@ -50,7 +50,7 @@ void QChain::cutCircle(Circle circle) {
       chain->setVertices(std::vector<QPointF>(pts.begin(), pts.end()));
       chain->initializeLater(world());
 
-      //static_cast<World*>(world())->itemSet()->addBody(chain);
+      world()->itemSet()->addBody(chain);
     }
   }
 

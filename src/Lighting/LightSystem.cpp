@@ -92,8 +92,6 @@ void LightSystem::setResolution(QSize s) {
 }
 
 QWorld* LightSystem::world() const {
-  //assert(m_game->view());
-  //return m_game->view()->world();
   return m_world;
 }
 

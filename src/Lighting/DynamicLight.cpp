@@ -68,7 +68,7 @@ SceneGraph::Node *DynamicLight::synchronize(SceneGraph::Node *old) {
   if (!rootNode)
     rootNode = new DynamicNode;
 
-  //rootNode->synchronize(this, lightSystem()->world()->view());
+  rootNode->synchronize(this, lightSystem()->world());
 
   return rootNode;
 }
