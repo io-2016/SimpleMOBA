@@ -34,6 +34,8 @@ bool Environment::fullscreen() const {
 void Environment::setFullscreen(bool enable) {
   if (fullscreen() == enable) return;
 
+  view()->hide();
+
   if (enable)
     view()->showFullScreen();
   else
