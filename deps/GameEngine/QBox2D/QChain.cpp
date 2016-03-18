@@ -74,7 +74,7 @@ bool QChain::read(const QJsonObject& obj) {
 }
 
 bool QChain::write(QJsonObject& obj) const {
-  obj["class"] = QString("Chain");
+  obj["class"] = QString("QChain");
 
   QJsonArray array;
   std::vector<QPointF> pts = vertices();

@@ -5,6 +5,7 @@
 #include <QDebug>
 
 #include "QBox2D/QBody.hpp"
+#include "QBox2D/QChain.hpp"
 #include "QBox2D/Fixture/Box2DBox.hpp"
 #include "QBox2D/Fixture/Box2DChain.hpp"
 #include "QBox2D/Fixture/Box2DCircle.hpp"
@@ -109,4 +110,5 @@ void Window::registerTypes() {
   Utility::registerType<Box2DPolygon>("Box2DPolygon");
 
   Utility::registerType<QBody>("QBody");
+  Utility::registerType<QChain>("QChain");
 }
