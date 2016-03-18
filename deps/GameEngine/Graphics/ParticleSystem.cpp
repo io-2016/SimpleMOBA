@@ -49,14 +49,14 @@ SceneGraph::Node* ParticleSystem::synchronize(SceneGraph::Node* old) {
     color.setRgbF(1.0, 0.5, 0.5, 1.0);
     node->material()->setColor(color);
     node->material()->setLightPosition(QVector3D(0.5, 0.5, 0.1));
-
-    assert(lightSystem());
-    assert(lightSystem()->normalMap());
-    node->material()->setNormalMap(lightSystem()->normalMap()->shaderNode());
   }
+
+  assert(lightSystem());
+  assert(lightSystem()->normalMap());
 
   node->update(m_particle);
   node->material()->setTime(time());
+  node->material()->setNormalMap(lightSystem()->normalMap()->shaderNode());
 
   return node;
 }
@@ -181,7 +181,6 @@ void ParticleMaterial::ParticleShader::updateState(
   glActiveTexture(GL_TEXTURE0);
   glBindTexture(GL_TEXTURE_2D, m->normalMap()->texture()->texture());
   program()->setUniformValue(m_normalmap, 0);
-
   program()->setUniformValue(m_timestamp, (float)m->time());
   program()->setUniformValue(m_color, m->color());
   program()->setUniformValue(m_lightposition, m->lightPosition());
