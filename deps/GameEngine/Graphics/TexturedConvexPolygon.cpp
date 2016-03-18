@@ -1,5 +1,4 @@
 #include "TexturedConvexPolygon.hpp"
-#include "Utility/Window.hpp"
 
 TexturedConvexPolygon::TexturedConvexPolygon(SceneGraph::Item* parent)
     : TexturedPolygon(parent) {}

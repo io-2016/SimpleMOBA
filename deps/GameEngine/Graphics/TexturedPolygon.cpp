@@ -1,5 +1,4 @@
 #include "TexturedPolygon.hpp"
-#include "Utility/Window.hpp"
 #include "Graphics/Primitives.hpp"
 #include "Geometry/Triangle.hpp"
 

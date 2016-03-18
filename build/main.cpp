@@ -1,4 +1,3 @@
-#include "Graphics/TexturedRectangle.hpp"
 #include "Utility/Window.hpp"
 #include <QGuiApplication>
 

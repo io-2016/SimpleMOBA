@@ -6,8 +6,8 @@ QMAKE_CXXFLAGS += -fno-strict-aliasing
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
 RCC_DIR = .rcc
-LIBS += -L$$OUT_PWD/../build -lsrc -lBox2D -lSceneGraph -Wl,-R.
-INCLUDEPATH += ../src ../deps
+LIBS += -L$$OUT_PWD/../build -lsrc -lBox2D -lSceneGraph -lGameEngine -Wl,-R.
+INCLUDEPATH += ../src ../deps ../deps/GameEngine
 DESTDIR = $$OUT_PWD/../build
 TARGET = SimpleMOBA
 

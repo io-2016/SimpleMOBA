@@ -1,5 +1,5 @@
 #include "TexturedItem.hpp"
-#include "Utility/Window.hpp"
+#include "SceneGraph/Window.hpp"
 
 TexturedItem::TexturedItem(Item* parent) : SceneGraph::Item(parent) {
   setVisible(false);

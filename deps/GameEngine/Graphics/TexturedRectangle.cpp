@@ -1,5 +1,4 @@
 #include "TexturedRectangle.hpp"
-#include "Utility/Window.hpp"
 #include <cassert>
 
 TexturedRectangle::TexturedRectangle(SceneGraph::Item* parent)

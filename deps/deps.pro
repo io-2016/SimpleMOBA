@@ -1,2 +1,3 @@
 TEMPLATE = subdirs
-SUBDIRS = Box2D SceneGraph
+SUBDIRS = Box2D SceneGraph \
+    GameEngine

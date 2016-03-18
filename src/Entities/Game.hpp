@@ -1,7 +1,7 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include "Lighting/LightSystem.hpp"
+#include "GameEngine/Lighting/LightSystem.hpp"
 #include "Entities/ViewWorld.hpp"
 #include "Graphics/ParticleSystem.hpp"
 #include "Utility/DisplayItem.hpp"

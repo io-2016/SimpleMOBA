@@ -2,7 +2,6 @@
 #include "Geometry/Circle.hpp"
 #include "SceneGraph/Renderer.hpp"
 #include "Lighting/LightSystem.hpp"
-#include "Utility/Window.hpp"
 #include "Utility/Utility.hpp"
 #include <cassert>
 
