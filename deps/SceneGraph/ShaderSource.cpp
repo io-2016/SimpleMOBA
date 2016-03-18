@@ -34,6 +34,11 @@ void ShaderSource::setBackground(QColor color) {
   update();
 }
 
+void ShaderSource::invalidate() {
+  Item::invalidate();
+  m_node = nullptr;
+}
+
 Node* ShaderSource::synchronize(Node* old) {
   ShaderNode* node = static_cast<ShaderNode*>(old);
 

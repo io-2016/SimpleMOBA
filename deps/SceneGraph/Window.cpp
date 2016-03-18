@@ -56,12 +56,13 @@ QOpenGLTexture* Window::texture(const char* path) {
 
 void Window::onSceneGraphInitialized() {
   m_renderer = new DefaultRenderer;
-  m_renderer->setRoot(&m_root);
+  m_renderer->setRoot(rootItem());
+  rootItem()->updateSubtree();
 }
 
 void Window::onSceneGraphInvalidated() {
   if (!m_renderer) return;
-  invalidateNode(rootItem());
+  rootItem()->invalidateSubtree();
   m_renderer->synchronize(this);
 
   delete m_renderer;
@@ -96,12 +97,6 @@ void Window::destroyNode(Item* item) {
 
   item->m_itemNode = nullptr;
   item->m_node = nullptr;
-}
-
-void Window::invalidateNode(Item* item) {
-  destroyNode(item);
-  cancelUpdate(item);
-  for (Item* i = item->firstChild(); i; i = i->next()) invalidateNode(i);
 }
 
 void Window::scheduleUpdate(Item* item) {

@@ -47,7 +47,6 @@ class Window : public QQuickView {
   void onBeforeSynchronizing();
   void onItemDestroyed(Item*);
   void destroyNode(Item*);
-  void invalidateNode(Item*);
 
   void scheduleUpdate(Item*);
   void cancelUpdate(Item*);

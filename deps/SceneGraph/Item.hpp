@@ -94,6 +94,11 @@ public:
   void killTimer(int timerId);
 
   void update();
+
+  virtual void invalidate();
+
+  void updateSubtree();
+  void invalidateSubtree();
 };
 }
 

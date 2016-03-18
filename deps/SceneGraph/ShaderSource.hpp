@@ -58,6 +58,8 @@ class ShaderSource : public SceneGraph::Item {
   void setBackground(QColor);
 
   inline ShaderNode* shaderNode() const { return m_node; }
+
+  void invalidate();
 };
 }
 

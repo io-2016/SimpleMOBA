@@ -15,7 +15,7 @@ int main(int argc, char **argv) {
   window.game()->view()->setLookAt(QPointF(800, 600));
   window.game()->view()->setFactor(5);
   window.game()->view()->setFlickable(true);
-  window.game()->lightSystem()->setVisible(false);
+  //window.game()->lightSystem()->setVisible(false);
 
   return app.exec();
 }

@@ -198,4 +198,23 @@ void Item::update() {
     window()->scheduleSynchronize();
   }
 }
+
+void Item::invalidate() {
+  if (window()) {
+    window()->destroyNode(this);
+    window()->cancelUpdate(this);
+  }
+}
+
+void Item::updateSubtree() {
+  update();
+  for (Item* i = firstChild(); i; i = i->next())
+    i->updateSubtree();
+}
+
+void Item::invalidateSubtree() {
+  invalidate();
+  for (Item* i = firstChild(); i; i = i->next()) i->invalidateSubtree();
+}
+
 }

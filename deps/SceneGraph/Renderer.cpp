@@ -40,6 +40,7 @@ void Renderer::updateItem(Item* item) {
     item->m_state &= ~Item::VisibleChanged;
 
     if (item->parent()) {
+      assert(item->parent()->m_itemNode);
       if (!item->visible())
         item->parent()->m_itemNode->removeChild(item->m_itemNode);
       else
@@ -67,8 +68,7 @@ void Renderer::updateNodes(Window* window) {
       item->m_itemNode = new TransformNode;
       item->m_itemNode->setRenderer(this);
 
-      item->m_state |= Item::ModelMatrixChanged;
-      item->m_state |= Item::ParentChanged;
+      item->m_state |= Item::ModelMatrixChanged | Item::ParentChanged;
     }
   }
 
