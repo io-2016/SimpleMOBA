@@ -14,6 +14,20 @@ Item {
     MenuDisplay { id: mainMenu }
     Data { id: debug }
 
+    Rectangle {
+        width: 0.05 * parent.width
+        height: 0.05 * parent.height
+        radius: 5
+        color: "green"
+        visible: Environment.system === Environment.Android
+        opacity: 0.5
+
+        MultiPointTouchArea {
+            anchors.fill: parent
+            onPressed: mainMenu.toggle()
+        }
+    }
+
     BodyEditControl { }
 
     Keys.onPressed: {
