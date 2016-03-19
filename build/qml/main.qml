@@ -19,7 +19,7 @@ Item {
         height: 0.05 * parent.height
         radius: 5
         color: "green"
-        visible: Environment.system === Environment.Android
+        visible: app.system === Environment.Android
         opacity: 0.5
 
         MultiPointTouchArea {
