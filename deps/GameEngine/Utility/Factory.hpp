@@ -1,6 +1,7 @@
 #ifndef FACTORY_HPP
 #define FACTORY_HPP
 #include <unordered_map>
+#include <QDebug>
 
 namespace Utility {
 
@@ -37,15 +38,9 @@ class Factory {
 
   std::unordered_map<std::string, const Base*> m_data;
 
-  inline Factory() {}
+ public:
   inline ~Factory() {
     for (auto p : m_data) delete p.second;
-  }
-
- public:
-  static inline Factory* instance() {
-    static Factory factory;
-    return &factory;
   }
 
   template <class T>
@@ -68,20 +63,6 @@ class Factory {
   }
 };
 
-template <class T>
-void registerType(const char* name) {
-  Factory::instance()->registerType<T>(name);
-}
-
-template <class T>
-const char* className() {
-  return Factory::instance()->className<T>();
-}
-
-template <class T>
-T* create(const char* name) {
-  return Factory::instance()->create<T>(name);
-}
 }
 
 #endif  // FACTORY_HPP

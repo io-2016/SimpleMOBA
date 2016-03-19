@@ -43,6 +43,8 @@ class QBody : public BaseItem {
   virtual void preSolve(QFixture* other, b2Contact*, const b2Manifold*);
   virtual void postSolve(QFixture* other, b2Contact*, const b2ContactImpulse*);
 
+  virtual bool read(const QJsonObject&);
+
   void visibleChanged();
 
  public:
@@ -98,6 +100,8 @@ class QBody : public BaseItem {
   void setTransform(QPointF position, qreal rotation);
 
   void addFixture(QFixture* f);
+  bool addFixture(const QJsonObject&, QFixture* f);
+
   QFixture* firstFixture() const;
 
   void applyLinearImpulse(const QPointF& impulse, const QPointF& point);
@@ -121,7 +125,7 @@ class QBody : public BaseItem {
   void initializeLater(QWorld*);
   void destroyLater();
 
-  virtual bool read(const QJsonObject&);
+  bool initialize(const QJsonObject&, QWorld* world);
   virtual bool write(QJsonObject&) const;
 
   virtual Type* type() const { return nullptr; }

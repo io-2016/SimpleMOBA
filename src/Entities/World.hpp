@@ -12,7 +12,6 @@
 #include "Graphics/ParticleSystem.hpp"
 
 class Game;
-class Player;
 class LightSystem;
 class ViewWorld;
 class World;

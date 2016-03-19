@@ -6,8 +6,6 @@ int main(int argc, char **argv) {
   // app.setOverrideCursor(Qt::BlankCursor);
   // qputenv("QSG_RENDER_LOOP", "threaded");
 
-  Window::registerTypes();
-
   Window window;
   window.show();
 

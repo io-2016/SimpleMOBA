@@ -1,7 +1,7 @@
 #include "DynamicLight.hpp"
 #include "LightSystem.hpp"
-#include "StaticLight.hpp"
 #include "QBox2D/QWorld.hpp"
+#include "StaticLight.hpp"
 #include <QQuickWindow>
 #define GLSL(shader) #shader
 
@@ -29,7 +29,8 @@ void ShadowNode::setVertices(QPointF p1, QPointF p2) {
 
 void ShadowNode::setColor(QColor color) { m_material.setColor(color); }
 
-DynamicLight::DynamicLight(Item *item) : Light(item), m_boundLight() {}
+DynamicLight::DynamicLight(Item *item)
+    : Light(item), m_boundLight() {}
 
 DynamicLight::~DynamicLight() {
   if (m_boundLight) {
@@ -85,7 +86,7 @@ DynamicLight::DynamicNode::~DynamicNode() {
 }
 
 void DynamicLight::DynamicNode::synchronize(DynamicLight *light,
-                                            QWorld* world) {
+                                            QWorld *world) {
   LightNode::synchronize(light);
 
   while (m_shadows.firstChild()) {

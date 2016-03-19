@@ -32,6 +32,8 @@ class QFixture : public SceneGraph::Item {
  protected:
   virtual void initialize(QBody* item);
   virtual b2Shape* createShape() const = 0;
+  virtual bool read(const QJsonObject&);
+
   void matrixChanged();
 
  public:
@@ -97,7 +99,6 @@ class QFixture : public SceneGraph::Item {
   inline const SceneGraph::Item* content() const { return &m_content; }
   inline SceneGraph::Item* content() { return &m_content; }
 
-  virtual bool read(const QJsonObject&);
   virtual bool write(QJsonObject&) const;
 
   QFixture* next() const;

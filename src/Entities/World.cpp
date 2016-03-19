@@ -1,11 +1,18 @@
 #include "World.hpp"
 #include "Entities/Game.hpp"
 #include "Lighting/LightSystem.hpp"
-#include "QBox2D/QBody.hpp"
-#include "QBox2D/QFixture.hpp"
 #include "SceneGraph/Window.hpp"
 #include "Utility/Factory.hpp"
 #include "Utility/Utility.hpp"
+
+#include "QBox2D/Fixture/Box2DBox.hpp"
+#include "QBox2D/Fixture/Box2DChain.hpp"
+#include "QBox2D/Fixture/Box2DCircle.hpp"
+#include "QBox2D/Fixture/Box2DEdge.hpp"
+#include "QBox2D/Fixture/Box2DPolygon.hpp"
+#include "QBox2D/QBody.hpp"
+#include "QBox2D/QChain.hpp"
+
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -14,8 +21,18 @@
 World::World(ViewWorld *viewWorld)
     : QWorld(viewWorld), m_viewWorld(viewWorld),
       m_mainAction(this, std::unique_ptr<FileActionResolver>(
-                             new WorldFileActionResolver(this))),
-      m_worldObject(this) {}
+                             new WorldFileActionResolver(this)),
+                   nullptr),
+      m_worldObject(this) {
+  factory()->registerType<Box2DBox>("Box2DBox");
+  factory()->registerType<Box2DChain>("Box2DChain");
+  factory()->registerType<Box2DCircle>("Box2DCircle");
+  factory()->registerType<Box2DEdge>("Box2DEdge");
+  factory()->registerType<Box2DPolygon>("Box2DPolygon");
+
+  factory()->registerType<QBody>("QBody");
+  factory()->registerType<QChain>("QChain");
+}
 
 World::~World() { clear(); }
 

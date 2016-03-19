@@ -123,12 +123,14 @@ void QItemSet::read(const QJsonObject &obj) {
   for (int i = 0; i < array.size(); i++) {
     QJsonObject obj = array[i].toObject();
     QByteArray className = obj["class"].toString().toLocal8Bit();
-    QBody *body = Utility::create<QBody>(className);
+    QBody *body = m_world->factory()->create<QBody>(className);
     assert(body != nullptr);
 
     body->setParent(this);
-    body->read(obj);
-    body->initialize(m_world);
+    if (!body->initialize(obj, m_world)) {
+      qDebug() << "Failed to initialize body of type" << className;
+      exit(1);
+    }
 
     addBody(body);
   }

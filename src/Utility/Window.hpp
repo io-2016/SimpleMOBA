@@ -43,8 +43,6 @@ class Window : public SceneGraph::Window {
 
   inline const Game* game() const { return &m_game; }
   inline Game* game() { return &m_game; }
-
-  static void registerTypes();
 };
 
 #endif  // WINDOW_HPP

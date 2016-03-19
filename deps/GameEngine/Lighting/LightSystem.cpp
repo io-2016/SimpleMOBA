@@ -34,7 +34,7 @@ void LightSystem::read(const QJsonObject& obj) {
   for (int i = 0; i < array.size(); i++) {
     QJsonObject lightData = array[i].toObject();
 
-    StaticLight* light = new StaticLight;
+    StaticLight* light = new StaticLight(world());
     light->setLightSystem(this);
     light->read(lightData);
     light->initialize(world());

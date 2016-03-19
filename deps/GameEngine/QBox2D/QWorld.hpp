@@ -2,6 +2,7 @@
 #define QWORLD_H
 
 #include "QBody.hpp"
+#include "Utility/Factory.hpp"
 #include <Box2D/Box2D.h>
 #include <QBasicTimer>
 #include <QOpenGLFunctions>
@@ -68,6 +69,7 @@ private:
   std::vector<QBody *> m_destroyed;
   std::vector<QBody *> m_enqueued;
   QItemSet m_itemSet;
+  Utility::Factory m_factory;
 
   void updateVisibleBodies();
   void destroyBodies();
@@ -97,7 +99,7 @@ protected:
   virtual void releaseResource(QBody *);
 
 public:
-  explicit QWorld(SceneGraph::Item *parent = 0);
+  explicit QWorld(SceneGraph::Item *parent = nullptr);
   ~QWorld();
 
   virtual void initialize();
@@ -127,6 +129,9 @@ public:
   inline b2World *world() { return &m_world; }
   inline const b2World *world() const { return &m_world; }
 
+  inline Utility::Factory *factory() { return &m_factory; }
+  inline const Utility::Factory *factory() const { return &m_factory; }
+
   void destroyBody(QBody *);
 
   std::vector<QBody *> bodies();
@@ -138,11 +143,11 @@ public:
     return m_visibleBodies;
   }
 
-  inline QItemSet* itemSet() { return &m_itemSet; }
-  inline const QItemSet* itemSet() const { return  &m_itemSet; }
+  inline QItemSet *itemSet() { return &m_itemSet; }
+  inline const QItemSet *itemSet() const { return &m_itemSet; }
 
-  void read(const QJsonObject&);
-  void write(QJsonObject&) const;
+  void read(const QJsonObject &);
+  void write(QJsonObject &) const;
 
   QBody *bodyUnderPoint(const QPointF &p,
                         std::function<bool(QBody *)> ok = nullptr) const;

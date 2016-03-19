@@ -6,6 +6,13 @@ class QWorld;
 class Action;
 class SubAction;
 
+class Callback {
+public:
+  virtual ~Callback() {}
+
+  virtual void onTriggered() = 0;
+};
+
 class ActionObject : public QObject {
  private:
   Q_OBJECT

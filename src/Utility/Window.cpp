@@ -4,13 +4,6 @@
 #include <QQmlContext>
 #include <QDebug>
 
-#include "QBox2D/QBody.hpp"
-#include "QBox2D/QChain.hpp"
-#include "QBox2D/Fixture/Box2DBox.hpp"
-#include "QBox2D/Fixture/Box2DChain.hpp"
-#include "QBox2D/Fixture/Box2DCircle.hpp"
-#include "QBox2D/Fixture/Box2DEdge.hpp"
-#include "QBox2D/Fixture/Box2DPolygon.hpp"
 
 #include "Utility/Factory.hpp"
 
@@ -47,6 +40,8 @@ Window::Window(QWindow* parent)
     : SceneGraph::Window(parent),
       m_environment(this),
       m_game(rootItem()) {
+  qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
+                                          "Uncreatable type!");
   rootContext()->setContextProperty("app", &m_environment);
 
   World* world = m_game.view()->world();
@@ -98,17 +93,4 @@ void Window::resizeEvent(QResizeEvent* event) {
 
   m_game.setSize(size());
   m_game.resetTransform();
-}
-
-void Window::registerTypes() {
-  qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
-                                          "Uncreatable type!");
-  Utility::registerType<Box2DBox>("Box2DBox");
-  Utility::registerType<Box2DChain>("Box2DChain");
-  Utility::registerType<Box2DCircle>("Box2DCircle");
-  Utility::registerType<Box2DEdge>("Box2DEdge");
-  Utility::registerType<Box2DPolygon>("Box2DPolygon");
-
-  Utility::registerType<QBody>("QBody");
-  Utility::registerType<QChain>("QChain");
 }

@@ -1,32 +1,33 @@
 #include "QChain.hpp"
+#include "Geometry/Circle.hpp"
+#include "Geometry/Functions.hpp"
+#include "Geometry/Vector2d.hpp"
+#include "Graphics/Primitives.hpp"
 #include "QBox2D/Fixture/Box2DChain.hpp"
 #include "QBox2D/Fixture/Box2DEdge.hpp"
 #include "QBox2D/QBody.hpp"
 #include "QBox2D/QFixture.hpp"
 #include "QBox2D/QWorld.hpp"
-#include "Graphics/Primitives.hpp"
-#include "Geometry/Circle.hpp"
-#include "Geometry/Vector2d.hpp"
-#include "Geometry/Functions.hpp"
 #include "Utility/Utility.hpp"
+#include <QJsonArray>
+#include <QJsonObject>
 #include <QPainterPath>
 #include <QPolygonF>
-#include <QJsonObject>
-#include <QJsonArray>
 
 static b2Vec2 tob2Vec2(QPointF p) { return b2Vec2(p.x(), p.y()); }
 
-QChain::QChain(Item* parent) : QBody(parent) {}
+QChain::QChain(Item *parent) : QBody(parent) {}
 
 QChain::~QChain() {}
 
-void QChain::setVertices(const std::vector<QPointF>& v) {
+void QChain::setVertices(const std::vector<QPointF> &v) {
   m_vertices = v;
   createChain();
 }
 
 void QChain::cutCircle(Circle circle) {
-  if (m_vertices.size() == 0) return;
+  if (m_vertices.size() == 0)
+    return;
   circle.setCenter(circle.pos());
 
   QPainterPath cr;
@@ -34,19 +35,21 @@ void QChain::cutCircle(Circle circle) {
                 2 * circle.r);
 
   QPolygonF polygon;
-  for (QPointF p : m_vertices) polygon.append(p);
+  for (QPointF p : m_vertices)
+    polygon.append(p);
   QPainterPath chain;
   chain.addPolygon(polygon);
 
-  if (!chain.intersects(cr)) return;
+  if (!chain.intersects(cr))
+    return;
 
   chain = chain.subtracted(cr);
 
-  for (const QPolygonF& poly : chain.toSubpathPolygons()) {
+  for (const QPolygonF &poly : chain.toSubpathPolygons()) {
     std::vector<Vector2d> pts(poly.begin(), poly.end() - 1);
 
     if (std::fabs(Geometry::area(pts.begin(), pts.end())) > 5.f) {
-      QChain* chain = new QChain(world());
+      QChain *chain = new QChain(world());
       chain->setVertices(std::vector<QPointF>(pts.begin(), pts.end()));
       chain->initializeLater(world());
 
@@ -58,12 +61,12 @@ void QChain::cutCircle(Circle circle) {
   destroyLater();
 }
 
-bool QChain::testPoint(const QPointF& point) const {
+bool QChain::testPoint(const QPointF &point) const {
   std::vector<Vector2d> vert(m_vertices.begin(), m_vertices.end() - 1);
   return Geometry::pointInPolygon(vert.begin(), vert.end(), Vector2d(point));
 }
 
-bool QChain::read(const QJsonObject& obj) {
+bool QChain::read(const QJsonObject &obj) {
   std::vector<QPointF> pts;
   QJsonArray array = obj["vertices"].toArray();
   for (int i = 0; i < array.size(); i++)
@@ -73,7 +76,7 @@ bool QChain::read(const QJsonObject& obj) {
   return true;
 }
 
-bool QChain::write(QJsonObject& obj) const {
+bool QChain::write(QJsonObject &obj) const {
   obj["class"] = QString("QChain");
 
   QJsonArray array;
@@ -97,12 +100,12 @@ void QChain::createChain() {
     QPointF vec = pts[i] - pts[it];
     QPointF vecp = pts[it] - pts[prev], vecn = pts[next] - pts[i];
 
-    Box2DEdge* fixture = new Box2DEdge(this);
+    Box2DEdge *fixture = new Box2DEdge(this);
     fixture->setVisible(false);
     fixture->setShadowCaster(false);
     addFixture(fixture);
 
-    b2EdgeShape& edge = fixture->edgeShape();
+    b2EdgeShape &edge = fixture->edgeShape();
     edge.Set(tob2Vec2(pts[it]), tob2Vec2(pts[i]));
 
     if (QPointF::dotProduct(vec, vecp) > 0) {
@@ -117,7 +120,7 @@ void QChain::createChain() {
     prev = it, it = i;
     next = next + 1 < pts.size() ? next + 1 : 0;
   }
-  Box2DChain* chain = new Box2DChain;
+  Box2DChain *chain = new Box2DChain;
   chain->setVertices(pts);
   chain->setShadowCaster(false);
   chain->setSensor(true);

@@ -2,13 +2,9 @@
 #include "LightSystem.hpp"
 #include <QJsonObject>
 
-Light::Light(SceneGraph::Item* parent)
-    : QBody(parent),
-      m_attenuation(0.5, 0.01, 0.0025),
-      m_radius(1),
-      m_renderFraction(2.5),
-      m_z(1.0),
-      m_lightSystem() {}
+Light::Light(SceneGraph::Item *parent)
+    : QBody(parent), m_attenuation(0.5, 0.01, 0.0025), m_radius(1),
+      m_renderFraction(2.5), m_z(1.0), m_lightSystem() {}
 
 void Light::setAttenuation(QVector3D att) {
   m_attenuation = att;
@@ -45,7 +41,7 @@ QRectF Light::renderRect() const {
   return QRectF(-vec, vec);
 }
 
-bool Light::read(const QJsonObject& obj) {
+bool Light::read(const QJsonObject &obj) {
   setPosition(QPointF(obj["x"].toDouble(), obj["y"].toDouble()));
   setZ(obj["z"].toDouble());
   setRadius(obj["radius"].toDouble());
@@ -68,7 +64,7 @@ bool Light::read(const QJsonObject& obj) {
   return true;
 }
 
-bool Light::write(QJsonObject& obj) const {
+bool Light::write(QJsonObject &obj) const {
   obj["x"] = position().x();
   obj["y"] = position().y();
   obj["z"] = z();
@@ -90,9 +86,10 @@ bool Light::write(QJsonObject& obj) const {
   return true;
 }
 
-SceneGraph::Node* Light::synchronize(SceneGraph::Node* old) {
-  Light::LightNode* node = static_cast<LightNode*>(old);
-  if (!node) node = new LightNode;
+SceneGraph::Node *Light::synchronize(SceneGraph::Node *old) {
+  Light::LightNode *node = static_cast<LightNode *>(old);
+  if (!node)
+    node = new LightNode;
 
   node->synchronize(this);
 
@@ -105,7 +102,7 @@ Light::LightNode::LightNode() : m_geometry({{2, GL_FLOAT}}, 4, sizeof(Vertex)) {
 }
 
 void Light::LightNode::updateGeometry(float radius) {
-  Vertex* array = geometry()->vertexData<Vertex>();
+  Vertex *array = geometry()->vertexData<Vertex>();
   array[0] = {-radius, -radius};
   array[1] = {radius, -radius};
   array[2] = {-radius, radius};
@@ -114,7 +111,7 @@ void Light::LightNode::updateGeometry(float radius) {
   m_geometry.updateVertexData();
 }
 
-void Light::LightNode::synchronize(Light* light) {
+void Light::LightNode::synchronize(Light *light) {
   assert(light->lightSystem());
   assert(light->lightSystem()->normalMap());
 
