@@ -1,6 +1,7 @@
 #ifndef SHADER_HPP
 #define SHADER_HPP
 #include <QOpenGLShaderProgram>
+#include <memory>
 #define GLSL(shader) #shader
 
 namespace SceneGraph {
@@ -10,7 +11,7 @@ namespace Private {
 template <class T>
 class SingletonImpl {
  private:
-  T* m_data;
+  std::unique_ptr<T> m_data;
 
   SingletonImpl() : m_data(new T) {}
 
@@ -20,7 +21,7 @@ class SingletonImpl {
     return &data;
   }
 
-  T* data() const { return m_data; }
+  T* data() const { return m_data.get(); }
 };
 }
 
@@ -37,6 +38,7 @@ class Shader {
 
  public:
   Shader();
+  virtual ~Shader() {}
 
   inline QOpenGLShaderProgram* program() { return &m_program; }
   inline bool bind() { return program()->bind(); }
