@@ -6,12 +6,6 @@ CONFIG += c++11
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
 
-QMAKE_CXXFLAGS += -fno-strict-aliasing
-LIBS += -L$$OUT_PWD/../build -lSceneGraph -lGameEngine
-
-INCLUDEPATH += $$PWD/../deps/ $$PWD/../deps/GameEngine/
-
-DESTDIR = $$OUT_PWD/../build
 TARGET = src
 
 SOURCES += \
@@ -26,3 +20,17 @@ HEADERS += \
     Entities/World.hpp \
     Utility/Window.hpp
 
+unix|win32: LIBS += -L$$OUT_PWD/GameEngine/ -lGameEngine
+
+INCLUDEPATH += $$PWD/GameEngine
+DEPENDPATH += $$PWD/GameEngine
+
+unix|win32: LIBS += -L$$OUT_PWD/GameEngine/SceneGraph/ -lSceneGraph
+
+INCLUDEPATH += $$PWD/GameEngine/SceneGraph
+DEPENDPATH += $$PWD/GameEngine/SceneGraph
+
+unix|win32: LIBS += -L$$OUT_PWD/GameEngine/Box2D/ -lBox2D
+
+INCLUDEPATH += $$PWD/GameEngine/Box2D
+DEPENDPATH += $$PWD/GameEngine/Box2D
