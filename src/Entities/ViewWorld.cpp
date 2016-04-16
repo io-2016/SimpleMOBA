@@ -2,24 +2,28 @@
 #include "Game.hpp"
 #include <QJsonObject>
 
-ViewWorld::ViewWorld(Game* game)
-    : DisplayItem(game), m_world(this), m_game(game) {}
+ViewWorld::ViewWorld(Game *game)
+    : DisplayItem(game), m_world(this), m_game(game),
+      m_background(world()->itemSet()) {}
 
 void ViewWorld::initialize() {
   m_world.initialize();
   m_world.setFocus(true);
 }
 
-bool ViewWorld::read(const QJsonObject& obj) {
+bool ViewWorld::read(const QJsonObject &obj) {
   world()->read(obj["world"].toObject());
 
   setSize(QSizeF(obj["width"].toDouble(), obj["height"].toDouble()));
   setFactor(obj["scale"].toDouble());
 
+  m_background.scale(size().width(), size().height());
+  m_background.setSource(obj["background"].toString());
+
   return true;
 }
 
-bool ViewWorld::write(QJsonObject& obj) const {
+bool ViewWorld::write(QJsonObject &obj) const {
   QJsonObject world_obj;
   world()->write(world_obj);
   obj["world"] = world_obj;
@@ -27,6 +31,7 @@ bool ViewWorld::write(QJsonObject& obj) const {
   obj["width"] = size().width();
   obj["height"] = size().height();
   obj["scale"] = factor();
+  obj["background"] = m_background.source();
 
   return true;
 }

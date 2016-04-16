@@ -43,6 +43,7 @@
         "height": 1000,
         "scale": 10,
         "width": 1000,
+        "background": ":/resources/dota_minimap.jpg",
         "world": {
             "bodies": [
                 {

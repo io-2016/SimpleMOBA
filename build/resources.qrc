@@ -11,5 +11,6 @@
         <file>resources/chipped_n.png</file>
         <file>resources/chipped.png</file>
         <file>resources/las.jpeg</file>
+        <file>resources/dota_minimap.jpg</file>
     </qresource>
 </RCC>

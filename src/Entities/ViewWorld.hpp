@@ -10,6 +10,7 @@ class ViewWorld : public DisplayItem {
 
   World m_world;
   Game* m_game;
+  TexturedRectangle m_background;
 
  protected:
   void visibleAreaChanged();
