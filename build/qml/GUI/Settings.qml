@@ -1,5 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.4
+import QtQuick.Controls.Styles 1.4
 
 Item {
     property Item menu
@@ -37,13 +38,18 @@ Item {
         }
 
         Row {
+            z: 1
             Text {
                 text: "Color: "
                 font.pixelSize: fontSize
                 color: textColor
             }
-            ComboBox {
+
+            ColorComboBox {
+                id: colorSelection
                 anchors.verticalCenter: parent.verticalCenter
+                width: 100
+                colors: [ "green", "yellow", "blue", "orange" ]
             }
         }
 
@@ -53,6 +59,7 @@ Item {
                 onClicked: {
                     settings.visible = false
                     menu.visible = true
+                    menu.forceActiveFocus()
                 }
             }
 

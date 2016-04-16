@@ -14,5 +14,6 @@
         <file>qml/GUI/Menu.qml</file>
         <file>qml/GUI/Settings.qml</file>
         <file>qml/GUI/MainMenuView.qml</file>
+        <file>qml/GUI/ColorComboBox.qml</file>
     </qresource>
 </RCC>
