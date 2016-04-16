@@ -12,5 +12,7 @@
         <file>qml/GUI/BodyEdit/BodyEditControl.qml</file>
         <file>qml/GUI/BodyEdit/Option.qml</file>
         <file>qml/GUI/Menu.qml</file>
+        <file>qml/GUI/Settings.qml</file>
+        <file>qml/GUI/MainMenuView.qml</file>
     </qresource>
 </RCC>

@@ -1,55 +1,34 @@
 import QtQuick 2.2
 
 Image {
-    id: menu
+    property color textColor: "white"
+
+    id: mainMenu
     source: "qrc:/resources/las.jpeg"
 
     Text {
         text: "SimpleMOBA"
-        color: "white"
+        color: textColor
         font.pixelSize: 50
         anchors.horizontalCenter: parent.horizontalCenter
-        y: rect.y * 0.5
+        y: mainMenuView.y * 0.5
     }
 
-    Rectangle {
-        id: rect
+    MainMenuView {
+        id: mainMenuView
+        fontSize: 30
+        menu: mainMenu
+        settingsView: menuSettingsView
+        textColor: mainMenu.textColor
+    }
+
+    Settings {
+        id: menuSettingsView
         anchors.centerIn: parent
-        anchors.horizontalCenterOffset: -column.width * 0.5
-
-        Column {
-            id: column
-            Text {
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: menu.visible = false
-                }
-                text: "Play"
-                font.pixelSize: 30
-                color: "white"
-
-            }
-
-            Text {
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: console.log("settings")
-                }
-                text: "Settings"
-                color: "white"
-                font.pixelSize: 30
-            }
-
-            Text {
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: Qt.quit()
-                }
-                text: "Quit"
-                color: "white"
-                font.pixelSize: 30
-            }
-        }
+        visible: false
+        fontSize: 30
+        textColor: mainMenu.textColor
+        menu: mainMenuView
     }
 
     Text {
@@ -57,7 +36,7 @@ Image {
         anchors.bottom: parent.bottom
 
         text: "version 0.01"
-        color: "white"
+        color: textColor
     }
 
     Text {
@@ -66,6 +45,6 @@ Image {
         font.pixelSize: 20
 
         text: "Filip Czaplicki\nKrzysztof Wojcólewicz\nBartosz Bułkasiewicz\nPaweł Swagner"
-        color: "white"
+        color: textColor
     }
 }
