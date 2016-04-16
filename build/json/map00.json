@@ -46,13 +46,13 @@
         "world": {
             "bodies": [
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 350,
                             "normalMapSource": ":/resources/sand_n.png",
@@ -72,14 +72,14 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 0,
                     "y": 650
                 },
                 {
-                    "angularDamping": 0,
+                    "angularDamping": 10,
                     "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
@@ -105,20 +105,20 @@
                     ],
                     "gravityScale": 10,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": -116.89591458796521,
                     "width": 0,
                     "x": 477.7955322265625,
                     "y": 649.9849853515625
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 5,
                             "normalMapSource": ":/resources/rock_n.png",
@@ -138,20 +138,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 470,
                     "y": 600
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 20,
                             "normalMapSource": ":/resources/rock_n.png",
@@ -171,20 +171,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 500,
                     "y": 630
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 20,
                             "normalMapSource": ":/resources/rock_n.png",
@@ -203,7 +203,7 @@
                         },
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 40,
                             "normalMapSource": ":/resources/rock_n.png",
@@ -223,20 +223,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 550,
                     "y": 610
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 40,
                             "normalMapSource": ":/resources/rock_n.png",
@@ -256,20 +256,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 400,
                     "y": 610
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 20,
                             "normalMapSource": ":/resources/bricks_n.jpg",
@@ -289,20 +289,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 600,
                     "y": 630
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 40,
                             "normalMapSource": ":/resources/bricks_n.jpg",
@@ -322,20 +322,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 650,
                     "y": 610
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -355,7 +355,7 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 700,
@@ -363,13 +363,13 @@
                 },
 
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 5,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -389,20 +389,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 830,
                     "y": 645
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 5,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -422,20 +422,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 790,
                     "y": 645
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 100,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -455,20 +455,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 950,
                     "y": 550
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/rock_n.png",
@@ -488,20 +488,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 0,
                     "y": 580
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 20,
                             "normalMapSource": ":/resources/sand_n.png",
@@ -521,15 +521,15 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 800,
                     "y": 560
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
@@ -564,20 +564,20 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 480,
                     "y": 630
                 },
                 {
-                    "angularDamping": 0,
-                    "bodyType": 0,
+                    "angularDamping": 10,
+                    "bodyType": 2,
                     "class": "QBody",
                     "fixtures": [
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -596,7 +596,7 @@
                         },
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -615,7 +615,7 @@
                         },
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -634,7 +634,7 @@
                         },
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -653,7 +653,7 @@
                         },
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -672,7 +672,7 @@
                         },
                         {
                             "class": "Box2DBox",
-                            "density": 0,
+                            "density": 1,
                             "friction": 0.20000000298023224,
                             "height": 10,
                             "normalMapSource": ":/resources/chipped_n.png",
@@ -692,7 +692,7 @@
                     ],
                     "gravityScale": 1,
                     "height": 0,
-                    "linearDamping": 0,
+                    "linearDamping": 10,
                     "rotation": 0,
                     "width": 0,
                     "x": 880,
@@ -700,14 +700,14 @@
                 }
             ],
             "player": {
-                "angularDamping": 0,
+                "angularDamping": 10,
                 "bodySource": ":/resources/fluttershy.png",
                 "bodyType": 2,
                 "class": "Player",
                 "fixtures": [
                     {
                         "class": "Box2DBox",
-                        "density": 0,
+                        "density": 1,
                         "friction": 1,
                         "height": 5,
                         "normalMapSource": "",
