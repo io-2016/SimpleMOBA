@@ -11,5 +11,6 @@
         <file>qml/GUI/GameOver.qml</file>
         <file>qml/GUI/BodyEdit/BodyEditControl.qml</file>
         <file>qml/GUI/BodyEdit/Option.qml</file>
+        <file>qml/GUI/Menu.qml</file>
     </qresource>
 </RCC>

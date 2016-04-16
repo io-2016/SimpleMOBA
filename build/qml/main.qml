@@ -30,9 +30,14 @@ Item {
 
     BodyEditControl { }
 
+    Menu {
+        id: menu
+        anchors.fill: parent
+    }
+
     Keys.onPressed: {
         if (event.key === Qt.Key_Escape)
-            Qt.quit();
+            menu.visible ^= 1
         else if (event.key === Qt.Key_F1)
             mainMenu.toggle()
         else if (event.key === Qt.Key_Comma)

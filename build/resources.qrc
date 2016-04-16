@@ -10,5 +10,6 @@
         <file>resources/sand.png</file>
         <file>resources/chipped_n.png</file>
         <file>resources/chipped.png</file>
+        <file>resources/las.jpeg</file>
     </qresource>
 </RCC>
