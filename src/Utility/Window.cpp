@@ -128,16 +128,10 @@ void Window::setLockedCursor(bool e) {
 
 bool Window::lockCursor() {
 #ifdef USE_X11
-  int r = XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
-                       GrabModeAsync, winId(), None, CurrentTime);
-  if (r == GrabSuccess)
-    return true;
-  while (true) {
+  while (XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
+                      GrabModeAsync, winId(), None, CurrentTime) != GrabSuccess)
     sleep(1);
-    if (XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
-                     GrabModeAsync, winId(), None, CurrentTime) == GrabSuccess)
-      return true;
-  }
+  return true;
 #endif
 #ifdef Q_OS_WIN
   QPoint p1 = mapToGlobal(QPoint(0, 0));
