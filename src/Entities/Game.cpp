@@ -4,6 +4,8 @@
 #include <QJsonDocument>
 #include <QDebug>
 
+#include "Path.hpp"
+
 Game::Game(Item* parent)
     : DisplayItemFrame(parent),
       m_viewWorld(this),
@@ -15,6 +17,14 @@ Game::Game(Item* parent)
   particleSystem()->setLightSystem(lightSystem());
 
   load(":/json/map00.json");
+
+  Path path(QPointF(777, 647), QPointF(840, 657), view()->world());
+  for (const auto &p : path.points()) {
+    TexturedRectangle *rect = new TexturedRectangle(view()->world());
+    rect->translate(p.x(), p.y());
+    rect->scale(1, 1);
+    rect->setSource(":/resources/crate.jpg");
+  }
 }
 
 Game::~Game() { clear(); }
