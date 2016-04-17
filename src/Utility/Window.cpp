@@ -6,15 +6,15 @@
 #include <QTimer>
 
 #ifdef Q_OS_LINUX
-  #include <QX11Info>
-  #include <X11/Xlib.h>
+#include <QX11Info>
+#include <X11/Xlib.h>
 #endif
 
 #include "Utility/Factory.hpp"
 
 namespace Utility {
 
-Environment::Environment(QQuickView *view) : QObject(view), m_view(view) {}
+Environment::Environment(Window *view) : QObject(view), m_view(view) {}
 
 Environment::System Environment::system() const {
 #if defined Q_OS_ANDROID
@@ -44,8 +44,18 @@ void Environment::setFullscreen(bool enable) {
   emit fullscreenChanged();
 }
 
+bool Environment::lockedCursor() const { return view()->lockedCursor(); }
+
+void Environment::setLockedCursor(bool e) {
+  if (lockedCursor() == e)
+    return;
+  view()->setLockedCursor(e);
+  emit lockedCursorChanged();
+}
+
 Window::Window(QWindow *parent)
-    : SceneGraph::Window(parent), m_environment(this), m_game(rootItem()) {
+    : SceneGraph::Window(parent), m_environment(this), m_game(rootItem()),
+      m_lockedCursor(false) {
   qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
                                           "Uncreatable type!");
   rootContext()->setContextProperty("app", &m_environment);
@@ -87,18 +97,37 @@ Window::Window(QWindow *parent)
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
-  connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
 }
 
-void Window::onActiveChanged() {
-#ifdef Q_OS_LINUX
-  if (isActive()) {
-    if (XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
-                     GrabModeAsync, winId(), None, CurrentTime) != GrabSuccess)
-      QTimer::singleShot(1000, this, &Window::onActiveChanged);
+void Window::setLockedCursor(bool e) {
+  if (m_lockedCursor == e)
+    return;
+
+  if (e) {
+    if (!lockCursor()) {
+      QTimer::singleShot(1000, this, &Window::lockCursor);
+    }
+    else {
+      m_lockedCursor = true;
+    }
   } else {
-    XUngrabPointer(QX11Info::display(), CurrentTime);
+    if (unlockCursor()) {
+      m_lockedCursor = false;
+    }
   }
+}
+
+bool Window::lockCursor() {
+#ifdef Q_OS_LINUX
+  return XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
+                      GrabModeAsync, winId(), None, CurrentTime) == GrabSuccess;
+#endif
+}
+
+bool Window::unlockCursor() {
+#ifdef Q_OS_LINUX
+  XUngrabPointer(QX11Info::display(), CurrentTime);
+  return true;
 #endif
 }
 

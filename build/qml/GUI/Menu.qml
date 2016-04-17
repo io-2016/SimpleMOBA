@@ -1,10 +1,13 @@
 import QtQuick 2.2
+import Environment 1.0
 
 Image {
     property color textColor: "white"
 
     id: mainMenu
     source: "qrc:/resources/las.jpeg"
+
+    onVisibleChanged: app.lockedCursor = !visible
 
     MouseArea {
         anchors.fill: parent
