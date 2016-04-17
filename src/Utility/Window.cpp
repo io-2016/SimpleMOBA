@@ -105,6 +105,7 @@ Window::Window(QWindow *parent)
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
+  connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
 }
 
 Window::~Window() {
@@ -153,6 +154,12 @@ bool Window::unlockCursor() {
   ClipCursor(0);
   return true;
 #endif
+}
+
+void Window::onActiveChanged() {
+  if (isActive() && lockedCursor())
+    lockCursor();
+
 }
 
 void Window::resizeEvent(QResizeEvent *event) {

@@ -49,6 +49,8 @@ private:
   bool lockCursor();
   bool unlockCursor();
 
+  void onActiveChanged();
+
 protected:
   void resizeEvent(QResizeEvent *);
 
