@@ -3,6 +3,8 @@
 #include "SceneGraph/Window.hpp"
 #include "Entities/Game.hpp"
 
+namespace Utility {
+
 class Environment : public QObject {
  private:
   Q_OBJECT
@@ -44,5 +46,7 @@ class Window : public SceneGraph::Window {
   inline const Game* game() const { return &m_game; }
   inline Game* game() { return &m_game; }
 };
+
+} //  namespace Utility
 
 #endif  // WINDOW_HPP

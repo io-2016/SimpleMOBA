@@ -7,6 +7,8 @@
 
 #include "Utility/Factory.hpp"
 
+namespace Utility {
+
 Environment::Environment(QQuickView* view) : QObject(view), m_view(view) {}
 
 Environment::System Environment::system() const {
@@ -94,3 +96,5 @@ void Window::resizeEvent(QResizeEvent* event) {
   m_game.setSize(size());
   m_game.resetTransform();
 }
+
+} //  namespace Utility

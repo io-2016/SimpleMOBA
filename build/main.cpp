@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
   // app.setOverrideCursor(Qt::BlankCursor);
   // qputenv("QSG_RENDER_LOOP", "threaded");
 
-  Window window;
+  Utility::Window window;
   window.show();
 
   window.game()->view()->setLookAt(QPointF(800, 600));
