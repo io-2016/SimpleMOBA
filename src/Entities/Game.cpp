@@ -18,7 +18,7 @@ Game::Game(Item* parent)
 
   load(":/json/map00.json");
 
-  Path path(QPointF(777, 647), QPointF(840, 657), view()->world());
+  Path path(QPointF(712, 615), QPointF(743, 647), view()->world());
   for (const auto &p : path.points()) {
     TexturedRectangle *rect = new TexturedRectangle(view()->world());
     rect->translate(p.x(), p.y());
