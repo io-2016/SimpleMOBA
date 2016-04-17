@@ -29,3 +29,8 @@ DEPENDPATH += $$PWD/GameEngine/SceneGraph
 unix|win32: LIBS += -L$$OUT_PWD/GameEngine/Box2D/ -lBox2D
 INCLUDEPATH += $$PWD/GameEngine/Box2D
 DEPENDPATH += $$PWD/GameEngine/Box2D
+
+unix {
+  QT += x11extras
+  LIBS += -lX11
+}

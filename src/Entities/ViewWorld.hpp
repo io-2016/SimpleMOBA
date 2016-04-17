@@ -11,9 +11,14 @@ class ViewWorld : public DisplayItem {
   World m_world;
   Game* m_game;
   TexturedRectangle m_background;
+  int m_scroll_radius;
+  int m_timer;
+  QPointF m_camera_vector;
 
  protected:
   void visibleAreaChanged();
+  void mouseMoveEvent(QMouseEvent*);
+  void timerEvent(QTimerEvent*);
 
  public:
   explicit ViewWorld(Game*);

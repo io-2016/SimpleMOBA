@@ -1,15 +1,20 @@
 #include "Window.hpp"
 
-#include <QQmlEngine>
-#include <QQmlContext>
 #include <QDebug>
+#include <QQmlContext>
+#include <QQmlEngine>
+#include <QTimer>
 
+#ifdef Q_OS_LINUX
+  #include <QX11Info>
+  #include <X11/Xlib.h>
+#endif
 
 #include "Utility/Factory.hpp"
 
 namespace Utility {
 
-Environment::Environment(QQuickView* view) : QObject(view), m_view(view) {}
+Environment::Environment(QQuickView *view) : QObject(view), m_view(view) {}
 
 Environment::System Environment::system() const {
 #if defined Q_OS_ANDROID
@@ -28,7 +33,8 @@ bool Environment::fullscreen() const {
 }
 
 void Environment::setFullscreen(bool enable) {
-  if (fullscreen() == enable) return;
+  if (fullscreen() == enable)
+    return;
 
   if (enable)
     view()->showFullScreen();
@@ -38,22 +44,20 @@ void Environment::setFullscreen(bool enable) {
   emit fullscreenChanged();
 }
 
-Window::Window(QWindow* parent)
-    : SceneGraph::Window(parent),
-      m_environment(this),
-      m_game(rootItem()) {
+Window::Window(QWindow *parent)
+    : SceneGraph::Window(parent), m_environment(this), m_game(rootItem()) {
   qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
                                           "Uncreatable type!");
   rootContext()->setContextProperty("app", &m_environment);
 
-  World* world = m_game.view()->world();
-  MainAction* mainAction = world->mainAction();
-  MapEditor* mapEditor = mainAction->mapEditor();
-  FileAction* fileAction = mainAction->fileAction();
-  SaveMapAction* saveMapAction = fileAction->saveMapAction();
-  LoadMapAction* loadMapAction = fileAction->loadMapAction();
+  World *world = m_game.view()->world();
+  MainAction *mainAction = world->mainAction();
+  MapEditor *mapEditor = mainAction->mapEditor();
+  FileAction *fileAction = mainAction->fileAction();
+  SaveMapAction *saveMapAction = fileAction->saveMapAction();
+  LoadMapAction *loadMapAction = fileAction->loadMapAction();
 
-  AddBody* addBody = mapEditor->addBody();
+  AddBody *addBody = mapEditor->addBody();
   rootContext()->setContextProperty("world", world->object());
 
   rootContext()->setContextProperty("mapEditor", mapEditor->object());
@@ -83,9 +87,22 @@ Window::Window(QWindow* parent)
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
+  connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
 }
 
-void Window::resizeEvent(QResizeEvent* event) {
+void Window::onActiveChanged() {
+#ifdef Q_OS_LINUX
+  if (isActive()) {
+    if (XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
+                     GrabModeAsync, winId(), None, CurrentTime) != GrabSuccess)
+      QTimer::singleShot(1000, this, &Window::onActiveChanged);
+  } else {
+    XUngrabPointer(QX11Info::display(), CurrentTime);
+  }
+#endif
+}
+
+void Window::resizeEvent(QResizeEvent *event) {
   SceneGraph::Window::resizeEvent(event);
 
   QMatrix4x4 matrix;

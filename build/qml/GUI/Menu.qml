@@ -6,6 +6,11 @@ Image {
     id: mainMenu
     source: "qrc:/resources/las.jpeg"
 
+    MouseArea {
+        anchors.fill: parent
+        onWheel: wheel.accepted = true
+    }
+
     Text {
         text: "SimpleMOBA"
         color: textColor
