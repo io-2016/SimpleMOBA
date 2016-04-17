@@ -17,6 +17,7 @@ bool ViewWorld::read(const QJsonObject &obj) {
   setSize(QSizeF(obj["width"].toDouble(), obj["height"].toDouble()));
   setFactor(obj["scale"].toDouble());
 
+  m_background.resetTransform();
   m_background.scale(size().width(), size().height());
   m_background.setSource(obj["background"].toString());
 
