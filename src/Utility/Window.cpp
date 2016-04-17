@@ -5,9 +5,13 @@
 #include <QQmlEngine>
 #include <QTimer>
 
-#ifdef Q_OS_LINUX
-#include <QX11Info>
-#include <X11/Xlib.h>
+#if defined(Q_OS_LINUX) and not defined(Q_OS_ANDROID)
+  #define USE_X11
+#endif
+
+#ifdef USE_X11
+  #include <QX11Info>
+  #include <X11/Xlib.h>
 #endif
 
 #include "Utility/Factory.hpp"
@@ -117,14 +121,14 @@ void Window::setLockedCursor(bool e) {
 }
 
 bool Window::lockCursor() {
-#ifdef Q_OS_LINUX
+#ifdef USE_X11
   return XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
                       GrabModeAsync, winId(), None, CurrentTime) == GrabSuccess;
 #endif
 }
 
 bool Window::unlockCursor() {
-#ifdef Q_OS_LINUX
+#ifdef USE_X11
   XUngrabPointer(QX11Info::display(), CurrentTime);
   return true;
 #endif
