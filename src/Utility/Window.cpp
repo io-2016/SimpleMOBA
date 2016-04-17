@@ -106,8 +106,7 @@ void Window::setLockedCursor(bool e) {
   if (e) {
     if (!lockCursor()) {
       QTimer::singleShot(1000, this, &Window::lockCursor);
-    }
-    else {
+    } else {
       m_lockedCursor = true;
     }
   } else {
