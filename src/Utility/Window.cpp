@@ -6,16 +6,17 @@
 #include <QTimer>
 
 #if defined(Q_OS_LINUX) and not defined(Q_OS_ANDROID)
-  #define USE_X11
+#define USE_X11
 #endif
 
 #ifdef USE_X11
-  #include <QX11Info>
-  #include <X11/Xlib.h>
+#include <QX11Info>
+#include <X11/Xlib.h>
+#include <unistd.h>
 #endif
 
 #ifdef Q_OS_WIN
-  #include <windows.h>
+#include <windows.h>
 #endif
 
 #include "Utility/Factory.hpp"
@@ -108,9 +109,7 @@ Window::Window(QWindow *parent)
   connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
 }
 
-Window::~Window() {
-  unlockCursor();
-}
+Window::~Window() { unlockCursor(); }
 
 void Window::setLockedCursor(bool e) {
   if (m_lockedCursor == e)
@@ -129,8 +128,16 @@ void Window::setLockedCursor(bool e) {
 
 bool Window::lockCursor() {
 #ifdef USE_X11
-  return XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
-                      GrabModeAsync, winId(), None, CurrentTime) == GrabSuccess;
+  int r = XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
+                       GrabModeAsync, winId(), None, CurrentTime);
+  if (r == GrabSuccess)
+    return true;
+  while (true) {
+    sleep(1);
+    if (XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
+                     GrabModeAsync, winId(), None, CurrentTime) == GrabSuccess)
+      return true;
+  }
 #endif
 #ifdef Q_OS_WIN
   QPoint p1 = mapToGlobal(QPoint(0, 0));
@@ -148,6 +155,7 @@ bool Window::lockCursor() {
 bool Window::unlockCursor() {
 #ifdef USE_X11
   XUngrabPointer(QX11Info::display(), CurrentTime);
+  XFlush(QX11Info::display());
   return true;
 #endif
 #ifdef Q_OS_WIN
@@ -157,9 +165,12 @@ bool Window::unlockCursor() {
 }
 
 void Window::onActiveChanged() {
-  if (isActive() && lockedCursor())
-    lockCursor();
-
+  if (lockedCursor()) {
+    if (isActive())
+      assert(lockCursor());
+    else
+      unlockCursor();
+  }
 }
 
 void Window::resizeEvent(QResizeEvent *event) {
