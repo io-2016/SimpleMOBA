@@ -14,6 +14,10 @@
   #include <X11/Xlib.h>
 #endif
 
+#ifdef Q_OS_WIN
+  #include <windows.h>
+#endif
+
 #include "Utility/Factory.hpp"
 
 namespace Utility {
@@ -103,14 +107,16 @@ Window::Window(QWindow *parent)
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
 }
 
+Window::~Window() {
+  unlockCursor();
+}
+
 void Window::setLockedCursor(bool e) {
   if (m_lockedCursor == e)
     return;
 
   if (e) {
-    if (!lockCursor()) {
-      QTimer::singleShot(1000, this, &Window::lockCursor);
-    } else {
+    if (lockCursor()) {
       m_lockedCursor = true;
     }
   } else {
@@ -125,11 +131,26 @@ bool Window::lockCursor() {
   return XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
                       GrabModeAsync, winId(), None, CurrentTime) == GrabSuccess;
 #endif
+#ifdef Q_OS_WIN
+  QPoint p1 = mapToGlobal(QPoint(0, 0));
+  QPoint p2 = mapToGlobal(QPoint(width(), height()));
+  RECT rect;
+  rect.left = p1.x();
+  rect.top = p1.y();
+  rect.right = p2.x();
+  rect.bottom = p2.y();
+  ClipCursor(&rect);
+  return true;
+#endif
 }
 
 bool Window::unlockCursor() {
 #ifdef USE_X11
   XUngrabPointer(QX11Info::display(), CurrentTime);
+  return true;
+#endif
+#ifdef Q_OS_WIN
+  ClipCursor(0);
   return true;
 #endif
 }
@@ -144,6 +165,11 @@ void Window::resizeEvent(QResizeEvent *event) {
 
   m_game.setSize(size());
   m_game.resetTransform();
+
+#ifdef Q_OS_WIN
+  if (lockedCursor())
+    lockCursor();
+#endif
 }
 
 } //  namespace Utility

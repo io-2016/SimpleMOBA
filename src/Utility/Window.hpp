@@ -54,6 +54,7 @@ protected:
 
 public:
   Window(QWindow * = nullptr);
+  ~Window();
 
   inline const Game *game() const { return &m_game; }
   inline Game *game() { return &m_game; }
