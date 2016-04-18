@@ -4,12 +4,15 @@
 
 #include <QJsonObject>
 #include <QGuiApplication>
+#include <QTimer>
+#include <QTime>
+#include <QThread>
 
 ViewWorld::ViewWorld(Game *game)
     : DisplayItem(game), m_world(this), m_game(game),
       m_background(world()->itemSet()),
       m_scroll_radius(5),
-      m_timer(startTimer(1)) {
+      m_timer(startTimer(1000 / 60)) {
 }
 
 void ViewWorld::initialize() {
@@ -53,12 +56,7 @@ void ViewWorld::visibleAreaChanged() {
 void ViewWorld::mouseMoveEvent(QMouseEvent* event) {
   DisplayItem::mouseMoveEvent(event);
 
-  if (QGuiApplication::mouseButtons() & Qt::MouseButton::AllButtons) {
-    m_camera_vector = QPointF();
-    return;
-  }
-
-  const qreal move = 1;
+  const qreal move = 2.5;
   QPoint p = event->pos();
   QPointF vec;
   if (p.x() <= m_scroll_radius)

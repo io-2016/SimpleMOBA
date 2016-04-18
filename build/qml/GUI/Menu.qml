@@ -12,6 +12,7 @@ Image {
     MouseArea {
         anchors.fill: parent
         onWheel: wheel.accepted = true
+        hoverEnabled: true
     }
 
     Text {

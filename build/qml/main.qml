@@ -38,7 +38,7 @@ Item {
     Keys.onPressed: {
         if (event.key === Qt.Key_Escape)
             menu.visible ^= 1
-        else if (event.key === Qt.Key_F1)
+        else if (event.key === Qt.Key_QuoteLeft)
             mainMenu.toggle()
         else if (event.key === Qt.Key_Comma)
             game.dump("")
