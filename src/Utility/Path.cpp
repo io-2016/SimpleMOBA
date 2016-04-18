@@ -5,6 +5,7 @@
 
 #include "Entities/World.hpp"
 
+namespace {
 class Finder {
   struct Node {
     Node(int x = 0, int y = 0) : x(x), y(y) {}
@@ -143,6 +144,7 @@ class Finder {
   std::set<Node> m_priQueue;
   std::vector<QPointF> m_path;
 };
+}
 
 Path::Path(QPointF a, QPointF b, World *w) {
   Finder fnd(a, b, w, 8);
@@ -151,8 +153,7 @@ Path::Path(QPointF a, QPointF b, World *w) {
 
 const std::vector<QPointF> &Path::points() const { return m_points; }
 
-QPointF Path::at(float) const
-{
-  //TODO
+QPointF Path::at(float) const {
+  // TODO
   return QPointF();
 }
