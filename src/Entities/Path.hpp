@@ -12,6 +12,8 @@ class Path {
 
   const std::vector<QPointF> &points() const;
 
+  QPointF at(float factor) const;
+
  private:
   std::vector<QPointF> m_points;
 };
