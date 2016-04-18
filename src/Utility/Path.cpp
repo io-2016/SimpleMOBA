@@ -144,7 +144,7 @@ class Finder {
   std::set<Node> m_priQueue;
   std::vector<QPointF> m_path;
 };
-}
+}  // namespace
 
 Path::Path(QPointF a, QPointF b, World *w) {
   Finder fnd(a, b, w, 8);
@@ -156,4 +156,9 @@ const std::vector<QPointF> &Path::points() const { return m_points; }
 QPointF Path::at(float) const {
   // TODO
   return QPointF();
+}
+
+float Path::length() const {
+  // TODO
+  return 0.f;
 }

@@ -12,7 +12,10 @@ class Path {
 
   const std::vector<QPointF> &points() const;
 
+  // Retrieve the point on the path from the fraction of the total length.
   QPointF at(float factor) const;
+
+  float length() const;
 
  private:
   std::vector<QPointF> m_points;
