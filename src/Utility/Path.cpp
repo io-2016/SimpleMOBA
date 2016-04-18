@@ -3,7 +3,7 @@
 #include <QVector2D>
 #include <set>
 
-#include "World.hpp"
+#include "Entities/World.hpp"
 
 class Finder {
   struct Node {
@@ -151,7 +151,7 @@ Path::Path(QPointF a, QPointF b, World *w) {
 
 const std::vector<QPointF> &Path::points() const { return m_points; }
 
-QPointF Path::at(float factor) const
+QPointF Path::at(float) const
 {
   //TODO
   return QPointF();

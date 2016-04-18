@@ -4,7 +4,7 @@
 #include <QJsonObject>
 #include <fstream>
 
-#include "Path.hpp"
+#include "Utility/Path.hpp"
 
 Game::Game(Item* parent)
     : DisplayItemFrame(parent),
