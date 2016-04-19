@@ -3,12 +3,17 @@ import QtQuick.Controls 1.1
 import Environment 1.0
 import "GUI"
 import "GUI/BodyEdit"
+import "GUI/Ingame-GUI"
 
 Item {
     id: root
     width: 800
     height: 600
     focus: true
+
+    HUDMain {
+        anchors.fill: parent
+    }
 
     GameOver { }
     MenuDisplay { id: mainMenu }
