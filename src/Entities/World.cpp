@@ -13,6 +13,8 @@
 #include "QBox2D/QBody.hpp"
 #include "QBox2D/QChain.hpp"
 
+#include "Entities/Player.hpp"
+
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
@@ -24,6 +26,7 @@ World::World(ViewWorld *viewWorld)
       m_viewWorld(viewWorld),
       m_mainAction(this, std::make_unique<WorldFileActionResolver>(this),
                    nullptr),
+      m_player(),
       m_worldObject(this) {
   factory()->registerType<Box2DBox>("Box2DBox");
   factory()->registerType<Box2DChain>("Box2DChain");
@@ -68,6 +71,18 @@ void World::setPaused(bool p) {
   if (paused() == p) return;
   setRunning(!p);
   setFocus(!p);
+}
+
+void World::read(const QJsonObject& obj) {
+  QWorld::read(obj);
+
+  auto player = std::make_unique<Player>(itemSet());
+  player->initialize(this);
+  player->setFocus(true);
+
+  m_player = player.get();
+
+  itemSet()->addBody(std::move(player));
 }
 
 WorldObject::WorldObject(World *world) : m_world(world), m_fps() {

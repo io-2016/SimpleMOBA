@@ -2,6 +2,7 @@
 #define WORLD_HPP
 
 #include <QElapsedTimer>
+#include <memory>
 
 #include "QBox2D/Fixture/Box2DBox.hpp"
 #include "QBox2D/QBody.hpp"
@@ -15,6 +16,7 @@ class Game;
 class LightSystem;
 class ViewWorld;
 class World;
+class Player;
 
 class WorldObject : public QObject {
  private:
@@ -61,6 +63,7 @@ class World : public QWorld {
 
   ViewWorld *m_viewWorld;
   MainAction m_mainAction;
+  Player* m_player;
 
   WorldObject m_worldObject;
 
@@ -88,6 +91,8 @@ class World : public QWorld {
 
   inline WorldObject *object() { return &m_worldObject; }
   inline const WorldObject *object() const { return &m_worldObject; }
+
+  void read(const QJsonObject &);
 };
 
 #endif  // WORLD_HPP

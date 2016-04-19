@@ -1,4 +1,5 @@
 #include "ViewWorld.hpp"
+#include "Entities/Player.hpp"
 #include "Game.hpp"
 #include "Utility/Window.hpp"
 
@@ -66,6 +67,15 @@ void ViewWorld::mouseMoveEvent(QMouseEvent *event) {
   if (p.y() >= window()->size().height() - m_scrollRadius) vec.ry() = move;
 
   m_cameraVector = vec;
+}
+
+void ViewWorld::keyPressEvent(QKeyEvent *e) {
+  DisplayItem::keyPressEvent(e);
+  if (e->key() == Qt::Key_F1) {
+    e->accept();
+    setLookAt(world()->m_player->position());
+    setLookAt(effectiveLookAt());
+  }
 }
 
 void ViewWorld::timerEvent(QTimerEvent *event) {

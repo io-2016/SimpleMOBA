@@ -18,6 +18,7 @@ class ViewWorld : public DisplayItem {
  protected:
   void visibleAreaChanged();
   void mouseMoveEvent(QMouseEvent*);
+  void keyPressEvent(QKeyEvent*);
   void timerEvent(QTimerEvent*);
 
  public:
