@@ -4,60 +4,88 @@ FocusScope {
     property var colors
 
     id: menu
-    width: 100
-    height: 20
+    width: selectorWrap.width
+    height: selectorWrap.height
 
     onFocusChanged: {
         if (!focus)
             dropDown.visible = false
     }
 
-    Rectangle {
+    Item {
+        id: selectorWrap
+        width: selectorColumn.width
+        height: selectorColumn.height
+
+        property size delegateSize: Qt.size(100, 20)
+
         Column {
-            Rectangle {
-                id: selected
-                width: menu.width
-                height: menu.height
-                border.width: 1
-                color: colors[0]
-                MouseArea {
-                    z: 1
-                    width: menu.height
-                    height: menu.height
-                    anchors.right: parent.right
+            id: selectorColumn
+            width: dropDown.width
+            height: (dropDown.visible ? dropDown.height : 0) + selected.height
 
-                    Rectangle {
-                        anchors.fill: parent
-                        color: "black"
-                    }
-
-                    onClicked: {
-                        dropDown.visible ^= 1
-                        menu.focus = true
-                    }
-                }
-                MouseArea {
+            Item {
+                width: selectorWrap.delegateSize.width
+                height: selectorWrap.delegateSize.height
+                Rectangle {
+                    id: selected
+                    color: colors[0]
                     anchors.fill: parent
-                    onClicked: dropDown.visible = false
+                    anchors.margins: 1
+                    border.width: 1
+
+                    MouseArea {
+                        z: 1
+                        width: parent.height
+                        height: width
+                        anchors.right: parent.right
+
+                        Rectangle {
+                            anchors.fill: parent
+                            color: "black"
+                        }
+
+                        onClicked: {
+                            dropDown.visible = !dropDown.visible
+                            menu.focus = true
+                        }
+                    }
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: dropDown.visible = false
+                    }
                 }
             }
+
             Column {
                 id: dropDown
                 visible: false
+                width: colorsRepeater.width
+                height: colorsRepeater.height
 
                 Repeater {
+                    id: colorsRepeater
                     model: colors
-                    Rectangle {
-                        id: p
-                        color: modelData
+                    width: selectorWrap.delegateSize.width
+                    height: count * selectorWrap.delegateSize.height
+
+                    delegate: Item {
                         width: menu.width
-                        height: menu.height
-                        border.width: 1
-                        MouseArea {
+                        height: selectorWrap.delegateSize.height
+
+                        Rectangle {
+                            id: colorBox
+                            color: modelData
                             anchors.fill: parent
-                            onClicked: {
-                                selected.color = p.color
-                                dropDown.visible = false
+                            anchors.margins: 1
+                            border.width: 1
+
+                            MouseArea {
+                                anchors.fill: parent
+                                onClicked: {
+                                    selected.color = colorBox.color
+                                    dropDown.visible = false
+                                }
                             }
                         }
                     }
