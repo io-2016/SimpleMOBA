@@ -17,7 +17,7 @@ class ViewWorld;
 class World;
 
 class WorldObject : public QObject {
-private:
+ private:
   Q_OBJECT
 
   Q_PROPERTY(qreal fps READ fps NOTIFY fpsChanged)
@@ -31,7 +31,7 @@ private:
   void updateFps();
   void setFps(qreal);
 
-public:
+ public:
   WorldObject(World *);
 
   uint playerHealth() const;
@@ -40,15 +40,15 @@ public:
 
   inline qreal fps() const { return m_fps; }
 
-signals:
+ signals:
   void fpsChanged();
 };
 
 class WorldFileActionResolver : public FileActionResolver {
-private:
+ private:
   World *m_world;
 
-public:
+ public:
   WorldFileActionResolver(World *);
 
   void load(QString) const;
@@ -56,7 +56,7 @@ public:
 };
 
 class World : public QWorld {
-private:
+ private:
   friend class ViewWorld;
 
   ViewWorld *m_viewWorld;
@@ -64,11 +64,11 @@ private:
 
   WorldObject m_worldObject;
 
-protected:
+ protected:
   void onBodyAdded(QBody *);
   void onFixtureDestroyed(QFixture *);
 
-public:
+ public:
   explicit World(ViewWorld *);
   ~World();
 
@@ -90,4 +90,4 @@ public:
   inline const WorldObject *object() const { return &m_worldObject; }
 };
 
-#endif // WORLD_HPP
+#endif  // WORLD_HPP

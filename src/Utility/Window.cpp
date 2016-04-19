@@ -10,9 +10,9 @@
 #endif
 
 #ifdef USE_X11
-#include <QX11Info>
 #include <X11/Xlib.h>
 #include <unistd.h>
+#include <QX11Info>
 #endif
 
 #ifdef Q_OS_WIN
@@ -42,8 +42,7 @@ bool Environment::fullscreen() const {
 }
 
 void Environment::setFullscreen(bool enable) {
-  if (fullscreen() == enable)
-    return;
+  if (fullscreen() == enable) return;
 
   if (enable)
     view()->showFullScreen();
@@ -56,14 +55,15 @@ void Environment::setFullscreen(bool enable) {
 bool Environment::lockedCursor() const { return view()->lockedCursor(); }
 
 void Environment::setLockedCursor(bool e) {
-  if (lockedCursor() == e)
-    return;
+  if (lockedCursor() == e) return;
   view()->setLockedCursor(e);
   emit lockedCursorChanged();
 }
 
 Window::Window(QWindow *parent)
-    : SceneGraph::Window(parent), m_environment(this), m_game(rootItem()),
+    : SceneGraph::Window(parent),
+      m_environment(this),
+      m_game(rootItem()),
       m_lockedCursor(false) {
   qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
                                           "Uncreatable type!");
@@ -112,8 +112,7 @@ Window::Window(QWindow *parent)
 Window::~Window() { unlockCursor(); }
 
 void Window::setLockedCursor(bool e) {
-  if (m_lockedCursor == e)
-    return;
+  if (m_lockedCursor == e) return;
 
   if (e) {
     if (lockCursor()) {
@@ -179,9 +178,8 @@ void Window::resizeEvent(QResizeEvent *event) {
   m_game.resetTransform();
 
 #ifdef Q_OS_WIN
-  if (lockedCursor())
-    lockCursor();
+  if (lockedCursor()) lockCursor();
 #endif
 }
 
-} //  namespace Utility
+}  //  namespace Utility

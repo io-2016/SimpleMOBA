@@ -8,7 +8,7 @@ namespace Utility {
 class Window;
 
 class Environment : public QObject {
-private:
+ private:
   Q_OBJECT
 
   Q_PROPERTY(System system READ system CONSTANT)
@@ -20,7 +20,7 @@ private:
 
   Window *m_view;
 
-public:
+ public:
   enum class System { Android, Unix, Win32, Unknown };
 
   Environment(Window *view);
@@ -35,13 +35,13 @@ public:
   bool lockedCursor() const;
   void setLockedCursor(bool);
 
-signals:
+ signals:
   void fullscreenChanged();
   void lockedCursorChanged();
 };
 
 class Window : public SceneGraph::Window {
-private:
+ private:
   Environment m_environment;
   Game m_game;
   bool m_lockedCursor;
@@ -51,10 +51,10 @@ private:
 
   void onActiveChanged();
 
-protected:
+ protected:
   void resizeEvent(QResizeEvent *);
 
-public:
+ public:
   Window(QWindow * = nullptr);
   ~Window();
 
@@ -65,6 +65,6 @@ public:
   void setLockedCursor(bool);
 };
 
-} //  namespace Utility
+}  //  namespace Utility
 
-#endif // WINDOW_HPP
+#endif  // WINDOW_HPP

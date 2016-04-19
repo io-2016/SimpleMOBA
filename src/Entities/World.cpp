@@ -19,7 +19,8 @@
 #include <unordered_set>
 
 World::World(ViewWorld *viewWorld)
-    : QWorld(viewWorld), m_viewWorld(viewWorld),
+    : QWorld(viewWorld),
+      m_viewWorld(viewWorld),
       m_mainAction(this, std::unique_ptr<FileActionResolver>(
                              new WorldFileActionResolver(this)),
                    nullptr),
@@ -64,8 +65,7 @@ ParticleSystem *World::particleSystem() const {
 }
 
 void World::setPaused(bool p) {
-  if (paused() == p)
-    return;
+  if (paused() == p) return;
   setRunning(!p);
   setFocus(!p);
 }
@@ -79,8 +79,7 @@ WorldObject::WorldObject(World *world) : m_world(world), m_fps() {
 void WorldObject::updateFps() {
   qreal t = m_fpscounter.restart();
 
-  if (!qFuzzyIsNull(t))
-    setFps(1000.0 / t);
+  if (!qFuzzyIsNull(t)) setFps(1000.0 / t);
 }
 
 void WorldObject::setFps(qreal f) {

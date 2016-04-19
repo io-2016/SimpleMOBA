@@ -11,9 +11,9 @@ class ViewWorld : public DisplayItem {
   World m_world;
   Game* m_game;
   TexturedRectangle m_background;
-  int m_scroll_radius;
+  int m_scrollRadius;
   int m_timer;
-  QPointF m_camera_vector;
+  QPointF m_cameraVector;
 
  protected:
   void visibleAreaChanged();
