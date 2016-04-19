@@ -16,13 +16,13 @@
 #include <QDebug>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <memory>
 #include <unordered_set>
 
 World::World(ViewWorld *viewWorld)
     : QWorld(viewWorld),
       m_viewWorld(viewWorld),
-      m_mainAction(this, std::unique_ptr<FileActionResolver>(
-                             new WorldFileActionResolver(this)),
+      m_mainAction(this, std::make_unique<WorldFileActionResolver>(this),
                    nullptr),
       m_worldObject(this) {
   factory()->registerType<Box2DBox>("Box2DBox");

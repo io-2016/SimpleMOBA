@@ -1,6 +1,6 @@
 TEMPLATE = lib
 QT += quick
-CONFIG += c++11
+CONFIG += c++14
 CONFIG -= debug_and_release
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
