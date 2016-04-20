@@ -12,6 +12,11 @@ git clone --recursive https://github.com/io-2016/SimpleMOBA.git
 
 ## Screenshots
 
+### Version 0.02
+Game
+
+![Screenshot](https://raw.github.com/io-2016/SimpleMOBA/master/screenshots/game0.02.png)
+
 ### Version 0.01
 Menu
 
