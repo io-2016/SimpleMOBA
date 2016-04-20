@@ -5,6 +5,8 @@ CONFIG -= debug_and_release
 OBJECTS_DIR = .obj
 MOC_DIR = .moc
 TARGET = src
+GIT_VERSION = $$system(git --work-tree $$PWD describe --always --tags)
+DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
 
 SOURCES += \
     Utility/Window.cpp \

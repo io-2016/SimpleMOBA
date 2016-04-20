@@ -44,7 +44,7 @@ Image {
         anchors.left: parent.left
         anchors.bottom: parent.bottom
 
-        text: "version 0.01"
+        text: "version 0.01 " + app.gitVersion
         color: textColor
     }
 
