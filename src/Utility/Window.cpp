@@ -60,6 +60,8 @@ void Environment::setLockedCursor(bool e) {
   emit lockedCursorChanged();
 }
 
+QString Environment::gitVersion() const { return GIT_VERSION; }
+
 Window::Window(QWindow *parent)
     : SceneGraph::Window(parent),
       m_environment(this),

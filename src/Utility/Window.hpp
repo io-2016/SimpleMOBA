@@ -16,6 +16,7 @@ class Environment : public QObject {
                  fullscreenChanged)
   Q_PROPERTY(bool lockedCursor READ lockedCursor WRITE setLockedCursor NOTIFY
                  lockedCursorChanged)
+  Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
   Q_ENUMS(System)
 
   Window *m_view;
@@ -35,6 +36,7 @@ class Environment : public QObject {
   bool lockedCursor() const;
   void setLockedCursor(bool);
 
+  QString gitVersion() const;
  signals:
   void fullscreenChanged();
   void lockedCursorChanged();
