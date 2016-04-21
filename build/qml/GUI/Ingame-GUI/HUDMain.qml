@@ -11,11 +11,7 @@ Item {
         anchors.right: parent.right
         height: Math.min(idHudContainer.width, idHudContainer.height) * 0.2
 
-        signal minimapPositionChanged(bool left)
-
-        onMinimapPositionChanged: {
-            state = left ? "minimapLeft" : "minimapRight"
-        }
+        state: app.minimapOnLeft ? "minimapLeft" : "minimapRight"
 
         Minimap {
             id: idMinimap

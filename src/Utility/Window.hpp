@@ -17,7 +17,7 @@ class Environment : public QObject {
   Q_PROPERTY(bool lockedCursor READ lockedCursor WRITE setLockedCursor NOTIFY
                  lockedCursorChanged)
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
-  Q_PROPERTY(bool minimapOnLeft READ minimapOnLeft WRITE setMinimapOnLeft)
+  Q_PROPERTY(bool minimapOnLeft READ minimapOnLeft WRITE setMinimapOnLeft NOTIFY minimapOnLeftChanged)
   Q_ENUMS(System)
 
   Window *m_view;
@@ -45,7 +45,7 @@ class Environment : public QObject {
  signals:
   void fullscreenChanged();
   void lockedCursorChanged();
-  void minimapOnLeftChanged(bool);
+  void minimapOnLeftChanged();
 };
 
 class Window : public SceneGraph::Window {

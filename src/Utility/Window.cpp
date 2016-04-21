@@ -58,7 +58,7 @@ bool Environment::minimapOnLeft() const {
 
 void Environment::setMinimapOnLeft(bool onLeft) {
   m_minimapOnLeft = onLeft;
-  emit minimapOnLeftChanged(onLeft);
+  emit minimapOnLeftChanged();
 }
 
 bool Environment::lockedCursor() const { return view()->lockedCursor(); }
@@ -118,11 +118,6 @@ Window::Window(QWindow *parent)
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
   connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
-
-
-  QObject *hud = rootObject()->findChild<QObject*>("idHud");
-  assert(hud);
-  connect(&m_environment, SIGNAL(minimapOnLeftChanged(bool)), hud, SIGNAL(minimapPositionChanged(bool)));
 }
 
 Window::~Window() { unlockCursor(); }
