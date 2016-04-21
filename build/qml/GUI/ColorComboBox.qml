@@ -83,6 +83,7 @@ FocusScope {
                             MouseArea {
                                 anchors.fill: parent
                                 onClicked: {
+                                    app.playerIndicatorColor = colorBox.color
                                     selected.color = colorBox.color
                                     dropDown.visible = false
                                 }

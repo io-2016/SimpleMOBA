@@ -18,10 +18,12 @@ class Environment : public QObject {
                  lockedCursorChanged)
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
   Q_PROPERTY(bool minimapOnLeft MEMBER m_minimapOnLeft NOTIFY minimapOnLeftChanged)
+  Q_PROPERTY(QColor playerIndicatorColor MEMBER m_playerIndicatorColor NOTIFY playerIndicatorColorChanged)
   Q_ENUMS(System)
 
   Window *m_view;
   bool m_minimapOnLeft;
+  QColor m_playerIndicatorColor;
 
  public:
   enum class System { Android, Unix, Win32, Unknown };
@@ -43,6 +45,7 @@ class Environment : public QObject {
   void fullscreenChanged();
   void lockedCursorChanged();
   void minimapOnLeftChanged();
+  void playerIndicatorColorChanged();
 };
 
 class Window : public SceneGraph::Window {

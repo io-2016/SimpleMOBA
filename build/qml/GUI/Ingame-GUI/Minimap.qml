@@ -18,7 +18,7 @@ Item {
 
     Rectangle {
         anchors.centerIn: parent
-        color: Qt.rgba(1.0, 0.3, 0.3, 1.0)
+        color: app.playerIndicatorColor
         width: parent.width * 0.05
         height: parent.height * 0.05
         radius: width * 0.5

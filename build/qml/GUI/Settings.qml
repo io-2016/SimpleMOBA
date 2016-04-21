@@ -48,7 +48,7 @@ Item {
             ColorComboBox {
                 id: colorSelection
                 anchors.verticalCenter: parent.verticalCenter
-                colors: [ "green", "yellow", "blue", "orange" ]
+                colors: [ "red", "yellow", "blue", "orange" ]
             }
         }
 

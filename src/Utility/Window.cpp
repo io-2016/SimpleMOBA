@@ -23,7 +23,11 @@
 
 namespace Utility {
 
-Environment::Environment(Window *view) : QObject(view), m_view(view), m_minimapOnLeft(true) {}
+Environment::Environment(Window *view)
+    : QObject(view),
+      m_view(view),
+      m_minimapOnLeft(true),
+      m_playerIndicatorColor(QColor::fromRgb(255, 0, 0)) {}
 
 Environment::System Environment::system() const {
 #if defined Q_OS_ANDROID
