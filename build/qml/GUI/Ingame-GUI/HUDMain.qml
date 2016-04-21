@@ -10,7 +10,7 @@ Item {
         anchors.right: parent.right
         height: Math.min(idHudContainer.width, idHudContainer.height) * 0.2
 
-        state: app.minimapOnLeft ? "minimapLeft" : "minimapRight"
+        state: world.minimapOnLeft ? "minimapLeft" : "minimapRight"
 
         Minimap {
             id: idMinimap

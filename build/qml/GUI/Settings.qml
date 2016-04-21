@@ -86,7 +86,7 @@ Item {
                         }
                     }
                     onClicked: {
-                        app.minimapOnLeft = true
+                        world.minimapOnLeft = true
                     }
                 }
                 RadioButton {
@@ -102,7 +102,7 @@ Item {
                         }
                     }
                     onClicked: {
-                        app.minimapOnLeft = false
+                        world.minimapOnLeft = false
                     }
                 }
             }

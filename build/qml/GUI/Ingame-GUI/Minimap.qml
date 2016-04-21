@@ -17,13 +17,13 @@ Item {
     }
 
     Rectangle {
-        color: app.playerIndicatorColor
+        color: world.playerIndicatorColor
         width: parent.width * 0.05
         height: parent.height * 0.05
         radius: width * 0.5
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.topMargin: parent.height * (app.playerLocation.y / 1000) - radius
-        anchors.leftMargin: parent.width * (app.playerLocation.x / 1000) - radius
+        anchors.topMargin: parent.height * (world.playerLocation.y / 1000) - radius
+        anchors.leftMargin: parent.width * (world.playerLocation.x / 1000) - radius
     }
 }
