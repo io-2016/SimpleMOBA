@@ -17,7 +17,7 @@ class Environment : public QObject {
   Q_PROPERTY(bool lockedCursor READ lockedCursor WRITE setLockedCursor NOTIFY
                  lockedCursorChanged)
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
-  Q_PROPERTY(bool minimapOnLeft READ minimapOnLeft WRITE setMinimapOnLeft NOTIFY minimapOnLeftChanged)
+  Q_PROPERTY(bool minimapOnLeft MEMBER m_minimapOnLeft NOTIFY minimapOnLeftChanged)
   Q_ENUMS(System)
 
   Window *m_view;
@@ -34,9 +34,6 @@ class Environment : public QObject {
 
   bool fullscreen() const;
   void setFullscreen(bool);
-
-  bool minimapOnLeft() const;
-  void setMinimapOnLeft(bool);
 
   bool lockedCursor() const;
   void setLockedCursor(bool);

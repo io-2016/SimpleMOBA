@@ -52,15 +52,6 @@ void Environment::setFullscreen(bool enable) {
   emit fullscreenChanged();
 }
 
-bool Environment::minimapOnLeft() const {
-  return m_minimapOnLeft;
-}
-
-void Environment::setMinimapOnLeft(bool onLeft) {
-  m_minimapOnLeft = onLeft;
-  emit minimapOnLeftChanged();
-}
-
 bool Environment::lockedCursor() const { return view()->lockedCursor(); }
 
 void Environment::setLockedCursor(bool e) {
