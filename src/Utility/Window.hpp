@@ -17,9 +17,11 @@ class Environment : public QObject {
   Q_PROPERTY(bool lockedCursor READ lockedCursor WRITE setLockedCursor NOTIFY
                  lockedCursorChanged)
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
+  Q_PROPERTY(bool minimapOnLeft READ minimapOnLeft WRITE setMinimapOnLeft)
   Q_ENUMS(System)
 
   Window *m_view;
+  bool m_minimapOnLeft;
 
  public:
   enum class System { Android, Unix, Win32, Unknown };
@@ -33,6 +35,9 @@ class Environment : public QObject {
   bool fullscreen() const;
   void setFullscreen(bool);
 
+  bool minimapOnLeft() const;
+  void setMinimapOnLeft(bool);
+
   bool lockedCursor() const;
   void setLockedCursor(bool);
 
@@ -40,6 +45,7 @@ class Environment : public QObject {
  signals:
   void fullscreenChanged();
   void lockedCursorChanged();
+  void minimapOnLeftChanged(bool);
 };
 
 class Window : public SceneGraph::Window {

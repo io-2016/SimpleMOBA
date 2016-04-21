@@ -23,7 +23,7 @@
 
 namespace Utility {
 
-Environment::Environment(Window *view) : QObject(view), m_view(view) {}
+Environment::Environment(Window *view) : QObject(view), m_view(view), m_minimapOnLeft(true) {}
 
 Environment::System Environment::system() const {
 #if defined Q_OS_ANDROID
@@ -50,6 +50,15 @@ void Environment::setFullscreen(bool enable) {
     view()->show();
 
   emit fullscreenChanged();
+}
+
+bool Environment::minimapOnLeft() const {
+  return m_minimapOnLeft;
+}
+
+void Environment::setMinimapOnLeft(bool onLeft) {
+  m_minimapOnLeft = onLeft;
+  emit minimapOnLeftChanged(onLeft);
 }
 
 bool Environment::lockedCursor() const { return view()->lockedCursor(); }
@@ -109,6 +118,11 @@ Window::Window(QWindow *parent)
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
   connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
+
+
+  QObject *hud = rootObject()->findChild<QObject*>("idHud");
+  assert(hud);
+  connect(&m_environment, SIGNAL(minimapOnLeftChanged(bool)), hud, SIGNAL(minimapPositionChanged(bool)));
 }
 
 Window::~Window() { unlockCursor(); }
