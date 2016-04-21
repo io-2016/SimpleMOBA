@@ -2,6 +2,7 @@
 #define WINDOW_HPP
 #include "Entities/Game.hpp"
 #include "SceneGraph/Window.hpp"
+#include <QTimer>
 
 namespace Utility {
 
@@ -19,11 +20,13 @@ class Environment : public QObject {
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
   Q_PROPERTY(bool minimapOnLeft MEMBER m_minimapOnLeft NOTIFY minimapOnLeftChanged)
   Q_PROPERTY(QColor playerIndicatorColor MEMBER m_playerIndicatorColor NOTIFY playerIndicatorColorChanged)
+  Q_PROPERTY(QPointF playerLocation READ playerLocation NOTIFY playerLocationChanged)
   Q_ENUMS(System)
 
   Window *m_view;
   bool m_minimapOnLeft;
   QColor m_playerIndicatorColor;
+  QTimer m_playerIndicatorTimer;
 
  public:
   enum class System { Android, Unix, Win32, Unknown };
@@ -40,12 +43,15 @@ class Environment : public QObject {
   bool lockedCursor() const;
   void setLockedCursor(bool);
 
+  QPointF playerLocation() const;
+
   QString gitVersion() const;
  signals:
   void fullscreenChanged();
   void lockedCursorChanged();
   void minimapOnLeftChanged();
   void playerIndicatorColorChanged();
+  void playerLocationChanged();
 };
 
 class Window : public SceneGraph::Window {

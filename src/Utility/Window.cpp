@@ -5,6 +5,8 @@
 #include <QQmlEngine>
 #include <QTimer>
 
+#include "Entities/Player.hpp"
+
 #if defined(Q_OS_LINUX) and not defined(Q_OS_ANDROID)
 #define USE_X11
 #endif
@@ -27,7 +29,11 @@ Environment::Environment(Window *view)
     : QObject(view),
       m_view(view),
       m_minimapOnLeft(true),
-      m_playerIndicatorColor(QColor::fromRgb(255, 0, 0)) {}
+      m_playerIndicatorColor(QColor::fromRgb(255, 0, 0)) {
+  m_playerIndicatorTimer.setInterval(50);
+  connect(&m_playerIndicatorTimer, SIGNAL(timeout()), this, SIGNAL(playerLocationChanged()));
+  m_playerIndicatorTimer.start();
+}
 
 Environment::System Environment::system() const {
 #if defined Q_OS_ANDROID
@@ -62,6 +68,10 @@ void Environment::setLockedCursor(bool e) {
   if (lockedCursor() == e) return;
   view()->setLockedCursor(e);
   emit lockedCursorChanged();
+}
+
+QPointF Environment::playerLocation() const {
+  return view()->game()->view()->world()->player()->position();
 }
 
 QString Environment::gitVersion() const { return GIT_VERSION; }

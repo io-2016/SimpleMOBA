@@ -92,6 +92,9 @@ class World : public QWorld {
   inline WorldObject *object() { return &m_worldObject; }
   inline const WorldObject *object() const { return &m_worldObject; }
 
+  inline Player *player() { return m_player; }
+  inline const Player *player() const { return m_player; }
+
   void read(const QJsonObject &);
 };
 
