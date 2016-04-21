@@ -30,10 +30,19 @@ Item {
                 text: "Login: "
                 color: textColor
             }
-            TextEdit {
-                width: 100
+            TextField {
+                width: 200
                 font.pixelSize: fontSize
-                color: textColor
+                style: TextFieldStyle {
+                    textColor: settings.textColor
+                    selectionColor: "black"
+                    selectedTextColor: textColor
+                    background: Rectangle {
+                        border.width: 0
+                        color: "transparent"
+                        border.color: "transparent"
+                    }
+                }
             }
         }
 
