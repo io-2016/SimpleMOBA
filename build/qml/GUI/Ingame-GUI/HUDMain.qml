@@ -5,7 +5,6 @@ Item {
 
     Item {
         id: idHud
-        objectName: "idHud"
         anchors.bottom: parent.bottom
         anchors.left: parent.left
         anchors.right: parent.right
