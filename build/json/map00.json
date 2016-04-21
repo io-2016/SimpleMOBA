@@ -40,7 +40,7 @@
         ]
     },
     "viewWorld": {
-        "background": ":/resources/dota_minimap.jpg",
+        "background": ":/resources/dota_map.jpg",
         "height": 1000,
         "scale": 1.3009999999999999,
         "width": 1000,
