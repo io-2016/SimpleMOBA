@@ -2,6 +2,7 @@
 #define WORLD_HPP
 
 #include <QElapsedTimer>
+#include <QTimer>
 #include <memory>
 
 #include "QBox2D/Fixture/Box2DBox.hpp"
@@ -23,6 +24,10 @@ class WorldObject : public QObject {
   Q_OBJECT
 
   Q_PROPERTY(qreal fps READ fps NOTIFY fpsChanged)
+  Q_PROPERTY(bool minimapOnLeft MEMBER m_minimapOnLeft NOTIFY minimapOnLeftChanged)
+  Q_PROPERTY(QColor playerIndicatorColor MEMBER m_playerIndicatorColor NOTIFY
+                 playerIndicatorColorChanged)
+  Q_PROPERTY(QPointF playerLocation READ playerLocation NOTIFY playerLocationChanged)
 
   World *m_world;
 
@@ -30,8 +35,14 @@ class WorldObject : public QObject {
   QElapsedTimer m_fpscounter;
   int var;
 
+  bool m_minimapOnLeft;
+  QColor m_playerIndicatorColor;
+  QTimer m_playerIndicatorTimer;
+
   void updateFps();
   void setFps(qreal);
+
+  QPointF playerLocation() const;
 
  public:
   WorldObject(World *);
@@ -42,8 +53,14 @@ class WorldObject : public QObject {
 
   inline qreal fps() const { return m_fps; }
 
+  inline World *world() { return m_world; }
+  inline const World *world() const { return m_world; }
+
  signals:
   void fpsChanged();
+  void minimapOnLeftChanged();
+  void playerIndicatorColorChanged();
+  void playerLocationChanged();
 };
 
 class WorldFileActionResolver : public FileActionResolver {
@@ -63,7 +80,7 @@ class World : public QWorld {
 
   ViewWorld *m_viewWorld;
   MainAction m_mainAction;
-  Player* m_player;
+  Player *m_player;
 
   WorldObject m_worldObject;
 
@@ -91,6 +108,9 @@ class World : public QWorld {
 
   inline WorldObject *object() { return &m_worldObject; }
   inline const WorldObject *object() const { return &m_worldObject; }
+
+  inline Player *player() { return m_player; }
+  inline const Player *player() const { return m_player; }
 
   void read(const QJsonObject &);
 };

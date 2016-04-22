@@ -73,7 +73,7 @@ void World::setPaused(bool p) {
   setFocus(!p);
 }
 
-void World::read(const QJsonObject& obj) {
+void World::read(const QJsonObject &obj) {
   QWorld::read(obj);
 
   auto player = std::make_unique<Player>(itemSet());
@@ -85,10 +85,18 @@ void World::read(const QJsonObject& obj) {
   itemSet()->addBody(std::move(player));
 }
 
-WorldObject::WorldObject(World *world) : m_world(world), m_fps() {
+WorldObject::WorldObject(World *world)
+    : m_world(world),
+      m_fps(),
+      m_minimapOnLeft(true),
+      m_playerIndicatorColor(QColor::fromRgb(255, 0, 0)) {
   m_fpscounter.restart();
   connect(world->window(), &SceneGraph::Window::beforeRendering, this,
           &WorldObject::updateFps);
+  m_playerIndicatorTimer.setInterval(50);
+  connect(&m_playerIndicatorTimer, &QTimer::timeout, this,
+          &WorldObject::playerLocationChanged);
+  m_playerIndicatorTimer.start();
 }
 
 void WorldObject::updateFps() {
@@ -100,6 +108,10 @@ void WorldObject::updateFps() {
 void WorldObject::setFps(qreal f) {
   m_fps = f;
   emit fpsChanged();
+}
+
+QPointF WorldObject::playerLocation() const {
+  return world()->player()->position();
 }
 
 WorldFileActionResolver::WorldFileActionResolver(World *w) : m_world(w) {}

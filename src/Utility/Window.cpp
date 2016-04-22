@@ -5,6 +5,8 @@
 #include <QQmlEngine>
 #include <QTimer>
 
+#include "Entities/Player.hpp"
+
 #if defined(Q_OS_LINUX) and not defined(Q_OS_ANDROID)
 #define USE_X11
 #endif

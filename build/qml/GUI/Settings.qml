@@ -30,10 +30,19 @@ Item {
                 text: "Login: "
                 color: textColor
             }
-            TextEdit {
-                width: 100
+            TextField {
+                width: 200
                 font.pixelSize: fontSize
-                color: textColor
+                style: TextFieldStyle {
+                    textColor: settings.textColor
+                    selectionColor: "black"
+                    selectedTextColor: textColor
+                    background: Rectangle {
+                        border.width: 0
+                        color: "transparent"
+                        border.color: "transparent"
+                    }
+                }
             }
         }
 
@@ -48,7 +57,54 @@ Item {
             ColorComboBox {
                 id: colorSelection
                 anchors.verticalCenter: parent.verticalCenter
-                colors: [ "green", "yellow", "blue", "orange" ]
+                colors: [ "red", "yellow", "blue", "orange" ]
+            }
+        }
+
+        Text {
+            font.pixelSize: fontSize
+            text: "Minimap location:"
+            color: textColor
+        }
+
+        GroupBox {
+            anchors.left: column.left
+            anchors.leftMargin: 25
+            Row {
+                ExclusiveGroup { id: minimapLocation }
+                RadioButton {
+                    id: minimapLeft
+                    text: "left "
+                    checked: true
+                    exclusiveGroup: minimapLocation
+                    style: RadioButtonStyle {
+                        label: Text {
+                            text: control.text
+                            font.pixelSize: fontSize
+                            color: textColor
+                            horizontalAlignment: Text.center
+                        }
+                    }
+                    onClicked: {
+                        world.minimapOnLeft = true
+                    }
+                }
+                RadioButton {
+                    id: minimapRight
+                    text: "right"
+                    exclusiveGroup: minimapLocation
+                    style: RadioButtonStyle {
+                        label: Text {
+                            text: control.text
+                            font.pixelSize: fontSize
+                            color: textColor
+                            horizontalAlignment: Text.center
+                        }
+                    }
+                    onClicked: {
+                        world.minimapOnLeft = false
+                    }
+                }
             }
         }
 
