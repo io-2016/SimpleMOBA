@@ -47,16 +47,21 @@ Item {
         }
 
         Row {
-            z: 1
+            height: Math.max(colorText.height, colorSelection.height + colorText.height / 2)
+            clip:true
+
             Text {
+                id: colorText
                 text: "Color: "
                 font.pixelSize: fontSize
                 color: textColor
+                anchors.top: parent.top
             }
 
             ColorComboBox {
                 id: colorSelection
-                anchors.verticalCenter: parent.verticalCenter
+                anchors.top: parent.top
+                anchors.topMargin: colorText.height / 4
                 colors: [ "red", "yellow", "blue", "orange" ]
             }
         }
