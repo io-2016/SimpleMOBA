@@ -25,7 +25,7 @@ World::World(ViewWorld *viewWorld)
     : QWorld(viewWorld),
       m_viewWorld(viewWorld),
       m_mainAction(this, std::make_unique<WorldFileActionResolver>(this),
-                   nullptr),
+                   std::make_unique<WorldMapEditorCallback>(this)),
       m_player(),
       m_worldObject(this) {
   factory()->registerType<Box2DBox>("Box2DBox");
@@ -111,8 +111,7 @@ void WorldObject::setFps(qreal f) {
 }
 
 QPointF WorldObject::playerLocation() const {
-  if (!world()->player())
-    return QPointF();
+  if (!world()->player()) return QPointF();
   return world()->player()->position();
 }
 
@@ -124,4 +123,13 @@ void WorldFileActionResolver::load(QString path) const {
 
 void WorldFileActionResolver::dump(QString path) const {
   m_world->view()->game()->dump(path);
+}
+
+WorldMapEditorCallback::WorldMapEditorCallback(World *w) : m_world(w) {}
+
+void WorldMapEditorCallback::onTriggered() {
+  if (!m_enabled) {
+    if (m_world->player())
+      m_world->player()->setFocus(true);
+  }
 }

@@ -24,10 +24,12 @@ class WorldObject : public QObject {
   Q_OBJECT
 
   Q_PROPERTY(qreal fps READ fps NOTIFY fpsChanged)
-  Q_PROPERTY(bool minimapOnLeft MEMBER m_minimapOnLeft NOTIFY minimapOnLeftChanged)
+  Q_PROPERTY(
+      bool minimapOnLeft MEMBER m_minimapOnLeft NOTIFY minimapOnLeftChanged)
   Q_PROPERTY(QColor playerIndicatorColor MEMBER m_playerIndicatorColor NOTIFY
                  playerIndicatorColorChanged)
-  Q_PROPERTY(QPointF playerLocation READ playerLocation NOTIFY playerLocationChanged)
+  Q_PROPERTY(
+      QPointF playerLocation READ playerLocation NOTIFY playerLocationChanged)
 
   World *m_world;
 
@@ -72,6 +74,15 @@ class WorldFileActionResolver : public FileActionResolver {
 
   void load(QString) const;
   void dump(QString) const;
+};
+
+class WorldMapEditorCallback : public MapEditorCallback {
+ private:
+  World *m_world;
+
+ public:
+  WorldMapEditorCallback(World *);
+  void onTriggered();
 };
 
 class World : public QWorld {
