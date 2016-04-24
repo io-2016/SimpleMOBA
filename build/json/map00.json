@@ -1,42 +1,6 @@
 {
     "lightSystem": {
         "lights": [
-            {
-                "attenuation": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0.0024999999441206455
-                },
-                "color": {
-                    "b": 0,
-                    "g": 255,
-                    "r": 0
-                },
-                "dynamicShadows": true,
-                "radius": 40,
-                "renderFraction": 5,
-                "x": 730,
-                "y": 620,
-                "z": 15
-            },
-            {
-                "attenuation": {
-                    "x": 0,
-                    "y": 0,
-                    "z": 0.0024999999441206455
-                },
-                "color": {
-                    "b": 255,
-                    "g": 0,
-                    "r": 255
-                },
-                "dynamicShadows": true,
-                "radius": 40,
-                "renderFraction": 5,
-                "x": 530,
-                "y": 620,
-                "z": 15
-            }
         ]
     },
     "viewWorld": {
