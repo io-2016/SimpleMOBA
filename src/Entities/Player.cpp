@@ -35,8 +35,8 @@ Player::Player(Item* parent) : QBody(parent), m_going(false) {
 
   auto box = std::make_unique<Box2DBox>();
   box->setSize(QSizeF(5, 5));
+  box->setPosition(QPointF(-2.5, -2.5));
   box->setTextureSource(":/resources/crate.jpg");
-  box->setDensity(0.5);
 
   addFixture(std::move(box));
   setPosition(QPointF(70, 950));
