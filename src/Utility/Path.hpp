@@ -4,11 +4,11 @@
 #include <QPointF>
 #include <vector>
 
-class World;
+class QWorld;
 
 class Path {
  public:
-  Path(QPointF a, QPointF b, World *w);
+  Path(QPointF a, QPointF b, QWorld *w);
 
   const std::vector<QPointF> &points() const;
 

@@ -3,7 +3,8 @@
 #include <QVector2D>
 #include <set>
 
-#include "Entities/World.hpp"
+#include "QBox2D/QWorld.hpp"
+#include "QBox2D/QFixture.hpp"
 
 namespace {
 class Finder {
@@ -51,7 +52,7 @@ class Finder {
   };
 
  public:
-  Finder(QPointF a, QPointF b, World *w, int res = 8) {
+  Finder(QPointF a, QPointF b, QWorld *w, int res = 8) {
     m_world = w;
     m_res = res;
     QVector2D base(b - a);
@@ -136,7 +137,7 @@ class Finder {
 
   bool isEnd(const Node &n) const { return n == Node(m_res * 2, 0); }
 
-  World *m_world;
+  QWorld *m_world;
   int m_res;
   QVector2D m_stepX, m_stepY;
   QPointF m_origin;
@@ -146,7 +147,7 @@ class Finder {
 };
 }  // namespace
 
-Path::Path(QPointF a, QPointF b, World *w) {
+Path::Path(QPointF a, QPointF b, QWorld* w) {
   Finder fnd(a, b, w, 8);
   m_points = fnd.path();
 }
