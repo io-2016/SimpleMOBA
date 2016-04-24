@@ -5,6 +5,7 @@
 
 void Player::onStepped() {
   enqueueFunction(std::bind(&Player::onStepped, this));
+  synchronize();
 
   if (m_going) {
     QPointF d = (m_target - position());
