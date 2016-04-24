@@ -7,8 +7,8 @@ import "GUI/Ingame-GUI"
 
 Item {
     id: root
-    width: 800
-    height: 600
+    width: 1366
+    height: 768
     focus: true
 
     HUDMain {

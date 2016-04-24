@@ -111,6 +111,8 @@ void WorldObject::setFps(qreal f) {
 }
 
 QPointF WorldObject::playerLocation() const {
+  if (!world()->player())
+    return QPointF();
   return world()->player()->position();
 }
 
