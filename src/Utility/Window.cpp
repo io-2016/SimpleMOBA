@@ -105,6 +105,8 @@ Window::Window(QWindow *parent)
                                     mapEditor->bodyEdit()->object());
   rootContext()->setContextProperty("addChain",
                                     mapEditor->addChain()->object());
+  rootContext()->setContextProperty("fixtureEdit",
+                                    mapEditor->fixtureEdit()->object());
 
   setSource(QUrl("qrc:/qml/main.qml"));
   setResizeMode(SizeRootObjectToView);

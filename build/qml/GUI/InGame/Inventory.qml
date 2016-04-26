@@ -21,7 +21,7 @@ Item {
             model: parent.rows * parent.columns
 
             onWidthChanged: {
-                console.log(width)
+                consoleView.log(width)
             }
 
             delegate: Item {

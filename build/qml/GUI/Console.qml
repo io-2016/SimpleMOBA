@@ -1,7 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import Environment 1.0
-import "Network"
 
 Row {
     id: mainMenu
@@ -22,11 +21,6 @@ Row {
             onClicked: fileAction.toggleEnabled()
         }
 
-        /*Button {
-            text: "Network"
-            onClicked: networkOptions.focus ^= 1
-        }*/
-
         Button {
             text: "Pause"
             onClicked: world.paused ^= 1
@@ -40,21 +34,14 @@ Row {
 
         Component.onCompleted: {
             var max = 0, i
-            for (i=0; i<children.length; i++)
+            for (i = 0; i < children.length; i++)
                 if (children[i].visible)
                     max = Math.max(children[i].width, max)
-            for (i=0; i<children.length; i++)
+            for (i = 0; i < children.length; i++)
                 if (children[i].visible)
                     children[i].width = max
         }
     }
-
-    /*Column {
-        Item { id: networkOptions; parent: world }
-        visible: networkOptions.focus
-
-        NetworkOptions { }
-    }*/
 
     Column {
         visible: fileAction.enabled
@@ -88,6 +75,12 @@ Row {
                 width: parent.width
                 text: "BodyEdit"
                 onClicked: bodyEdit.toggleEnabled()
+            }
+
+            Button {
+                width: parent.width
+                text: "FixtureEdit"
+                onClicked: fixtureEdit.toggleEnabled()
             }
 
             Button {

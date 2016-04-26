@@ -4,8 +4,8 @@ Rectangle {
     property int margin: 5
 
     id: rect
-    x: 0.05*root.width
-    y: 0.05*root.height
+    x: 0.05 * root.width
+    y: 0.05 * root.height
     clip: true
     color: "grey"
     radius: 10
@@ -13,8 +13,12 @@ Rectangle {
     function hide() { width = height = 0 }
 
     function show() {
-        width = Qt.binding(function() { return mainMenu.width+2*margin })
-        height = Qt.binding(function() { return mainMenu.height+2*margin })
+        width = Qt.binding(function() {
+            return consoleMenu.width + 2 * margin
+        })
+        height = Qt.binding(function() {
+            return consoleMenu.height + 2 * margin
+        })
         visible = true
     }
 
@@ -46,8 +50,8 @@ Rectangle {
 
     MouseArea { anchors.fill: parent }
 
-    MainMenu {
-        id: mainMenu
+    Console {
+        id: consoleMenu
         x: rect.margin
         y: rect.margin
     }

@@ -1,12 +1,8 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/GUI/MainMenu.qml</file>
-        <file>qml/GUI/MenuDisplay.qml</file>
         <file>qml/main.qml</file>
         <file>qml/GUI/LoadMap.qml</file>
         <file>qml/GUI/SaveMap.qml</file>
-        <file>qml/GUI/Network/NetworkOptions.qml</file>
-        <file>qml/GUI/Network/Option.qml</file>
         <file>qml/GUI/Data.qml</file>
         <file>qml/GUI/GameOver.qml</file>
         <file>qml/GUI/BodyEdit/BodyEditControl.qml</file>
@@ -15,9 +11,33 @@
         <file>qml/GUI/Settings.qml</file>
         <file>qml/GUI/MainMenuView.qml</file>
         <file>qml/GUI/ColorComboBox.qml</file>
-        <file>qml/GUI/Ingame-GUI/HUDMain.qml</file>
-        <file>qml/GUI/Ingame-GUI/Minimap.qml</file>
-        <file>qml/GUI/Ingame-GUI/Inventory.qml</file>
-        <file>qml/GUI/Ingame-GUI/HealthBox.qml</file>
+        <file>android/AndroidManifest.xml</file>
+        <file>json/map00.json</file>
+        <file>qml/GUI/Console.qml</file>
+        <file>qml/GUI/ConsoleView.qml</file>
+        <file>resources/bricks.jpg</file>
+        <file>resources/bricks_n.jpg</file>
+        <file>resources/chipped.png</file>
+        <file>resources/chipped_n.png</file>
+        <file>resources/crate.jpg</file>
+        <file>resources/dota_map.jpg</file>
+        <file>resources/dota_minimap.png</file>
+        <file>resources/fireball.png</file>
+        <file>resources/las.jpeg</file>
+        <file>resources/rock.png</file>
+        <file>resources/rock_n.png</file>
+        <file>resources/sand.png</file>
+        <file>resources/sand_n.png</file>
+        <file>build.pro</file>
+        <file>json.qrc</file>
+        <file>main.cpp</file>
+        <file>qmlcode.qrc</file>
+        <file>resources.qrc</file>
+        <file>qml/GUI/PopUpControl.qml</file>
+        <file>qml/GUI/FixtureEdit/FixtureEditControl.qml</file>
+        <file>qml/GUI/InGame/HealthBox.qml</file>
+        <file>qml/GUI/InGame/HUDMain.qml</file>
+        <file>qml/GUI/InGame/Inventory.qml</file>
+        <file>qml/GUI/InGame/Minimap.qml</file>
     </qresource>
 </RCC>

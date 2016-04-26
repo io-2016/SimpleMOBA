@@ -3,7 +3,8 @@ import QtQuick.Controls 1.1
 import Environment 1.0
 import "GUI"
 import "GUI/BodyEdit"
-import "GUI/Ingame-GUI"
+import "GUI/FixtureEdit"
+import "GUI/InGame"
 
 Item {
     id: root
@@ -11,12 +12,9 @@ Item {
     height: 768
     focus: true
 
-    HUDMain {
-        anchors.fill: parent
-    }
-
+    HUDMain { anchors.fill: parent }
     GameOver { }
-    MenuDisplay { id: mainMenu }
+    ConsoleView { id: consoleView }
     Data { id: debug }
 
     Rectangle {
@@ -29,11 +27,12 @@ Item {
 
         MultiPointTouchArea {
             anchors.fill: parent
-            onPressed: mainMenu.toggle()
+            onPressed: consoleView.toggle()
         }
     }
 
     BodyEditControl { }
+    FixtureEditControl { }
 
     Menu {
         id: menu
@@ -44,7 +43,7 @@ Item {
         if (event.key === Qt.Key_Escape)
             menu.visible ^= 1
         else if (event.key === Qt.Key_QuoteLeft)
-            mainMenu.toggle()
+            consoleView.toggle()
         else if (event.key === Qt.Key_Comma)
             game.dump("")
     }

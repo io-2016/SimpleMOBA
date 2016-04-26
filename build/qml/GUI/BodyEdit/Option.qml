@@ -13,7 +13,7 @@ Item {
         anchors.centerIn: parent
 
         Rectangle {
-            width: 0.5*parent.width
+            width: 0.5 * parent.width
             height: parent.height
             color: "transparent"
 
