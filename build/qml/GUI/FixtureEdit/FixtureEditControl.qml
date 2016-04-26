@@ -3,7 +3,7 @@ import QtQuick.Controls 1.2
 import ".."
 
 PopUpControl {
-    state: fixtureEdit.enabled ? "enabled" : "disabled"
+    state: fixtureEdit.fixture ? "enabled" : "disabled"
     width: column.width + 2 * margin
     height: column.height + 2 * margin
 
@@ -13,7 +13,7 @@ PopUpControl {
             id: option
 
             Rectangle {
-                width: 0.5 * parent.width
+                width: 0.3 * parent.width
                 height: parent.height
                 color: "transparent"
 
@@ -26,7 +26,16 @@ PopUpControl {
 
             TextField {
                 id: text
-                validator: DoubleValidator { locale: "C" }
+                text: fixtureEdit.textureSource
+                width: 200
+            }
+        }
+        Button {
+            width: parent.width
+            text: "Apply"
+            onClicked: {
+                fixtureEdit.textureSource = text.text
+                fixtureEdit.apply()
             }
         }
     }

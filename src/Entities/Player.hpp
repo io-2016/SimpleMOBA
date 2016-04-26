@@ -17,6 +17,8 @@ class Player : public QBody {
   Player(SceneGraph::Item* = nullptr);
 
   void initialize(QWorld* w);
+
+  bool write(QJsonObject&) const;
 };
 
 #endif  // PLAYER_HPP

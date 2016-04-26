@@ -48,3 +48,7 @@ void Player::initialize(QWorld* w) {
   QBody::initialize(w);
   enqueueFunction(std::bind(&Player::onStepped, this));
 }
+
+bool Player::write(QJsonObject&) const {
+  return false;
+}
