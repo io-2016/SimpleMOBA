@@ -8,6 +8,7 @@ RCC_DIR = .rcc
 INCLUDEPATH += ../src ../deps ../deps/GameEngine
 TARGET = SimpleMOBA
 SOURCES += main.cpp
+android: QMAKE_CXXFLAGS += -std=c++14
 
 RESOURCES += \
     resources.qrc \
@@ -33,3 +34,6 @@ DEPENDPATH += $$PWD/../src/GameEngine
 unix|win32: LIBS += -L$$OUT_PWD/../src/GameEngine/SceneGraph/ -lSceneGraph
 INCLUDEPATH += $$PWD/../src/GameEngine/SceneGraph
 DEPENDPATH += $$PWD/../src/GameEngine/SceneGraph
+
+DISTFILES += \
+    android/Workaround.qml

@@ -7,6 +7,7 @@ MOC_DIR = .moc
 TARGET = src
 GIT_VERSION = $$system(git --work-tree $$PWD describe --always --tags)
 DEFINES += GIT_VERSION=\\\"$$GIT_VERSION\\\"
+android: QMAKE_CXXFLAGS += -std=c++14
 
 SOURCES += \
     Utility/Window.cpp \
