@@ -76,6 +76,7 @@ void Game::load(QString path) {
 void Game::dump(QString path) const {
   QJsonObject obj;
   write(obj);
+  qDebug() << path;
 
   QJsonDocument document(obj);
   std::fstream file(path.toStdString(), std::ios::out);

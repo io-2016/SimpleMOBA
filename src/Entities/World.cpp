@@ -55,6 +55,14 @@ void World::onBodyAdded(QBody *body) {
   lightSystem()->addBody(body);
 }
 
+void World::onBodyDestroyed(QBody *body) {
+  if (body == player()) {
+    m_player = nullptr;
+  }
+
+  QWorld::onBodyDestroyed(body);
+}
+
 void World::onFixtureDestroyed(QFixture *f) {
   lightSystem()->onFixtureDestroyed(f);
 }
@@ -123,9 +131,9 @@ QPointF WorldObject::playerLocation() const {
 WorldFileActionResolver::WorldFileActionResolver(World *w) : m_world(w) {}
 
 void WorldFileActionResolver::load(QString path) const {
-  m_world->view()->game()->load(QUrl(path).path());
+  m_world->view()->game()->load(QUrl(path).toLocalFile());
 }
 
 void WorldFileActionResolver::dump(QString path) const {
-  m_world->view()->game()->dump(QUrl(path).path());
+  m_world->view()->game()->dump(QUrl(path).toLocalFile());
 }

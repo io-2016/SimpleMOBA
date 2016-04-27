@@ -88,6 +88,7 @@ class World : public QWorld {
 
  protected:
   void onBodyAdded(QBody *);
+  void onBodyDestroyed(QBody *);
   void onFixtureDestroyed(QFixture *);
   void focusChanged();
 
