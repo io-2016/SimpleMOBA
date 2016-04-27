@@ -37,6 +37,7 @@ class Environment : public QObject {
   void setLockedCursor(bool);
 
   QString gitVersion() const;
+
  signals:
   void fullscreenChanged();
   void lockedCursorChanged();
@@ -46,12 +47,6 @@ class Window : public SceneGraph::Window {
  private:
   Environment m_environment;
   Game m_game;
-  bool m_lockedCursor;
-
-  bool lockCursor();
-  bool unlockCursor();
-
-  void onActiveChanged();
 
  protected:
   void resizeEvent(QResizeEvent *);
@@ -62,9 +57,6 @@ class Window : public SceneGraph::Window {
 
   inline const Game *game() const { return &m_game; }
   inline Game *game() { return &m_game; }
-
-  inline bool lockedCursor() const { return m_lockedCursor; }
-  void setLockedCursor(bool);
 };
 
 }  //  namespace Utility
