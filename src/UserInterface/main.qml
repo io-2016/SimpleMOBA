@@ -1,10 +1,9 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import Environment 1.0
-import "GUI"
-import "GUI/BodyEdit"
-import "GUI/FixtureEdit"
-import "GUI/InGame"
+import "../GameEngine/UserInterface"
+import "InGame"
+import "."
 
 Item {
     id: root
@@ -13,9 +12,7 @@ Item {
     focus: true
 
     HUDMain { anchors.fill: parent }
-    GameOver { }
-    ConsoleView { id: consoleView }
-    Data { id: debug }
+    GameEngineConsole { id: consoleView }
 
     Rectangle {
         width: 0.05 * parent.width
@@ -30,9 +27,6 @@ Item {
             onPressed: consoleView.toggle()
         }
     }
-
-    BodyEditControl { }
-    FixtureEditControl { }
 
     Menu {
         id: menu

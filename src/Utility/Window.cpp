@@ -7,20 +7,6 @@
 
 #include "Entities/Player.hpp"
 
-#if defined(Q_OS_LINUX) and not defined(Q_OS_ANDROID)
-#define USE_X11
-#endif
-
-#ifdef USE_X11
-#include <X11/Xlib.h>
-#include <unistd.h>
-#include <QX11Info>
-#endif
-
-#ifdef Q_OS_WIN
-#include <windows.h>
-#endif
-
 #include "Utility/Factory.hpp"
 
 namespace Utility {
@@ -67,110 +53,20 @@ QString Environment::gitVersion() const { return GIT_VERSION; }
 Window::Window(QWindow *parent)
     : SceneGraph::Window(parent),
       m_environment(this),
-      m_game(rootItem()),
-      m_lockedCursor(false) {
+      m_game(rootItem()) {
   qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
                                           "Uncreatable type!");
   rootContext()->setContextProperty("app", &m_environment);
+  rootContext()->setContextProperty("world", m_game.view()->world()->object());
+  m_game.view()->world()->mainAction()->registerUserInterface(rootContext());
 
-  World *world = m_game.view()->world();
-  MainAction *mainAction = world->mainAction();
-  MapEditor *mapEditor = mainAction->mapEditor();
-  FileAction *fileAction = mainAction->fileAction();
-  SaveMapAction *saveMapAction = fileAction->saveMapAction();
-  LoadMapAction *loadMapAction = fileAction->loadMapAction();
-
-  AddBody *addBody = mapEditor->addBody();
-  rootContext()->setContextProperty("world", world->object());
-
-  rootContext()->setContextProperty("mapEditor", mapEditor->object());
-  rootContext()->setContextProperty("fileAction", fileAction->object());
-
-  rootContext()->setContextProperty("saveMap", saveMapAction->object());
-  rootContext()->setContextProperty("loadMap", loadMapAction->object());
-
-  rootContext()->setContextProperty("addBody", addBody->object());
-  rootContext()->setContextProperty("addPolygon",
-                                    addBody->addPolygon()->object());
-  rootContext()->setContextProperty("addRectangle",
-                                    addBody->addRectangle()->object());
-  rootContext()->setContextProperty("addCircle",
-                                    addBody->addCircle()->object());
-
-  rootContext()->setContextProperty("grabItem",
-                                    mapEditor->grabItem()->object());
-  rootContext()->setContextProperty("deleteItem",
-                                    mapEditor->deleteItem()->object());
-  rootContext()->setContextProperty("bodyEdit",
-                                    mapEditor->bodyEdit()->object());
-  rootContext()->setContextProperty("addChain",
-                                    mapEditor->addChain()->object());
-  rootContext()->setContextProperty("fixtureEdit",
-                                    mapEditor->fixtureEdit()->object());
-
-  setSource(QUrl("qrc:/qml/main.qml"));
+  setSource(QUrl("qrc:/UserInterface/main.qml"));
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
-  connect(this, &QWindow::activeChanged, this, &Window::onActiveChanged);
 }
 
-Window::~Window() { unlockCursor(); }
-
-void Window::setLockedCursor(bool e) {
-  if (m_lockedCursor == e) return;
-
-  if (e) {
-    if (lockCursor()) {
-      m_lockedCursor = true;
-    }
-  } else {
-    if (unlockCursor()) {
-      m_lockedCursor = false;
-    }
-  }
-}
-
-bool Window::lockCursor() {
-#ifdef USE_X11
-  while (XGrabPointer(QX11Info::display(), winId(), true, 0, GrabModeAsync,
-                      GrabModeAsync, winId(), None, CurrentTime) != GrabSuccess)
-    sleep(1);
-  return true;
-#endif
-#ifdef Q_OS_WIN
-  QPoint p1 = mapToGlobal(QPoint(0, 0));
-  QPoint p2 = mapToGlobal(QPoint(width(), height()));
-  RECT rect;
-  rect.left = p1.x();
-  rect.top = p1.y();
-  rect.right = p2.x();
-  rect.bottom = p2.y();
-  ClipCursor(&rect);
-  return true;
-#endif
-}
-
-bool Window::unlockCursor() {
-#ifdef USE_X11
-  XUngrabPointer(QX11Info::display(), CurrentTime);
-  XFlush(QX11Info::display());
-  return true;
-#endif
-#ifdef Q_OS_WIN
-  ClipCursor(0);
-  return true;
-#endif
-}
-
-void Window::onActiveChanged() {
-  if (lockedCursor()) {
-    if (isActive())
-      assert(lockCursor());
-    else
-      unlockCursor();
-  }
-}
+Window::~Window() { }
 
 void Window::resizeEvent(QResizeEvent *event) {
   SceneGraph::Window::resizeEvent(event);
@@ -183,9 +79,6 @@ void Window::resizeEvent(QResizeEvent *event) {
   m_game.setSize(size());
   m_game.resetTransform();
 
-#ifdef Q_OS_WIN
-  if (lockedCursor()) lockCursor();
-#endif
 }
 
 }  //  namespace Utility

@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/">
+        <file>UserInterface/InGame/HealthBox.qml</file>
+        <file>UserInterface/InGame/HUDMain.qml</file>
+        <file>UserInterface/InGame/Inventory.qml</file>
+        <file>UserInterface/InGame/Minimap.qml</file>
+        <file>UserInterface/ColorComboBox.qml</file>
+        <file>UserInterface/main.qml</file>
+        <file>UserInterface/MainMenuView.qml</file>
+        <file>UserInterface/Menu.qml</file>
+        <file>UserInterface/Settings.qml</file>
+        <file>GameEngine/UserInterface/BodyEdit/BodyEditControl.qml</file>
+        <file>GameEngine/UserInterface/BodyEdit/Option.qml</file>
+        <file>GameEngine/UserInterface/FixtureEdit/FixtureEditControl.qml</file>
+        <file>GameEngine/UserInterface/Console.qml</file>
+        <file>GameEngine/UserInterface/ConsoleView.qml</file>
+        <file>GameEngine/UserInterface/Data.qml</file>
+        <file>GameEngine/UserInterface/LoadMap.qml</file>
+        <file>GameEngine/UserInterface/PopUpControl.qml</file>
+        <file>GameEngine/UserInterface/SaveMap.qml</file>
+        <file>GameEngine/UserInterface/GameEngineConsole.qml</file>
+    </qresource>
+</RCC>
