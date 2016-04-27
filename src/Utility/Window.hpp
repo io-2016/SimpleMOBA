@@ -16,6 +16,8 @@ class Environment : public QObject {
                  fullscreenChanged)
   Q_PROPERTY(bool lockedCursor READ lockedCursor WRITE setLockedCursor NOTIFY
                  lockedCursorChanged)
+  Q_PROPERTY(bool allowLockCursor READ allowLockCursor WRITE setAllowLockCursor
+                 NOTIFY allowLockCursorChanged)
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
   Q_ENUMS(System)
 
@@ -36,11 +38,15 @@ class Environment : public QObject {
   bool lockedCursor() const;
   void setLockedCursor(bool);
 
+  bool allowLockCursor() const;
+  void setAllowLockCursor(bool);
+
   QString gitVersion() const;
 
  signals:
   void fullscreenChanged();
   void lockedCursorChanged();
+  void allowLockCursorChanged();
 };
 
 class Window : public SceneGraph::Window {

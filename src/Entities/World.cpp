@@ -25,7 +25,7 @@ World::World(ViewWorld *viewWorld)
     : QWorld(viewWorld),
       m_viewWorld(viewWorld),
       m_mainAction(this, std::make_unique<WorldFileActionResolver>(this),
-                   std::make_unique<WorldMapEditorCallback>(this)),
+                   nullptr),
       m_player(),
       m_worldObject(this) {
   factory()->registerType<Box2DBox>("Box2DBox");
@@ -57,6 +57,11 @@ void World::onBodyAdded(QBody *body) {
 
 void World::onFixtureDestroyed(QFixture *f) {
   lightSystem()->onFixtureDestroyed(f);
+}
+
+void World::focusChanged() {
+  QWorld::focusChanged();
+  if (focus() && player()) player()->setFocus(true);
 }
 
 LightSystem *World::lightSystem() const {
@@ -118,18 +123,9 @@ QPointF WorldObject::playerLocation() const {
 WorldFileActionResolver::WorldFileActionResolver(World *w) : m_world(w) {}
 
 void WorldFileActionResolver::load(QString path) const {
-  m_world->view()->game()->load(path);
+  m_world->view()->game()->load(QUrl(path).path());
 }
 
 void WorldFileActionResolver::dump(QString path) const {
-  m_world->view()->game()->dump(path);
-}
-
-WorldMapEditorCallback::WorldMapEditorCallback(World *w) : m_world(w) {}
-
-void WorldMapEditorCallback::onTriggered() {
-  if (!m_enabled) {
-    if (m_world->player())
-      m_world->player()->setFocus(true);
-  }
+  m_world->view()->game()->dump(QUrl(path).path());
 }

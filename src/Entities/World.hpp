@@ -76,15 +76,6 @@ class WorldFileActionResolver : public FileActionResolver {
   void dump(QString) const;
 };
 
-class WorldMapEditorCallback : public MapEditorCallback {
- private:
-  World *m_world;
-
- public:
-  WorldMapEditorCallback(World *);
-  void onTriggered();
-};
-
 class World : public QWorld {
  private:
   friend class ViewWorld;
@@ -98,6 +89,7 @@ class World : public QWorld {
  protected:
   void onBodyAdded(QBody *);
   void onFixtureDestroyed(QFixture *);
+  void focusChanged();
 
  public:
   explicit World(ViewWorld *);

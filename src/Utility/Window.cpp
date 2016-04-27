@@ -48,6 +48,16 @@ void Environment::setLockedCursor(bool e) {
   emit lockedCursorChanged();
 }
 
+bool Environment::allowLockCursor() const {
+  return view()->allowLockCursor();
+}
+
+void Environment::setAllowLockCursor(bool e) {
+  if (allowLockCursor() == e) return;
+  view()->setAllowLockCursor(e);
+  emit allowLockCursorChanged();
+}
+
 QString Environment::gitVersion() const { return GIT_VERSION; }
 
 Window::Window(QWindow *parent)
