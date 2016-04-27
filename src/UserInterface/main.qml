@@ -1,10 +1,11 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
 import Environment 1.0
-import "GUI"
-import "GUI/BodyEdit"
-import "GUI/FixtureEdit"
-import "GUI/InGame"
+import "../GameEngine/UserInterface/BodyEdit"
+import "../GameEngine/UserInterface/FixtureEdit"
+import "../GameEngine/UserInterface"
+import "InGame"
+import "."
 
 Item {
     id: root
