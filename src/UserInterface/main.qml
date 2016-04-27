@@ -24,7 +24,7 @@ Item {
 
         MultiPointTouchArea {
             anchors.fill: parent
-            onPressed: consoleView.toggle()
+            onPressed: consoleView.consoleEnabled ^= 1
         }
     }
 
@@ -37,7 +37,7 @@ Item {
         if (event.key === Qt.Key_Escape)
             menu.visible ^= 1
         else if (event.key === Qt.Key_QuoteLeft)
-            consoleView.toggle()
+            consoleView.consoleEnabled ^= 1
         else if (event.key === Qt.Key_Comma)
             game.dump("")
     }
