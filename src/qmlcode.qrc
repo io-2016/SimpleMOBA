@@ -5,7 +5,6 @@
         <file>UserInterface/InGame/Inventory.qml</file>
         <file>UserInterface/InGame/Minimap.qml</file>
         <file>UserInterface/ColorComboBox.qml</file>
-        <file>UserInterface/GameOver.qml</file>
         <file>UserInterface/main.qml</file>
         <file>UserInterface/MainMenuView.qml</file>
         <file>UserInterface/Menu.qml</file>
@@ -19,5 +18,6 @@
         <file>GameEngine/UserInterface/LoadMap.qml</file>
         <file>GameEngine/UserInterface/PopUpControl.qml</file>
         <file>GameEngine/UserInterface/SaveMap.qml</file>
+        <file>GameEngine/UserInterface/GameEngineConsole.qml</file>
     </qresource>
 </RCC>
