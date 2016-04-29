@@ -1,6 +1,5 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.1
-import Environment 1.0
 import "../GameEngine/UserInterface"
 import "InGame"
 import "."
@@ -19,7 +18,7 @@ Item {
         height: 0.05 * parent.height
         radius: 5
         color: "green"
-        visible: app.system === Environment.Android
+        visible: app.system === "android"
         opacity: 0.5
 
         MultiPointTouchArea {

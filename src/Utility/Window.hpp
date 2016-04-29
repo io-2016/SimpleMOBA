@@ -11,7 +11,7 @@ class Environment : public QObject {
  private:
   Q_OBJECT
 
-  Q_PROPERTY(System system READ system CONSTANT)
+  Q_PROPERTY(QString system READ system CONSTANT)
   Q_PROPERTY(bool fullscreen READ fullscreen WRITE setFullscreen NOTIFY
                  fullscreenChanged)
   Q_PROPERTY(bool lockedCursor READ lockedCursor WRITE setLockedCursor NOTIFY
@@ -19,18 +19,15 @@ class Environment : public QObject {
   Q_PROPERTY(bool allowLockCursor READ allowLockCursor WRITE setAllowLockCursor
                  NOTIFY allowLockCursorChanged)
   Q_PROPERTY(QString gitVersion READ gitVersion CONSTANT)
-  Q_ENUMS(System)
 
   Window *m_view;
 
  public:
-  enum class System { Android, Unix, Win32, Unknown };
-
   Environment(Window *view);
 
   inline Window *view() const { return m_view; }
 
-  System system() const;
+  QString system() const;
 
   bool fullscreen() const;
   void setFullscreen(bool);
@@ -53,6 +50,9 @@ class Window : public SceneGraph::Window {
  private:
   Environment m_environment;
   Game m_game;
+
+  void onSceneGraphInitialized();
+  void onSceneGraphInvalidated();
 
  protected:
   void resizeEvent(QResizeEvent *);

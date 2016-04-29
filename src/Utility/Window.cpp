@@ -13,30 +13,15 @@ namespace Utility {
 
 Environment::Environment(Window *view) : QObject(view), m_view(view) {}
 
-Environment::System Environment::system() const {
-#if defined Q_OS_ANDROID
-  return System::Android;
-#elif defined Q_OS_UNIX
-  return System::Unix;
-#elif defined Q_OS_WIN32
-  return System::Win32;
-#else
-  return System::Unknown;
-#endif
+QString Environment::system() const {
+  return SceneGraph::Window::systemToString(view()->system()).c_str();
 }
 
-bool Environment::fullscreen() const {
-  return view()->visibility() == QWindow::FullScreen;
-}
+bool Environment::fullscreen() const { return view()->fullscreen(); }
 
 void Environment::setFullscreen(bool enable) {
   if (fullscreen() == enable) return;
-
-  if (enable)
-    view()->showFullScreen();
-  else
-    view()->show();
-
+  view()->setFullScreen(enable);
   emit fullscreenChanged();
 }
 
@@ -48,9 +33,7 @@ void Environment::setLockedCursor(bool e) {
   emit lockedCursorChanged();
 }
 
-bool Environment::allowLockCursor() const {
-  return view()->allowLockCursor();
-}
+bool Environment::allowLockCursor() const { return view()->allowLockCursor(); }
 
 void Environment::setAllowLockCursor(bool e) {
   if (allowLockCursor() == e) return;
@@ -61,11 +44,7 @@ void Environment::setAllowLockCursor(bool e) {
 QString Environment::gitVersion() const { return GIT_VERSION; }
 
 Window::Window(QWindow *parent)
-    : SceneGraph::Window(parent),
-      m_environment(this),
-      m_game(rootItem()) {
-  qmlRegisterUncreatableType<Environment>("Environment", 1, 0, "Environment",
-                                          "Uncreatable type!");
+    : SceneGraph::Window(parent), m_environment(this), m_game(rootItem()) {
   rootContext()->setContextProperty("app", &m_environment);
   rootContext()->setContextProperty("world", m_game.view()->world()->object());
   m_game.view()->world()->mainAction()->registerUserInterface(rootContext());
@@ -74,9 +53,17 @@ Window::Window(QWindow *parent)
   setResizeMode(SizeRootObjectToView);
 
   connect(engine(), &QQmlEngine::quit, this, &QQuickView::close);
+  connect(this, &Window::sceneGraphInitialized, this,
+          &Window::onSceneGraphInitialized);
+  connect(this, &Window::sceneGraphInvalidated, this,
+          &Window::onSceneGraphInvalidated);
 }
 
-Window::~Window() { }
+Window::~Window() {}
+
+void Window::onSceneGraphInitialized() {}
+
+void Window::onSceneGraphInvalidated() {}
 
 void Window::resizeEvent(QResizeEvent *event) {
   SceneGraph::Window::resizeEvent(event);
@@ -88,7 +75,6 @@ void Window::resizeEvent(QResizeEvent *event) {
 
   m_game.setSize(size());
   m_game.resetTransform();
-
 }
 
 }  //  namespace Utility

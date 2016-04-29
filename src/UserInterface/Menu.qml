@@ -1,5 +1,4 @@
 import QtQuick 2.2
-import Environment 1.0
 
 Image {
     property color textColor: "white"

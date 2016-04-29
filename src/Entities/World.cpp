@@ -44,6 +44,8 @@ void World::step() {
   QWorld::step();
 
   particleSystem()->step();
+  lightSystem()->step();
+  mainAction()->step();
 }
 
 void World::clear() { itemSet()->clear(); }
