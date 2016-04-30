@@ -33,16 +33,9 @@ class WorldObject : public QObject {
 
   World *m_world;
 
-  qreal m_fps;
-  QElapsedTimer m_fpscounter;
-  int var;
-
   bool m_minimapOnLeft;
   QColor m_playerIndicatorColor;
   QTimer m_playerIndicatorTimer;
-
-  void updateFps();
-  void setFps(qreal);
 
   QPointF playerLocation() const;
 
@@ -53,7 +46,7 @@ class WorldObject : public QObject {
   bool equippedWeapon() const;
   uint bulletCount() const;
 
-  inline qreal fps() const { return m_fps; }
+  qreal fps() const;
 
   inline World *world() { return m_world; }
   inline const World *world() const { return m_world; }

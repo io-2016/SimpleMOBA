@@ -46,6 +46,8 @@ void World::step() {
   particleSystem()->step();
   lightSystem()->step();
   mainAction()->step();
+
+  emit m_worldObject.fpsChanged();
 }
 
 void World::clear() { itemSet()->clear(); }
@@ -102,27 +104,16 @@ void World::read(const QJsonObject &obj) {
 
 WorldObject::WorldObject(World *world)
     : m_world(world),
-      m_fps(),
       m_minimapOnLeft(true),
       m_playerIndicatorColor(QColor::fromRgb(255, 0, 0)) {
-  m_fpscounter.restart();
-  connect(world->window(), &SceneGraph::Window::beforeRendering, this,
-          &WorldObject::updateFps);
   m_playerIndicatorTimer.setInterval(50);
   connect(&m_playerIndicatorTimer, &QTimer::timeout, this,
           &WorldObject::playerLocationChanged);
   m_playerIndicatorTimer.start();
 }
 
-void WorldObject::updateFps() {
-  qreal t = m_fpscounter.restart();
-
-  if (!qFuzzyIsNull(t)) setFps(1000.0 / t);
-}
-
-void WorldObject::setFps(qreal f) {
-  m_fps = f;
-  emit fpsChanged();
+qreal WorldObject::fps() const {
+  return world()->window()->fps();
 }
 
 QPointF WorldObject::playerLocation() const {
