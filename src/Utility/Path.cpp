@@ -3,8 +3,8 @@
 #include <QVector2D>
 #include <set>
 
-#include "QBox2D/QWorld.hpp"
 #include "QBox2D/QFixture.hpp"
+#include "QBox2D/QWorld.hpp"
 
 namespace {
 class Finder {
@@ -26,9 +26,9 @@ class Finder {
       return Node(x + p.first, y + p.second);
     }
 
-    float distanceSquared(const Node &other) const {
-      float dx = other.x - x;
-      float dy = other.y - y;
+    int distanceSquared(const Node &other) const {
+      int dx = other.x - x;
+      int dy = other.y - y;
       return dx * dx + dy * dy;
     }
 
@@ -51,11 +51,51 @@ class Finder {
     std::vector<QFixture *> m_fixtures;
   };
 
+  class CompareNodes {
+   public:
+    CompareNodes(Node target) : m_target(target) {}
+
+    bool operator()(const Node &a, const Node &b) const {
+      int alenSq;
+      int blenSq;
+
+      alenSq = a.distanceSquared(Node());
+      blenSq = b.distanceSquared(Node());
+      if (alenSq < blenSq) {
+        return true;
+      }
+      if (blenSq < alenSq) {
+        return false;
+      }
+
+      alenSq = a.distanceSquared(m_target);
+      blenSq = b.distanceSquared(m_target);
+      if (alenSq < blenSq) {
+        return true;
+      }
+      if (blenSq < alenSq) {
+        return false;
+      }
+
+      return a < b;
+    }
+
+   private:
+    Node m_target;
+  };
+
  public:
-  Finder(QPointF a, QPointF b, QWorld *w, int res = 8) {
+  Finder(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w,
+         int res = 8)
+      : m_priQueue(CompareNodes(Node(2 * res, 0))) {
     m_world = w;
-    m_res = res;
     QVector2D base(b - a);
+    while ((2 * (res - 1)) > radius) {
+      res -= 1;
+    }
+    m_res = res;
+    m_skip = skip;
+    m_radius = radius;
     QVector2D baseTransposed(-base.y(), base.x());
     m_stepX = base / float(res * 2);
     m_stepY = QVector2D(-m_stepX.y(), m_stepX.x());
@@ -64,7 +104,7 @@ class Finder {
     if (nodeUnobstructed(start)) {
       m_priQueue.insert(start);
       m_known[start] = {0.f, start};
-      while (bfs())
+      while (dfs() && m_known.size() < 1024)
         ;
       rebuildPath();
     }
@@ -73,10 +113,13 @@ class Finder {
   std::vector<QPointF> &path() { return m_path; }
 
  private:
-  bool bfs() {
+  bool dfs() {
     if (m_priQueue.empty()) return false;
     auto p = *m_priQueue.begin();
     m_priQueue.erase(p);
+    if (isEnd(p)) {
+      return false;
+    }
     const std::vector<std::pair<int, int>> offsets = {
         {1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {1, -1}, {-1, 1}, {-1, -1}};
     for (auto offset : offsets) {
@@ -113,9 +156,12 @@ class Finder {
   }
 
   bool nodeUnobstructed(const Node &n) const {
-    auto fixtures = m_world->fixturesUnderPoint(nodeLocation(n));
+    auto fixtures = m_world->fixturesUnderPoint(nodeLocation(n), m_radius);
     for (auto f : fixtures) {
       if (!f->isSensor()) {
+        if (f->body() == m_skip) {
+          return true;
+        }
         return false;
       }
     }
@@ -124,11 +170,13 @@ class Finder {
 
   bool nodeAcessibleFrom(const Node &tgt, const Node &src) {
     if (!nodeUnobstructed(tgt)) return false;
-    if (abs(tgt.x) > m_res * 4 || abs(tgt.y) > m_res * 4) return false;
     RaycastCallback cb;
     m_world->rayCast(&cb, nodeLocation(src), nodeLocation(tgt));
     for (auto f : cb.fixtures()) {
       if (!f->isSensor()) {
+        if (f->body() == m_skip) {
+          return true;
+        }
         return false;
       }
     }
@@ -142,24 +190,20 @@ class Finder {
   QVector2D m_stepX, m_stepY;
   QPointF m_origin;
   std::map<Node, std::pair<float, Node>> m_known;
-  std::set<Node> m_priQueue;
+  std::set<Node, CompareNodes> m_priQueue;
   std::vector<QPointF> m_path;
+  QBody *m_skip;
+  qreal m_radius;
 };
 }  // namespace
 
-Path::Path(QPointF a, QPointF b, QWorld* w) {
-  Finder fnd(a, b, w, 8);
-  m_points = fnd.path();
+Path::Path(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w) {
+  build(a, b, skip, radius, w);
 }
 
 const std::vector<QPointF> &Path::points() const { return m_points; }
 
-QPointF Path::at(float) const {
-  // TODO
-  return QPointF();
-}
-
-float Path::length() const {
-  // TODO
-  return 0.f;
+void Path::build(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w) {
+  Finder fnd(a, b, skip, radius, w, 8);
+  m_points = fnd.path();
 }
