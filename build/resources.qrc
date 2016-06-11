@@ -13,5 +13,6 @@
         <file>resources/las.jpeg</file>
         <file>resources/dota_map.jpg</file>
         <file>resources/dota_minimap.png</file>
+        <file>resources/trawa.jpeg</file>
     </qresource>
 </RCC>
