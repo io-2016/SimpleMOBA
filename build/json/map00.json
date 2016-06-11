@@ -8,6 +8,8 @@
         "height": 1000,
         "scale": 7.5,
         "width": 1000,
+        "backgroundRectX" : 1,
+        "backgroundRectY" : 1,
         "world": {
             "bodies": [
                 {

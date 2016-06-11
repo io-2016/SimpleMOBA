@@ -32,6 +32,11 @@ bool ViewWorld::read(const QJsonObject &obj) {
   m_background.scale(size().width(), size().height());
   m_background.setSource(obj["background"].toString());
 
+  int backgroundRectX = obj["backgroundRectX"].toInt();
+  int backgroundRectY = obj["backgroundRectY"].toInt();
+
+  m_background.setTextureRect(QRectF(0,0,backgroundRectX,backgroundRectY));
+
   return true;
 }
 
@@ -44,6 +49,8 @@ bool ViewWorld::write(QJsonObject &obj) const {
   obj["height"] = size().height();
   obj["scale"] = factor();
   obj["background"] = m_background.source();
+  obj["backgroundRectX"] = m_background.textureRect().width();
+  obj["backgroundRectY"] = m_background.textureRect().height();
 
   return true;
 }
