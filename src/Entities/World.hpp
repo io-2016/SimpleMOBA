@@ -30,7 +30,8 @@ class WorldObject : public QObject {
                  playerIndicatorColorChanged)
   Q_PROPERTY(
       QPointF playerLocation READ playerLocation NOTIFY playerLocationChanged)
-  Q_PROPERTY(QRectF cameraLocation READ cameraLocation NOTIFY cameraLocationChanged)
+  Q_PROPERTY(
+      QRectF cameraLocation READ cameraLocation NOTIFY cameraLocationChanged)
   Q_PROPERTY(QSizeF mapSize READ mapSize CONSTANT)
 
   World *m_world;
@@ -57,6 +58,7 @@ class WorldObject : public QObject {
 
   Q_INVOKABLE void minimapMove(QPointF);
   Q_INVOKABLE void playerMove(QPointF);
+  Q_INVOKABLE void castSpell(int x, int y, int spellId);
 
  signals:
   void fpsChanged();
