@@ -30,6 +30,8 @@ void Player::onStepped() {
   }
 }
 
+void Player::castSpell(const QPointF&, int) {}
+
 void Player::mousePressEvent(QMouseEvent* e) {
   QBody::mousePressEvent(e);
   if (e->buttons() & Qt::RightButton) {
@@ -138,6 +140,12 @@ void Player::move(QPointF p) {
   m_target = p;
 
   m_currentPath = std::make_unique<Path>(p, position(), this, 2.6, world());
+
+  const qreal playerHalfRadius = 2.5;
+  const qreal collisionMargin = sqrt(2.0) * playerHalfRadius;
+  m_currentPath =
+      std::make_unique<Path>(p, position(), this, collisionMargin, world());
+
   if (m_currentPath->points().empty()) m_currentPath = nullptr;
   m_currentPathPoint = 0;
 

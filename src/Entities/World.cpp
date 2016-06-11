@@ -112,17 +112,15 @@ WorldObject::WorldObject(World *world)
   m_playerIndicatorTimer.start();
 }
 
-qreal WorldObject::fps() const {
-  return world()->window()->fps();
+qreal WorldObject::fps() const { return world()->window()->fps(); }
+
+void WorldObject::castSpell(int x, int y, int spellId) {
+  m_world->player()->castSpell(m_world->mapFromScreen(QPointF(x, y)), spellId);
 }
 
-void WorldObject::minimapMove(QPointF p) {
-  world()->view()->setLookAt(p);
-}
+void WorldObject::minimapMove(QPointF p) { world()->view()->setLookAt(p); }
 
-void WorldObject::playerMove(QPointF p) {
-  world()->player()->move(p);
-}
+void WorldObject::playerMove(QPointF p) { world()->player()->move(p); }
 
 QPointF WorldObject::playerLocation() const {
   if (!world()->player()) return QPointF();
@@ -133,9 +131,7 @@ QRectF WorldObject::cameraLocation() const {
   return world()->view()->visibleArea();
 }
 
-QSizeF WorldObject::mapSize() const {
-  return world()->view()->size();
-}
+QSizeF WorldObject::mapSize() const { return world()->view()->size(); }
 
 WorldFileActionResolver::WorldFileActionResolver(World *w) : m_world(w) {}
 
