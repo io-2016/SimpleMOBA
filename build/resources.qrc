@@ -13,5 +13,7 @@
         <file>resources/las.jpeg</file>
         <file>resources/dota_map.jpg</file>
         <file>resources/dota_minimap.png</file>
+        <file>resources/punch.png</file>
+        <file>resources/punch_sound.wav</file>
     </qresource>
 </RCC>
