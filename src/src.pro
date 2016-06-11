@@ -1,5 +1,5 @@
 TEMPLATE = lib
-QT += quick
+QT += quick multimedia
 CONFIG += c++14
 CONFIG -= debug_and_release
 OBJECTS_DIR = .obj

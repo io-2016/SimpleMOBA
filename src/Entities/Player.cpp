@@ -1,6 +1,7 @@
 #include "Player.hpp"
 
 #include "QBox2D/Fixture/Box2DBox.hpp"
+#include "QBox2D/Fixture/Box2DCircle.hpp"
 #include "QBox2D/QWorld.hpp"
 
 #include "Utility/Path.hpp"
@@ -44,10 +45,37 @@ void Player::mousePressEvent(QMouseEvent* e) {
     move(world()->mapFromScreen(e->pos()));
 
   }
+
+  if ((e->buttons() & Qt::LeftButton) && activeSpell() == "shoot") {
+    e->accept();
+    auto t = std::make_unique<Bullet>(world()->itemSet());
+    t->setPosition(position());
+    QPointF direction = world()->mapFromScreen(e->pos()) - position();
+    direction = QVector2D(direction).normalized().toPointF();
+    t->setDirection(direction);
+    t->setSound(m_punchSound);
+    t->initialize(world());
+    world()->itemSet()->addBody(std::move(t));
+    setActiveSpell("");
+  }
+}
+
+void Player::keyPressEvent(QKeyEvent* e) {
+  QBody::keyPressEvent(e);
+  if (e->key() == Qt::Key_Q) {
+    e->accept();
+    if (activeSpell() == "shoot") {
+      setActiveSpell("");
+    } else
+      setActiveSpell("shoot");
+  }
 }
 
 Player::Player(Item* parent)
-    : QBody(parent), m_currentPathPoint(0), m_going(false) {
+    : QBody(parent),
+      m_currentPathPoint(),
+      m_going(false),
+      m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")) {
   setBodyType(QBody::BodyType::Dynamic);
 
   auto box = std::make_unique<Box2DBox>();
@@ -55,6 +83,8 @@ Player::Player(Item* parent)
   box->setSize(QSizeF(5, 5));
   box->setPosition(QPointF(-2.5, -2.5));
   box->setTextureSource(":/resources/crate.jpg");
+  box->setCategories(QFixture::Category2);
+  box->setCollidesWith(QFixture::Category1);
 
   addFixture(std::move(box));
   setPosition(QPointF(70, 950));
@@ -67,11 +97,52 @@ void Player::initialize(QWorld* w) {
   enqueueFunction(std::bind(&Player::onStepped, this));
 }
 
-bool Player::write(QJsonObject&) const {
-  return false;
+bool Player::write(QJsonObject&) const { return false; }
+
+void Player::setActiveSpell(std::string str) {
+  if (m_activeSpell == str) return;
+  m_activeSpell = str;
+}
+
+const std::string& Player::activeSpell() const { return m_activeSpell; }
+
+void Bullet::onStepped() {
+  setLinearVelocity(40 * m_direction);
+  enqueueFunction(std::bind(&Bullet::onStepped, this));
+}
+
+void Bullet::beginContact(QFixture*, b2Contact*) {
+  destroyLater();
+  m_punchSound->play();
+}
+
+void Bullet::initialize(QWorld* w) {
+  setBodyType(QBody::BodyType::Dynamic);
+
+  auto f = std::make_unique<Box2DBox>();
+  QSizeF size(10, 10);
+  f->setSize(size);
+  f->setPosition(-QPointF(0.5 * size.width(), 0.5 * size.height()));
+  f->setTextureSource(":/resources/punch.png");
+  f->setSensor(true);
+  f->setCollidesWith(
+      QFixture::CategoryFlag(QFixture::All & ~QFixture::Category2));
+  addFixture(std::move(f));
+  setRotation(180.0 / M_PI * atan2(-m_direction.x(), m_direction.y()) + 90.0);
+  QBody::initialize(w);
+  enqueueFunction(std::bind(&Bullet::onStepped, this));
 }
 
 void Player::move(QPointF p) {
   m_target = p;
+
+  m_currentPath = std::make_unique<Path>(p, position(), this, 2.6, world());
+  if (m_currentPath->points().empty()) m_currentPath = nullptr;
+  m_currentPathPoint = 0;
+
   m_going = true;
 }
+
+void Bullet::setDirection(QPointF d) { m_direction = d; }
+
+void Bullet::setSound(std::shared_ptr<QSound> sound) { m_punchSound = sound; }
