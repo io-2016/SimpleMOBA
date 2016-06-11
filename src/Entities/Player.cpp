@@ -33,12 +33,7 @@ void Player::mousePressEvent(QMouseEvent* e) {
   QBody::mousePressEvent(e);
   if (e->buttons() & Qt::RightButton) {
     e->accept();
-    m_target = world()->mapFromScreen(e->pos());
-    m_currentPath = std::make_unique<Path>(
-        m_target, position(), this, 2.6, world());
-    if (m_currentPath->points().empty()) m_currentPath = nullptr;
-    m_currentPathPoint = 0;
-    m_going = true;
+    move(world()->mapFromScreen(e->pos()));
   }
 }
 
@@ -65,4 +60,13 @@ void Player::initialize(QWorld* w) {
 
 bool Player::write(QJsonObject&) const {
   return false;
+}
+
+void Player::move(QPointF p) {
+  m_target = p;
+  m_currentPath = std::make_unique<Path>(
+      p, position(), this, 2.6, world());
+  if (m_currentPath->points().empty()) m_currentPath = nullptr;
+  m_currentPathPoint = 0;
+  m_going = true;
 }
