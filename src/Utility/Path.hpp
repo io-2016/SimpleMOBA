@@ -3,19 +3,17 @@
 
 #include <QPointF>
 #include <vector>
+#include "GameEngine/QBox2D/QBody.hpp"
 
 class QWorld;
 
 class Path {
  public:
-  Path(QPointF a, QPointF b, QWorld *w);
+  Path(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w);
 
   const std::vector<QPointF> &points() const;
 
-  // Retrieve the point on the path from the fraction of the total length.
-  QPointF at(float factor) const;
-
-  float length() const;
+  void build(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w);
 
  private:
   std::vector<QPointF> m_points;
