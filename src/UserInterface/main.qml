@@ -10,8 +10,16 @@ Item {
     height: 768
     focus: true
 
-    HUDMain { anchors.fill: parent }
-    GameEngineConsole { id: consoleView }
+    HUDMain {
+        anchors.fill: parent
+
+        onSpellCast: {
+            world.castSpell(x, y, id)
+        }
+    }
+    GameEngineConsole {
+        id: consoleView
+    }
 
     Rectangle {
         width: 0.05 * parent.width
