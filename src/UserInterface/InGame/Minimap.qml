@@ -8,15 +8,24 @@ Item {
         color: Qt.rgba(0.3, 0.3, 0.3, 0.5)
         border.width: 1
         MouseArea {
+            property bool pressed: false
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton | Qt.RightButton
             onClicked: {
                 if (mouse.button & Qt.LeftButton) {
-                    world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width, world.mapSize.height * mouse.y / height));
+                    pressed = true;
+                    world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
+                                               world.mapSize.height * mouse.y / height));
                 } else {
-                    world.playerMove(Qt.point(world.mapSize.width * mouse.x / width, world.mapSize.height * mouse.y / height));
+                    world.playerMove(Qt.point(world.mapSize.width * mouse.x / width,
+                                              world.mapSize.height * mouse.y / height));
                 }
             }
+            onReleased: if (mouse.button & Qt.LeftButton) pressed = false
+            onMouseXChanged: world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
+                                                        world.mapSize.height * mouse.y / height));
+            onMouseYChanged: world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
+                                                        world.mapSize.height * mouse.y / height));
         }
     }
 
