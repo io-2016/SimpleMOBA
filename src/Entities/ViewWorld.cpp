@@ -53,6 +53,7 @@ void ViewWorld::visibleAreaChanged() {
 
   game()->lightSystem()->visibleAreaChanged(visibleArea());
   world()->setVisibleRect(visibleArea());
+  emit world()->object()->cameraLocationChanged();
 }
 
 void ViewWorld::mouseMoveEvent(QMouseEvent *event) {

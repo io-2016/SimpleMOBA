@@ -22,6 +22,8 @@ class Player : public QBody {
   void initialize(QWorld* w);
 
   bool write(QJsonObject&) const;
+
+  void move(QPointF);
 };
 
 #endif  // PLAYER_HPP
