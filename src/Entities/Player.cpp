@@ -25,8 +25,7 @@ void Player::mousePressEvent(QMouseEvent* e) {
   QBody::mousePressEvent(e);
   if (e->buttons() & Qt::RightButton) {
     e->accept();
-    m_target = world()->mapFromScreen(e->pos());
-    m_going = true;
+    move(world()->mapFromScreen(e->pos()));
   }
 }
 
@@ -51,4 +50,9 @@ void Player::initialize(QWorld* w) {
 
 bool Player::write(QJsonObject&) const {
   return false;
+}
+
+void Player::move(QPointF p) {
+  m_target = p;
+  m_going = true;
 }

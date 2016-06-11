@@ -116,9 +116,25 @@ qreal WorldObject::fps() const {
   return world()->window()->fps();
 }
 
+void WorldObject::minimapMove(QPointF p) {
+  world()->view()->setLookAt(p);
+}
+
+void WorldObject::playerMove(QPointF p) {
+  world()->player()->move(p);
+}
+
 QPointF WorldObject::playerLocation() const {
   if (!world()->player()) return QPointF();
   return world()->player()->position();
+}
+
+QRectF WorldObject::cameraLocation() const {
+  return world()->view()->visibleArea();
+}
+
+QSizeF WorldObject::mapSize() const {
+  return world()->view()->size();
 }
 
 WorldFileActionResolver::WorldFileActionResolver(World *w) : m_world(w) {}

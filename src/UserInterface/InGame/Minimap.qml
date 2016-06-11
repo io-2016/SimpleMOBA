@@ -7,6 +7,17 @@ Item {
         radius: 2
         color: Qt.rgba(0.3, 0.3, 0.3, 0.5)
         border.width: 1
+        MouseArea {
+            anchors.fill: parent
+            acceptedButtons: Qt.LeftButton | Qt.RightButton
+            onClicked: {
+                if (mouse.button & Qt.LeftButton) {
+                    world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width, world.mapSize.height * mouse.y / height));
+                } else {
+                    world.playerMove(Qt.point(world.mapSize.width * mouse.x / width, world.mapSize.height * mouse.y / height));
+                }
+            }
+        }
     }
 
     Image {
@@ -17,13 +28,25 @@ Item {
     }
 
     Rectangle {
+        color: Qt.rgba(0, 0, 0, 0)
+        width: parent.width * world.cameraLocation.width / world.mapSize.width
+        height: parent.height * world.cameraLocation.height / world.mapSize.height
+        border.color: Qt.rgba(1, 1, 1, 1)
+        border.width: 3
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.topMargin: parent.height * (world.cameraLocation.y / world.mapSize.height)
+        anchors.leftMargin: parent.width * (world.cameraLocation.x / world.mapSize.width)
+    }
+
+    Rectangle {
         color: world.playerIndicatorColor
         width: parent.width * 0.05
         height: parent.height * 0.05
         radius: width * 0.5
         anchors.top: parent.top
         anchors.left: parent.left
-        anchors.topMargin: parent.height * (world.playerLocation.y / 1000) - radius
-        anchors.leftMargin: parent.width * (world.playerLocation.x / 1000) - radius
+        anchors.topMargin: parent.height * (world.playerLocation.y / world.mapSize.height) - radius
+        anchors.leftMargin: parent.width * (world.playerLocation.x / world.mapSize.width) - radius
     }
 }

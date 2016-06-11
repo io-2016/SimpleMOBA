@@ -30,6 +30,8 @@ class WorldObject : public QObject {
                  playerIndicatorColorChanged)
   Q_PROPERTY(
       QPointF playerLocation READ playerLocation NOTIFY playerLocationChanged)
+  Q_PROPERTY(QRectF cameraLocation READ cameraLocation NOTIFY cameraLocationChanged)
+  Q_PROPERTY(QSizeF mapSize READ mapSize CONSTANT)
 
   World *m_world;
 
@@ -38,6 +40,8 @@ class WorldObject : public QObject {
   QTimer m_playerIndicatorTimer;
 
   QPointF playerLocation() const;
+  QRectF cameraLocation() const;
+  QSizeF mapSize() const;
 
  public:
   WorldObject(World *);
@@ -51,11 +55,15 @@ class WorldObject : public QObject {
   inline World *world() { return m_world; }
   inline const World *world() const { return m_world; }
 
+  Q_INVOKABLE void minimapMove(QPointF);
+  Q_INVOKABLE void playerMove(QPointF);
+
  signals:
   void fpsChanged();
   void minimapOnLeftChanged();
   void playerIndicatorColorChanged();
   void playerLocationChanged();
+  void cameraLocationChanged();
 };
 
 class WorldFileActionResolver : public FileActionResolver {
