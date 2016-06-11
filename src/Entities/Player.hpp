@@ -28,7 +28,7 @@ class Player : public QBody {
  private:
   QPointF m_target;
   std::unique_ptr<Path> m_currentPath;
-  int m_currentPathPoint;
+  size_t m_currentPathPoint;
   bool m_going;
   std::string m_activeSpell;
   std::shared_ptr<QSound> m_punchSound;
@@ -49,6 +49,7 @@ class Player : public QBody {
   void move(QPointF);
   void setActiveSpell(std::string str);
   const std::string& activeSpell() const;
+  void castSpell(const QPointF& position, int spellId);
 };
 
 #endif  // PLAYER_HPP

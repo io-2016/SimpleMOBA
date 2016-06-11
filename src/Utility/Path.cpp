@@ -86,25 +86,26 @@ class Finder {
 
  public:
   Finder(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w,
-         int res = 8)
-      : m_priQueue(CompareNodes(Node(2 * res, 0))) {
+         int resolution)
+      : m_priQueue(CompareNodes(Node(2 * resolution, 0))) {
     m_world = w;
     QVector2D base(b - a);
-    while ((2 * (res - 1)) > radius) {
-      res -= 1;
+    while ((2 * (resolution - 1)) > radius) {
+      resolution -= 1;
     }
-    m_res = res;
+    m_res = resolution;
     m_skip = skip;
     m_radius = radius;
     QVector2D baseTransposed(-base.y(), base.x());
-    m_stepX = base / float(res * 2);
+    m_stepX = base / float(resolution * 2);
     m_stepY = QVector2D(-m_stepX.y(), m_stepX.x());
     m_origin = a;
     Node start;
     if (nodeUnobstructed(start)) {
       m_priQueue.insert(start);
       m_known[start] = {0.f, start};
-      while (dfs() && m_known.size() < 1024)
+      const int maxGraphNodeCount = 1024;
+      while (dfs() && m_known.size() < maxGraphNodeCount)
         ;
       rebuildPath();
     }
@@ -204,6 +205,7 @@ Path::Path(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w) {
 const std::vector<QPointF> &Path::points() const { return m_points; }
 
 void Path::build(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w) {
-  Finder fnd(a, b, skip, radius, w, 8);
+  const int pathfindingResulotion = 8;
+  Finder fnd(a, b, skip, radius, w, pathfindingResulotion);
   m_points = fnd.path();
 }

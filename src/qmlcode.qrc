@@ -19,5 +19,6 @@
         <file>GameEngine/UserInterface/PopUpControl.qml</file>
         <file>GameEngine/UserInterface/SaveMap.qml</file>
         <file>GameEngine/UserInterface/GameEngineConsole.qml</file>
+        <file>UserInterface/InGame/SpellFrame.qml</file>
     </qresource>
 </RCC>
