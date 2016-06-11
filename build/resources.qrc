@@ -100,5 +100,6 @@
         <file>resources/enchant-acid-3.png</file>
         <file>resources/enchant-acid-2.png</file>
         <file>resources/enchant-acid-1.png</file>
+        <file>resources/trawa.jpeg</file>
     </qresource>
 </RCC>
