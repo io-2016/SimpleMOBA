@@ -11,7 +11,7 @@ Item {
             property bool pressed: false
             anchors.fill: parent
             acceptedButtons: Qt.LeftButton | Qt.RightButton
-            onClicked: {
+            onPressed: {
                 if (mouse.button & Qt.LeftButton) {
                     pressed = true;
                     world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
@@ -22,10 +22,16 @@ Item {
                 }
             }
             onReleased: if (mouse.button & Qt.LeftButton) pressed = false
-            onMouseXChanged: world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
-                                                        world.mapSize.height * mouse.y / height));
-            onMouseYChanged: world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
-                                                        world.mapSize.height * mouse.y / height));
+            onMouseXChanged: {
+                if (pressed)
+                    world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
+                                               world.mapSize.height * mouse.y / height));
+            }
+            onMouseYChanged: {
+                if (pressed)
+                    world.minimapMove(Qt.point(world.mapSize.width * mouse.x / width,
+                                               world.mapSize.height * mouse.y / height));
+            }
         }
     }
 
