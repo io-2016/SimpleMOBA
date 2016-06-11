@@ -102,7 +102,8 @@ void Bullet::onStepped() {
   enqueueFunction(std::bind(&Bullet::onStepped, this));
 }
 
-void Bullet::beginContact(QFixture*, b2Contact*) {
+void Bullet::beginContact(QFixture* f, b2Contact*) {
+  if (f->isSensor()) return;
   destroyLater();
   m_punchSound->play();
 }
