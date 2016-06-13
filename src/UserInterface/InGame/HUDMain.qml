@@ -5,6 +5,17 @@ Item {
 
     signal spellCast(int x, int y, int id)
 
+    Keys.onPressed: {
+        var spellKeys = [
+                    Qt.Key_Q, Qt.Key_W, Qt.Key_E, Qt.Key_R, Qt.Key_T, Qt.Key_Y,
+        ]
+        for (var i = 0; i < spellKeys.length; ++i) {
+            if (event.key === spellKeys[i]) {
+                idSpellWrap.selected = i
+            }
+        }
+    }
+
     MouseArea {
         id: idMouseContainer
         anchors.fill: parent

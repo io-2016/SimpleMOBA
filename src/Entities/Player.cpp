@@ -30,37 +30,22 @@ void Player::onStepped() {
   }
 }
 
-void Player::castSpell(const QPointF&, int) {}
+void Player::castSpell(const QPointF &location, int) {
+  auto t = std::make_unique<Bullet>(world()->itemSet());
+  t->setPosition(position());
+  QPointF direction = location - position();
+  direction = QVector2D(direction).normalized().toPointF();
+  t->setDirection(direction);
+  t->setSound(m_punchSound);
+  t->initialize(world());
+  world()->itemSet()->addBody(std::move(t));
+}
 
 void Player::mousePressEvent(QMouseEvent* e) {
   QBody::mousePressEvent(e);
   if (e->buttons() & Qt::RightButton) {
     e->accept();
     move(world()->mapFromScreen(e->pos()));
-  }
-
-  if ((e->buttons() & Qt::LeftButton) && activeSpell() == "shoot") {
-    e->accept();
-    auto t = std::make_unique<Bullet>(world()->itemSet());
-    t->setPosition(position());
-    QPointF direction = world()->mapFromScreen(e->pos()) - position();
-    direction = QVector2D(direction).normalized().toPointF();
-    t->setDirection(direction);
-    t->setSound(m_punchSound);
-    t->initialize(world());
-    world()->itemSet()->addBody(std::move(t));
-    setActiveSpell("");
-  }
-}
-
-void Player::keyPressEvent(QKeyEvent* e) {
-  QBody::keyPressEvent(e);
-  if (e->key() == Qt::Key_Q) {
-    e->accept();
-    if (activeSpell() == "shoot") {
-      setActiveSpell("");
-    } else
-      setActiveSpell("shoot");
   }
 }
 
