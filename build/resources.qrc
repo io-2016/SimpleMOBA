@@ -16,6 +16,9 @@
         <file>resources/punch.png</file>
         <file>resources/punch_sound.wav</file>
         <file>resources/trawa.jpeg</file>
+        <file>resources/enemy.png</file>
+        <file>resources/school.png</file>
+        <file>resources/starbase-tex.png</file>
     </qresource>
     <qresource prefix="/spell_icons">
         <file>resources/protect-sky-3.png</file>

@@ -37,15 +37,6 @@ void Enemy::onStepped() {
 Enemy::Enemy(Item* parent) : QBody(parent), m_going(false), m_hitpoints(100) {
   setBodyType(QBody::BodyType::Dynamic);
 
-  auto box = std::make_unique<Box2DBox>();
-  box->setSize(QSizeF(5, 5));
-  box->setPosition(QPointF(-2.5, -2.5));
-  box->setTextureSource(":/resources/crate.jpg");
-
-  addFixture(std::move(box));
-  setLinearDamping(5);
-  setAngularDamping(5);
-
   m_initialized = false;
 }
 
@@ -92,6 +83,7 @@ bool Enemy::read(const QJsonObject& obj) {
   QBody::read(obj);
   m_radius = obj["radius"].toDouble();
   m_center = QPoint(position().x(), position().y());
+  m_hitpoints = obj["hitpoints"].toInt(100);
   m_initialized = true;
   return true;
 }
@@ -101,6 +93,7 @@ void Enemy::setRadius(qreal radius) { m_radius = radius; }
 bool Enemy::write(QJsonObject& obj) const {
   QBody::write(obj);
   obj["radius"] = m_radius;
+  obj["hitpoints"] = m_hitpoints;
   obj["class"] = "Enemy";
   return true;
 }

@@ -17,6 +17,39 @@
         "world": {
             "bodies": [
                 {
+                    "angularDamping": 5,
+                    "bodyType": 0,
+                    "class": "Enemy",
+                    "fixtures": [
+                        {
+                            "class": "Box2DBox",
+                            "density": 0,
+                            "friction": 0.20000000298023224,
+                            "height": 50,
+                            "normalMapSource": "",
+                            "restitution": 0,
+                            "shadowCaster": true,
+                            "textureRect": {
+                                "h": 1,
+                                "w": 1,
+                                "x": 0,
+                                "y": 0
+                            },
+                            "textureSource": ":/resources/starbase-tex.png",
+                            "width": 50,
+                            "x": -2.5,
+                            "y": -2.5
+                        }
+                    ],
+                    "hitpoints" : 200,
+                    "gravityScale": 1,
+                    "linearDamping": 5,
+                    "radius": 0,
+                    "rotation": 0,
+                    "x": 90.906005859375,
+                    "y": 900.78866577148438
+                },
+                {
                     "class": "QChain",
                     "textureScale": {
                         "x": 0.02,

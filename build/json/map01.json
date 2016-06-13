@@ -35,7 +35,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -488,26 +488,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
-                            "width": 5,
-                            "x": -2.5,
-                            "y": -2.5
-                        },
-                        {
-                            "class": "Box2DBox",
-                            "density": 0,
-                            "friction": 0.20000000298023224,
-                            "height": 5,
-                            "normalMapSource": "",
-                            "restitution": 0,
-                            "shadowCaster": true,
-                            "textureRect": {
-                                "h": 1,
-                                "w": 1,
-                                "x": 0,
-                                "y": 0
-                            },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -539,26 +520,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
-                            "width": 5,
-                            "x": -2.5,
-                            "y": -2.5
-                        },
-                        {
-                            "class": "Box2DBox",
-                            "density": 0,
-                            "friction": 0.20000000298023224,
-                            "height": 5,
-                            "normalMapSource": "",
-                            "restitution": 0,
-                            "shadowCaster": true,
-                            "textureRect": {
-                                "h": 1,
-                                "w": 1,
-                                "x": 0,
-                                "y": 0
-                            },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -862,7 +824,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -881,7 +843,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -900,7 +862,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -932,7 +894,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -951,7 +913,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -1102,7 +1064,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -1121,7 +1083,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -1140,7 +1102,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -1172,7 +1134,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -1191,7 +1153,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -2665,7 +2627,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -2684,7 +2646,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -2716,7 +2678,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -2735,7 +2697,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -2754,7 +2716,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3000,7 +2962,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3019,7 +2981,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3038,7 +3000,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3420,7 +3382,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3439,7 +3401,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3458,7 +3420,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3477,7 +3439,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3496,7 +3458,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3515,7 +3477,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -3534,7 +3496,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4206,7 +4168,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4225,7 +4187,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4597,7 +4559,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4616,7 +4578,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4648,7 +4610,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4667,7 +4629,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4699,7 +4661,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4731,7 +4693,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4750,7 +4712,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4936,7 +4898,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -4955,7 +4917,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5503,7 +5465,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5522,7 +5484,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5654,7 +5616,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5673,7 +5635,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5705,7 +5667,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5724,7 +5686,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5756,7 +5718,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -5775,7 +5737,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -6071,7 +6033,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -6090,7 +6052,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -6958,7 +6920,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -6977,7 +6939,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -6996,7 +6958,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7256,7 +7218,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7275,7 +7237,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7294,7 +7256,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7326,7 +7288,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7522,7 +7484,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7541,7 +7503,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7560,7 +7522,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7592,7 +7554,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7611,7 +7573,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7643,7 +7605,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -7662,7 +7624,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8019,7 +7981,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8038,7 +8000,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8115,7 +8077,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8134,7 +8096,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8166,7 +8128,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8185,7 +8147,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8343,7 +8305,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8362,7 +8324,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8428,7 +8390,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8447,7 +8409,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8533,7 +8495,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8552,7 +8514,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8584,7 +8546,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8603,7 +8565,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8635,7 +8597,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8654,7 +8616,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8720,7 +8682,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8739,7 +8701,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8889,7 +8851,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8908,7 +8870,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -8989,7 +8951,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -9008,7 +8970,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -9040,7 +9002,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -9059,7 +9021,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -9287,7 +9249,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5
@@ -9306,7 +9268,7 @@
                                 "x": 0,
                                 "y": 0
                             },
-                            "textureSource": ":/resources/crate.jpg",
+                            "textureSource": ":/resources/enemy.png",
                             "width": 5,
                             "x": -2.5,
                             "y": -2.5

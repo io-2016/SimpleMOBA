@@ -16,7 +16,8 @@ SOURCES += \
     Entities/World.cpp \
     Utility/Path.cpp \
     Entities/Player.cpp \
-    Entities/Enemy.cpp
+    Entities/Enemy.cpp \
+    Entities/Structure.cpp
 
 HEADERS += \
     Entities/Game.hpp \
@@ -25,7 +26,8 @@ HEADERS += \
     Utility/Window.hpp \
     Utility/Path.hpp \
     Entities/Player.hpp \
-    Entities/Enemy.hpp
+    Entities/Enemy.hpp \
+    Entities/Structure.hpp
 
 unix|win32: LIBS += -L$$OUT_PWD/GameEngine/ -lGameEngine
 INCLUDEPATH += $$PWD/GameEngine
