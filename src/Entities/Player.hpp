@@ -37,7 +37,6 @@ class Player : public QBody {
 
  protected:
   void mousePressEvent(QMouseEvent*);
-  void keyPressEvent(QKeyEvent*);
 
  public:
   Player(SceneGraph::Item* = nullptr);
@@ -49,7 +48,7 @@ class Player : public QBody {
   void move(QPointF);
   void setActiveSpell(std::string str);
   const std::string& activeSpell() const;
-  void castSpell(const QPointF& position, int spellId);
+  void castSpell(const QPointF& location, int spellId);
 };
 
 #endif  // PLAYER_HPP

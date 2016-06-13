@@ -11,6 +11,7 @@ Item {
     focus: true
 
     HUDMain {
+        id: idHUDMain
         anchors.fill: parent
 
         onSpellCast: {
@@ -41,14 +42,20 @@ Item {
     }
 
     Keys.onPressed: {
-        if (event.key === Qt.Key_Escape)
+        if (event.key === Qt.Key_Escape) {
             menu.visible ^= 1
-        else if (event.key === Qt.Key_QuoteLeft) {
+        } if (event.key === Qt.Key_QuoteLeft) {
             mainAction.quit()
             consoleView.consoleEnabled ^= 1
-        }
-        else if (event.key === Qt.Key_Comma)
+        } else if (event.key === Qt.Key_Comma) {
             game.dump("")
+        } else {
+            event.accepted = false
+        }
     }
+
+    Keys.forwardTo: [
+        idHUDMain
+    ]
 
 }
