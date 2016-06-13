@@ -46,6 +46,9 @@ class PlayerObject : public QObject {
   uint m_maxMana;
   uint m_manaRegen;
 
+  void regenHealth();
+  void regenMana();
+
  public:
   PlayerObject(Player*);
 
@@ -55,6 +58,9 @@ class PlayerObject : public QObject {
   uint mana() const;
   uint maxMana() const;
   uint manaRegen() const;
+
+  void setHealth(uint);
+  void setMana(uint);
 
  signals:
   void healthChanged();
