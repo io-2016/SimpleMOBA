@@ -3,6 +3,7 @@
 #include "QBox2D/Fixture/Box2DBox.hpp"
 #include "QBox2D/Fixture/Box2DCircle.hpp"
 #include "QBox2D/QWorld.hpp"
+#include "Enemy.hpp"
 
 #include "Utility/Path.hpp"
 
@@ -91,8 +92,12 @@ void Bullet::onStepped() {
 
 void Bullet::beginContact(QFixture* f, b2Contact*) {
   if (f->isSensor()) return;
-  destroyLater();
-  m_punchSound->play();
+  if (dynamic_cast<Enemy*>(f->parent()))
+    m_punchSound->play();
+  else {
+    m_destroyed = true;
+    destroyLater();
+  }
 }
 
 void Bullet::initialize(QWorld* w) {

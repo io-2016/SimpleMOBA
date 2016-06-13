@@ -9,6 +9,7 @@
 class Bullet : public QBody {
  private:
   QPointF m_direction;
+  bool m_destroyed = false;
   std::shared_ptr<QSound> m_punchSound;
 
   void onStepped();
@@ -22,6 +23,9 @@ class Bullet : public QBody {
   void initialize(QWorld*);
   void setDirection(QPointF);
   void setSound(std::shared_ptr<QSound>);
+
+  bool destroyed() const { return m_destroyed; }
+  void setDestroyed(bool f) { m_destroyed = f; }
 };
 
 class Player : public QBody {
