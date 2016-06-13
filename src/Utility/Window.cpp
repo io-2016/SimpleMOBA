@@ -47,6 +47,7 @@ Window::Window(QWindow *parent)
     : SceneGraph::Window(parent), m_environment(this), m_game(rootItem()) {
   rootContext()->setContextProperty("app", &m_environment);
   rootContext()->setContextProperty("world", m_game.view()->world()->object());
+  rootContext()->setContextProperty("player", m_game.view()->world()->player()->object());
   m_game.view()->world()->mainAction()->registerUserInterface(rootContext());
 
   setSource(QUrl("qrc:/UserInterface/main.qml"));

@@ -31,7 +31,7 @@ void Player::onStepped() {
   }
 }
 
-void Player::castSpell(const QPointF &location, int) {
+void Player::castSpell(const QPointF& location, int) {
   auto t = std::make_unique<Bullet>(world()->itemSet());
   t->setPosition(position());
   QPointF direction = location - position();
@@ -54,7 +54,8 @@ Player::Player(Item* parent)
     : QBody(parent),
       m_currentPathPoint(),
       m_going(false),
-      m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")) {
+      m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")),
+      m_object(this) {
   setBodyType(QBody::BodyType::Dynamic);
 
   auto circle = std::make_unique<Box2DCircle>();
@@ -133,3 +134,55 @@ void Player::move(QPointF p) {
 void Bullet::setDirection(QPointF d) { m_direction = d; }
 
 void Bullet::setSound(std::shared_ptr<QSound> sound) { m_punchSound = sound; }
+
+void PlayerObject::regen() {
+  setHealth(health() + healthRegen());
+  setMana(mana() + manaRegen());
+}
+
+PlayerObject::PlayerObject(Player* player)
+    : m_player(player),
+      m_health(42),
+      m_maxHealth(100),
+      m_healthRegen(3),
+      m_mana(66),
+      m_maxMana(100),
+      m_manaRegen(5) {
+  m_regenTimer.setInterval(1000);
+  connect(&m_regenTimer, &QTimer::timeout, this, &PlayerObject::regen);
+  m_regenTimer.start();
+}
+
+uint PlayerObject::health() const { return m_health; }
+
+uint PlayerObject::maxHealth() const { return m_maxHealth; }
+
+uint PlayerObject::healthRegen() const { return m_healthRegen; }
+
+uint PlayerObject::mana() const { return m_mana; }
+
+uint PlayerObject::maxMana() const { return m_maxMana; }
+
+uint PlayerObject::manaRegen() const { return m_manaRegen; }
+
+void PlayerObject::setHealth(uint h) {
+  if (h < 0) {
+    m_health = 0;
+  } else if (h > maxHealth()) {
+    m_health = maxHealth();
+  } else {
+    m_health = h;
+  }
+  emit healthChanged();
+}
+
+void PlayerObject::setMana(uint m) {
+  if (m < 0) {
+    m_mana = 0;
+  } else if (m > maxMana()) {
+    m_mana = maxMana();
+  } else {
+    m_mana = m;
+  }
+  emit manaChanged();
+}
