@@ -128,9 +128,10 @@ void Bullet::setDirection(QPointF d) { m_direction = d; }
 
 void Bullet::setSound(std::shared_ptr<QSound> sound) { m_punchSound = sound; }
 
-void PlayerObject::regenHealth() { setHealth(health() + healthRegen()); }
-
-void PlayerObject::regenMana() { setHealth(mana() + manaRegen()); }
+void PlayerObject::regen() {
+  setHealth(health() + healthRegen());
+  setMana(mana() + manaRegen());
+}
 
 PlayerObject::PlayerObject(Player* player)
     : m_player(player),
@@ -139,7 +140,11 @@ PlayerObject::PlayerObject(Player* player)
       m_healthRegen(3),
       m_mana(66),
       m_maxMana(100),
-      m_manaRegen(5) {}
+      m_manaRegen(5) {
+  m_regenTimer.setInterval(1000);
+  connect(&m_regenTimer, &QTimer::timeout, this, &PlayerObject::regen);
+  m_regenTimer.start();
+}
 
 uint PlayerObject::health() const { return m_health; }
 
@@ -161,6 +166,7 @@ void PlayerObject::setHealth(uint h) {
   } else {
     m_health = h;
   }
+  emit healthChanged();
 }
 
 void PlayerObject::setMana(uint m) {
@@ -171,4 +177,5 @@ void PlayerObject::setMana(uint m) {
   } else {
     m_mana = m;
   }
+  emit manaChanged();
 }

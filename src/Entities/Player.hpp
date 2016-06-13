@@ -2,6 +2,7 @@
 #define PLAYER_HPP
 
 #include <QSound>
+#include <QTimer>
 #include <memory>
 #include "QBox2D/QBody.hpp"
 #include "Utility/Path.hpp"
@@ -37,6 +38,7 @@ class PlayerObject : public QObject {
   Q_PROPERTY(uint maxMana READ maxMana NOTIFY maxManaChanged)
   Q_PROPERTY(uint manaRegen READ manaRegen NOTIFY manaRegenChanged)
 
+  QTimer m_regenTimer;
   Player* m_player;
 
   uint m_health;
@@ -46,8 +48,7 @@ class PlayerObject : public QObject {
   uint m_maxMana;
   uint m_manaRegen;
 
-  void regenHealth();
-  void regenMana();
+  void regen();
 
  public:
   PlayerObject(Player*);
