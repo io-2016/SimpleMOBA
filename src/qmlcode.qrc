@@ -20,5 +20,6 @@
         <file>GameEngine/UserInterface/SaveMap.qml</file>
         <file>GameEngine/UserInterface/GameEngineConsole.qml</file>
         <file>UserInterface/InGame/SpellFrame.qml</file>
+        <file>UserInterface/InGame/Shop.qml</file>
     </qresource>
 </RCC>
