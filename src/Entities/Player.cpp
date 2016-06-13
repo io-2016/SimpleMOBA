@@ -57,15 +57,17 @@ Player::Player(Item* parent)
       m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")) {
   setBodyType(QBody::BodyType::Dynamic);
 
-  auto box = std::make_unique<Box2DBox>();
-  box->setPosition(QPointF(-2.5, -2.5));
-  box->setSize(QSizeF(5, 5));
-  box->setPosition(QPointF(-2.5, -2.5));
-  box->setTextureSource(":/resources/crate.jpg");
-  box->setCategories(QFixture::Category2);
-  box->setCollidesWith(QFixture::Category1);
+  auto circle = std::make_unique<Box2DCircle>();
+  circle->setRadius(2.5);
+  circle->setFriction(0.0);
+  circle->setDensity(1.0);
+  circle->setPosition(QPointF(-2.5, -2.5));
+  circle->setCategories(QFixture::Category2);
+  circle->setCollidesWith(QFixture::Category1);
+  circle->setRestitution(0.2);
 
-  addFixture(std::move(box));
+  addFixture(std::move(circle));
+
   setPosition(QPointF(70, 950));
   setLinearDamping(5);
   setAngularDamping(5);

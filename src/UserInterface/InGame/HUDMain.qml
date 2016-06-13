@@ -11,7 +11,11 @@ Item {
         ]
         for (var i = 0; i < spellKeys.length; ++i) {
             if (event.key === spellKeys[i]) {
-                idSpellWrap.selected = i
+                if (idSpellWrap.selected === i) {
+                    idSpellWrap.selected = -1
+                } else {
+                    idSpellWrap.selected = i
+                }
             }
         }
     }

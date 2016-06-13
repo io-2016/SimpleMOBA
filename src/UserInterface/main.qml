@@ -36,6 +36,15 @@ Item {
         }
     }
 
+    Shop {
+        id: idShop
+        anchors.right: parent.right
+        anchors.top: parent.top
+        width: parent.width / 3
+        height: parent.height * (3/4)
+        visible: false
+    }
+
     Menu {
         id: menu
         anchors.fill: parent
@@ -49,6 +58,8 @@ Item {
             consoleView.consoleEnabled ^= 1
         } else if (event.key === Qt.Key_Comma) {
             game.dump("")
+        } else if (event.key === Qt.Key_P) {
+            idShop.visible = !idShop.visible
         } else {
             event.accepted = false
         }

@@ -101,14 +101,12 @@ class Finder {
     m_stepY = QVector2D(-m_stepX.y(), m_stepX.x());
     m_origin = a;
     Node start;
-    if (nodeUnobstructed(start)) {
-      m_priQueue.insert(start);
-      m_known[start] = {0.f, start};
-      const int maxGraphNodeCount = 1024;
-      while (dfs() && m_known.size() < maxGraphNodeCount)
-        ;
-      rebuildPath();
-    }
+    m_priQueue.insert(start);
+    m_known[start] = {0.f, start};
+    const int maxGraphNodeCount = 1024;
+    while (dfs() && m_known.size() < maxGraphNodeCount)
+      ;
+    rebuildPath();
   }
 
   std::vector<QPointF> &path() { return m_path; }
@@ -170,7 +168,6 @@ class Finder {
   }
 
   bool nodeAcessibleFrom(const Node &tgt, const Node &src) {
-    if (!nodeUnobstructed(tgt)) return false;
     RaycastCallback cb;
     m_world->rayCast(&cb, nodeLocation(src), nodeLocation(tgt));
     for (auto f : cb.fixtures()) {
@@ -205,7 +202,7 @@ Path::Path(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w) {
 const std::vector<QPointF> &Path::points() const { return m_points; }
 
 void Path::build(QPointF a, QPointF b, QBody *skip, qreal radius, QWorld *w) {
-  const int pathfindingResulotion = 8;
+  const int pathfindingResulotion = 32;
   Finder fnd(a, b, skip, radius, w, pathfindingResulotion);
   m_points = fnd.path();
 }
