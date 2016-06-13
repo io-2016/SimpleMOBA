@@ -90,11 +90,8 @@ class Player : public QBody {
   bool m_going;
   std::string m_activeSpell;
   std::shared_ptr<QSound> m_punchSound;
-<<<<<<< 25630cff855aff2e158c0c311783a600aff4062a
   PlayerObject m_object;
-=======
   int m_score;
->>>>>>> Added winscreen.
 
   void onStepped();
 

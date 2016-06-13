@@ -139,7 +139,6 @@ void Bullet::setDirection(QPointF d) { m_direction = d; }
 
 void Bullet::setSound(std::shared_ptr<QSound> sound) { m_punchSound = sound; }
 
-<<<<<<< 25630cff855aff2e158c0c311783a600aff4062a
 void PlayerObject::regen() {
   setHealth(health() + healthRegen());
   setMana(mana() + manaRegen());
