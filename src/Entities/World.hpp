@@ -47,7 +47,6 @@ class WorldObject : public QObject {
  public:
   WorldObject(World *);
 
-  uint playerHealth() const;
   bool equippedWeapon() const;
   uint bulletCount() const;
 

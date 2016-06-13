@@ -24,14 +24,52 @@ class Bullet : public QBody {
   void setSound(std::shared_ptr<QSound>);
 };
 
+class Player;
+
+class PlayerObject : public QObject {
+ private:
+  Q_OBJECT
+
+  friend class Player;
+
+  Q_PROPERTY(uint health READ health NOTIFY healthChanged)
+  Q_PROPERTY(uint maxHealth READ maxHealth NOTIFY maxHealthChanged)
+  Q_PROPERTY(uint mana READ mana NOTIFY manaChanged)
+  Q_PROPERTY(uint maxMana READ maxMana NOTIFY maxManaChanged)
+
+  Player* m_player;
+
+  uint m_health;
+  uint m_maxHealth;
+  uint m_mana;
+  uint m_maxMana;
+
+ public:
+  PlayerObject(Player*);
+
+  uint health() const;
+  uint maxHealth() const;
+  uint mana() const;
+  uint maxMana() const;
+
+ signals:
+  void healthChanged();
+  void maxHealthChanged();
+  void manaChanged();
+  void maxManaChanged();
+};
+
 class Player : public QBody {
  private:
+  friend class PlayerObject;
+
   QPointF m_target;
   std::unique_ptr<Path> m_currentPath;
   size_t m_currentPathPoint;
   bool m_going;
   std::string m_activeSpell;
   std::shared_ptr<QSound> m_punchSound;
+  PlayerObject m_object;
 
   void onStepped();
 
@@ -40,7 +78,6 @@ class Player : public QBody {
 
  public:
   Player(SceneGraph::Item* = nullptr);
-
   void initialize(QWorld* w);
 
   bool write(QJsonObject&) const;
@@ -49,6 +86,9 @@ class Player : public QBody {
   void setActiveSpell(std::string str);
   const std::string& activeSpell() const;
   void castSpell(const QPointF& location, int spellId);
+
+  inline PlayerObject* object() { return &m_object; }
+  inline const PlayerObject* object() const { return &m_object; }
 };
 
 #endif  // PLAYER_HPP

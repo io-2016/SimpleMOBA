@@ -30,7 +30,7 @@ void Player::onStepped() {
   }
 }
 
-void Player::castSpell(const QPointF &location, int) {
+void Player::castSpell(const QPointF& location, int) {
   auto t = std::make_unique<Bullet>(world()->itemSet());
   t->setPosition(position());
   QPointF direction = location - position();
@@ -53,7 +53,8 @@ Player::Player(Item* parent)
     : QBody(parent),
       m_currentPathPoint(),
       m_going(false),
-      m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")) {
+      m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")),
+      m_object(this) {
   setBodyType(QBody::BodyType::Dynamic);
 
   auto box = std::make_unique<Box2DBox>();
@@ -126,3 +127,18 @@ void Player::move(QPointF p) {
 void Bullet::setDirection(QPointF d) { m_direction = d; }
 
 void Bullet::setSound(std::shared_ptr<QSound> sound) { m_punchSound = sound; }
+
+PlayerObject::PlayerObject(Player* player)
+    : m_player(player),
+      m_health(42),
+      m_maxHealth(100),
+      m_mana(66),
+      m_maxMana(100) {}
+
+uint PlayerObject::health() const { return m_health; }
+
+uint PlayerObject::maxHealth() const { return m_maxHealth; }
+
+uint PlayerObject::mana() const { return m_mana; }
+
+uint PlayerObject::maxMana() const { return m_maxMana; }

@@ -18,8 +18,14 @@ Item {
             Rectangle {
                 anchors.fill: parent
                 anchors.margins: 4
-                radius: 2
-                color: Qt.rgba(0.3, 0.7, 0.3, 1.0)
+                color: Qt.rgba(0, 0, 0, 0)
+
+                Rectangle {
+                    radius: 2
+                    width: parent.width * player.health / player.maxHealth
+                    height: parent.height
+                    color: Qt.rgba(0.3, 0.7, 0.3, 1.0)
+                }
             }
 
             Text {
@@ -32,7 +38,7 @@ Item {
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "100/100"
+                text: player.health + "/" + player.maxHealth
             }
         }
 
@@ -43,8 +49,14 @@ Item {
             Rectangle {
                 anchors.fill: parent
                 anchors.margins: 4
-                radius: 2
-                color: Qt.rgba(0.3, 0.3, 0.7, 1.0)
+                color: Qt.rgba(0, 0, 0, 0)
+
+                Rectangle {
+                    radius: 2
+                    width: parent.width * player.mana / player.maxMana
+                    height: parent.height
+                    color: Qt.rgba(0.3, 0.3, 0.7, 1.0)
+                }
             }
 
             Text {
@@ -57,7 +69,7 @@ Item {
             Text {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
-                text: "100/100"
+                text: player.mana + "/" + player.maxMana
             }
         }
     }
