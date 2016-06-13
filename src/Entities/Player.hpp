@@ -30,8 +30,6 @@ class PlayerObject : public QObject {
  private:
   Q_OBJECT
 
-  friend class Player;
-
   Q_PROPERTY(uint health READ health NOTIFY healthChanged)
   Q_PROPERTY(uint maxHealth READ maxHealth NOTIFY maxHealthChanged)
   Q_PROPERTY(uint healthRegen READ healthRegen NOTIFY healthRegenChanged)
@@ -69,8 +67,6 @@ class PlayerObject : public QObject {
 
 class Player : public QBody {
  private:
-  friend class PlayerObject;
-
   QPointF m_target;
   std::unique_ptr<Path> m_currentPath;
   size_t m_currentPathPoint;
