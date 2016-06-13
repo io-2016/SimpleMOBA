@@ -16,7 +16,7 @@ Game::Game(Item* parent)
 
   particleSystem()->setLightSystem(lightSystem());
 
-  load(":/json/map00.json");
+  load(":/json/map01.json");
 }
 
 Game::~Game() { clear(); }

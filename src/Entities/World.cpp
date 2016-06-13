@@ -14,6 +14,7 @@
 #include "QBox2D/QChain.hpp"
 
 #include "Entities/Player.hpp"
+#include "Entities/Enemy.hpp"
 
 #include <QDebug>
 #include <QJsonDocument>
@@ -36,6 +37,8 @@ World::World(ViewWorld *viewWorld)
 
   factory()->registerType<QBody>("QBody");
   factory()->registerType<QChain>("QChain");
+
+  factory()->registerType<Enemy>("Enemy");
 }
 
 World::~World() { clear(); }
