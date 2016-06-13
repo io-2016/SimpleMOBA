@@ -43,18 +43,6 @@ Item {
     }
 
     Rectangle {
-        color: Qt.rgba(0, 0, 0, 0)
-        width: parent.width * world.cameraLocation.width / world.mapSize.width
-        height: parent.height * world.cameraLocation.height / world.mapSize.height
-        border.color: Qt.rgba(1, 1, 1, 1)
-        border.width: 3
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.topMargin: parent.height * (world.cameraLocation.y / world.mapSize.height)
-        anchors.leftMargin: parent.width * (world.cameraLocation.x / world.mapSize.width)
-    }
-
-    Rectangle {
         color: world.playerIndicatorColor
         width: parent.width * 0.05
         height: parent.height * 0.05
@@ -63,5 +51,17 @@ Item {
         anchors.left: parent.left
         anchors.topMargin: parent.height * (world.playerLocation.y / world.mapSize.height) - radius
         anchors.leftMargin: parent.width * (world.playerLocation.x / world.mapSize.width) - radius
+    }
+
+    Rectangle {
+        color: Qt.rgba(0, 0, 0, 0)
+        width: parent.width * world.cameraLocation.width / world.mapSize.width
+        height: parent.height * world.cameraLocation.height / world.mapSize.height
+        border.color: Qt.rgba(1, 1, 1, 1)
+        border.width: 1
+        anchors.top: parent.top
+        anchors.left: parent.left
+        anchors.topMargin: parent.height * (world.cameraLocation.y / world.mapSize.height)
+        anchors.leftMargin: parent.width * (world.cameraLocation.x / world.mapSize.width)
     }
 }
