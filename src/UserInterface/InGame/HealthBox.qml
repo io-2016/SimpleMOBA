@@ -40,6 +40,13 @@ Item {
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: player.health + "/" + player.maxHealth
             }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.margins: 8
+                anchors.right : parent.right
+                text: "+" + player.healthRegen
+            }
         }
 
         Item {
@@ -70,6 +77,13 @@ Item {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
                 text: player.mana + "/" + player.maxMana
+            }
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.margins: 8
+                anchors.right : parent.right
+                text: "+" + player.manaRegen
             }
         }
     }

@@ -34,29 +34,37 @@ class PlayerObject : public QObject {
 
   Q_PROPERTY(uint health READ health NOTIFY healthChanged)
   Q_PROPERTY(uint maxHealth READ maxHealth NOTIFY maxHealthChanged)
+  Q_PROPERTY(uint healthRegen READ healthRegen NOTIFY healthRegenChanged)
   Q_PROPERTY(uint mana READ mana NOTIFY manaChanged)
   Q_PROPERTY(uint maxMana READ maxMana NOTIFY maxManaChanged)
+  Q_PROPERTY(uint manaRegen READ manaRegen NOTIFY manaRegenChanged)
 
   Player* m_player;
 
   uint m_health;
   uint m_maxHealth;
+  uint m_healthRegen;
   uint m_mana;
   uint m_maxMana;
+  uint m_manaRegen;
 
  public:
   PlayerObject(Player*);
 
   uint health() const;
   uint maxHealth() const;
+  uint healthRegen() const;
   uint mana() const;
   uint maxMana() const;
+  uint manaRegen() const;
 
  signals:
   void healthChanged();
   void maxHealthChanged();
+  void healthRegenChanged();
   void manaChanged();
   void maxManaChanged();
+  void manaRegenChanged();
 };
 
 class Player : public QBody {

@@ -132,13 +132,19 @@ PlayerObject::PlayerObject(Player* player)
     : m_player(player),
       m_health(42),
       m_maxHealth(100),
+      m_healthRegen(3),
       m_mana(66),
-      m_maxMana(100) {}
+      m_maxMana(100),
+      m_manaRegen(5) {}
 
 uint PlayerObject::health() const { return m_health; }
 
 uint PlayerObject::maxHealth() const { return m_maxHealth; }
 
+uint PlayerObject::healthRegen() const { return m_healthRegen; }
+
 uint PlayerObject::mana() const { return m_mana; }
 
 uint PlayerObject::maxMana() const { return m_maxMana; }
+
+uint PlayerObject::manaRegen() const { return m_manaRegen; }
