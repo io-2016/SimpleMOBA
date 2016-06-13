@@ -5,6 +5,36 @@ Item {
 
     signal spellCast(int x, int y, int id)
 
+    Rectangle {
+        width: 100
+        height: 50
+
+        Text {
+            anchors.centerIn: parent
+            text: "Score: " + world.playerScore
+        }
+    }
+
+    Rectangle {
+        id: winscreen
+        anchors.fill: parent
+        visible: false
+        Text {
+            font.pixelSize: 20
+            color: "green"
+            anchors.centerIn: parent
+            text: "Bardzo ładnie"
+        }
+    }
+
+    Connections {
+        target: world
+        onPlayerScoreChanged: {
+            if (world.playerScore === 1)
+                winscreen.visible = true
+        }
+    }
+
     Keys.onPressed: {
         var spellKeys = [
                     Qt.Key_Q, Qt.Key_W, Qt.Key_E, Qt.Key_R, Qt.Key_T, Qt.Key_Y,

@@ -31,6 +31,8 @@ bool ViewWorld::read(const QJsonObject &obj) {
   m_background.resetTransform();
   m_background.scale(size().width(), size().height());
   m_background.setSource(obj["background"].toString());
+  m_background.setTextureRect(
+      Utility::Json::toRect(obj["backgroundRect"].toObject()));
 
   return true;
 }
@@ -44,6 +46,7 @@ bool ViewWorld::write(QJsonObject &obj) const {
   obj["height"] = size().height();
   obj["scale"] = factor();
   obj["background"] = m_background.source();
+  obj["backgroundRect"] = Utility::Json::toObject(m_background.textureRect());
 
   return true;
 }

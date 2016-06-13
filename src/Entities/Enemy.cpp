@@ -76,10 +76,11 @@ void Enemy::beginContact(QFixture* other, b2Contact*) {
     bullet->setDestroyed(true);
     bullet->destroyLater();
     m_hitpoints -= 40;
-    if (m_hitpoints <= 0) destroyLater();
-  } /*else if (Player* player = dynamic_cast<Player*>(other->parent())) {
-    qDebug() << "player hit";
-  } */
+    if (m_hitpoints <= 0) {
+      bullet->owner()->addPoints(1);
+      destroyLater();
+    }
+  }
 }
 
 void Enemy::initialize(QWorld* w) {

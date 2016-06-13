@@ -7,11 +7,14 @@
 #include "QBox2D/QBody.hpp"
 #include "Utility/Path.hpp"
 
+class Player;
+
 class Bullet : public QBody {
  private:
   QPointF m_direction;
   bool m_destroyed = false;
   std::shared_ptr<QSound> m_punchSound;
+  Player* m_owner = nullptr;
 
   void onStepped();
 
@@ -24,6 +27,9 @@ class Bullet : public QBody {
   void initialize(QWorld*);
   void setDirection(QPointF);
   void setSound(std::shared_ptr<QSound>);
+
+  void setOwner(Player*);
+  Player* owner() const { return m_owner; };
 
   bool destroyed() const { return m_destroyed; }
   void setDestroyed(bool f) { m_destroyed = f; }
@@ -84,7 +90,11 @@ class Player : public QBody {
   bool m_going;
   std::string m_activeSpell;
   std::shared_ptr<QSound> m_punchSound;
+<<<<<<< 25630cff855aff2e158c0c311783a600aff4062a
   PlayerObject m_object;
+=======
+  int m_score;
+>>>>>>> Added winscreen.
 
   void onStepped();
 
@@ -104,6 +114,9 @@ class Player : public QBody {
 
   inline PlayerObject* object() { return &m_object; }
   inline const PlayerObject* object() const { return &m_object; }
+  
+  void addPoints(int pts);
+  int score() const { return m_score; }
 };
 
 #endif  // PLAYER_HPP

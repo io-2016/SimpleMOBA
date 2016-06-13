@@ -5,8 +5,12 @@
     },
     "viewWorld": {
         "background": ":/resources/dota_map.jpg",
-        "backgroundRectX": 1,
-        "backgroundRectY": 1,
+        "backgroundRect": {
+            "x" : 0,
+            "y" : 0,
+            "w" : 1,
+            "h" : 1
+        },
         "height": 1000,
         "scale": 1.3009999999999999,
         "width": 1000,

@@ -4,9 +4,13 @@
         ]
     },
     "viewWorld": {
-        "backgroundRectX": 10,
         "background": ":/resources/trawa.jpeg",
-        "backgroundRectY": 10,
+        "backgroundRect": {
+            "x" : 0,
+            "y" : 0,
+            "w" : 10,
+            "h" : 10
+        },
         "height": 1000,
         "scale": 1.3009999999999999,
         "width": 1000,

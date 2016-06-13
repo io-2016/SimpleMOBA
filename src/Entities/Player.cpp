@@ -1,9 +1,9 @@
 #include "Player.hpp"
 
+#include "Enemy.hpp"
 #include "QBox2D/Fixture/Box2DBox.hpp"
 #include "QBox2D/Fixture/Box2DCircle.hpp"
 #include "QBox2D/QWorld.hpp"
-#include "Enemy.hpp"
 
 #include "Utility/Path.hpp"
 
@@ -38,9 +38,12 @@ void Player::castSpell(const QPointF& location, int) {
   direction = QVector2D(direction).normalized().toPointF();
   t->setDirection(direction);
   t->setSound(m_punchSound);
+  t->setOwner(this);
   t->initialize(world());
   world()->itemSet()->addBody(std::move(t));
 }
+
+void Player::addPoints(int pts) { m_score += pts; }
 
 void Player::mousePressEvent(QMouseEvent* e) {
   QBody::mousePressEvent(e);
@@ -55,7 +58,8 @@ Player::Player(Item* parent)
       m_currentPathPoint(),
       m_going(false),
       m_punchSound(std::make_shared<QSound>(":/resources/punch_sound.wav")),
-      m_object(this) {
+      m_object(this),
+      m_score() {
   setBodyType(QBody::BodyType::Dynamic);
 
   auto circle = std::make_unique<Box2DCircle>();
@@ -135,6 +139,7 @@ void Bullet::setDirection(QPointF d) { m_direction = d; }
 
 void Bullet::setSound(std::shared_ptr<QSound> sound) { m_punchSound = sound; }
 
+<<<<<<< 25630cff855aff2e158c0c311783a600aff4062a
 void PlayerObject::regen() {
   setHealth(health() + healthRegen());
   setMana(mana() + manaRegen());
@@ -186,3 +191,5 @@ void PlayerObject::setMana(uint m) {
   }
   emit manaChanged();
 }
+
+void Bullet::setOwner(Player* player) { m_owner = player; }

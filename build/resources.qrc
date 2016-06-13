@@ -15,6 +15,7 @@
         <file>resources/dota_minimap.png</file>
         <file>resources/punch.png</file>
         <file>resources/punch_sound.wav</file>
+        <file>resources/trawa.jpeg</file>
     </qresource>
     <qresource prefix="/spell_icons">
         <file>resources/protect-sky-3.png</file>

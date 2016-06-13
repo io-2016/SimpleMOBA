@@ -13,8 +13,8 @@
 #include "QBox2D/QBody.hpp"
 #include "QBox2D/QChain.hpp"
 
-#include "Entities/Player.hpp"
 #include "Entities/Enemy.hpp"
+#include "Entities/Player.hpp"
 
 #include <QDebug>
 #include <QJsonDocument>
@@ -51,6 +51,7 @@ void World::step() {
   mainAction()->step();
 
   emit m_worldObject.fpsChanged();
+  emit m_worldObject.playerScoreChanged();
 }
 
 void World::clear() { itemSet()->clear(); }
@@ -113,6 +114,11 @@ WorldObject::WorldObject(World *world)
   connect(&m_playerIndicatorTimer, &QTimer::timeout, this,
           &WorldObject::playerLocationChanged);
   m_playerIndicatorTimer.start();
+}
+
+int WorldObject::playerScore() const {
+  if (m_world->player()) return m_world->player()->score();
+  return 0;
 }
 
 qreal WorldObject::fps() const { return world()->window()->fps(); }

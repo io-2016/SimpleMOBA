@@ -33,6 +33,7 @@ class WorldObject : public QObject {
   Q_PROPERTY(
       QRectF cameraLocation READ cameraLocation NOTIFY cameraLocationChanged)
   Q_PROPERTY(QSizeF mapSize READ mapSize CONSTANT)
+  Q_PROPERTY(int playerScore READ playerScore NOTIFY playerScoreChanged)
 
   World *m_world;
 
@@ -47,6 +48,9 @@ class WorldObject : public QObject {
  public:
   WorldObject(World *);
 
+  uint playerHealth() const;
+  int playerScore() const;
+  
   bool equippedWeapon() const;
   uint bulletCount() const;
 
@@ -65,6 +69,7 @@ class WorldObject : public QObject {
   void playerIndicatorColorChanged();
   void playerLocationChanged();
   void cameraLocationChanged();
+  void playerScoreChanged();
 };
 
 class WorldFileActionResolver : public FileActionResolver {
